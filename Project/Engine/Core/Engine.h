@@ -110,8 +110,6 @@ public:
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// モデルのポインタを作成
 	static std::unique_ptr<AOENGINE::Model> CreateModel(const std::string& directoryPath, const std::string& filePath);
-	// ワールドトランスフォームを作成
-	static std::unique_ptr<AOENGINE::WorldTransform> CreateWorldTransform();
 	// Skinningの作成
 	static std::unique_ptr<AOENGINE::Skinning> CreateSkinning(AOENGINE::Skeleton* skeleton, AOENGINE::Model* model, uint32_t index);
 

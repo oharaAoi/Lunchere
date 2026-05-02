@@ -26,7 +26,7 @@ void BBulletToGroundCallBacks::Update() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void BBulletToGroundCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const ground) {
-	BaseBullet* hitBullet = pBossBulletManager_->SearchCollider(bullet);
+	BaseBullet* hitBullet = pBossBulletManager_->SearchCollider(bullet, ColliderTags::Boss::missile);
 	if (hitBullet != nullptr) {
 		hitBullet->SetIsAlive(false);
 		hitEffect_->SetPos(hitBullet->GetPosition());

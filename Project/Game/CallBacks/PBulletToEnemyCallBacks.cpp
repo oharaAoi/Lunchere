@@ -19,7 +19,7 @@ void PBulletToEnemyCallBacks::Update() {
 }
 
 void PBulletToEnemyCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const enemy) {
-	BaseBullet* playerBullet = pBulletManager_->SearchCollider(bullet);
+	BaseBullet* playerBullet = pBulletManager_->SearchCollider(bullet, ColliderTags::Bullet::machinegun);
 	if (playerBullet != nullptr) {
 		if (playerBullet->GetBulletType() == BulletType::Launcher) {
 			hitSmoke_->SetPos(bullet->GetCenterPos());

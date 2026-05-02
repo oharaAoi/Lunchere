@@ -2,6 +2,7 @@
 #include "Engine/Lib/Math/Vector3.h"
 #include "Engine/Lib/Math/Quaternion.h"
 #include "Engine/Module/Components/Attribute/AttributeGui.h"
+#include "Engine/Module/Components/IComponent.h"
 
 namespace AOENGINE {
 
@@ -9,7 +10,8 @@ namespace AOENGINE {
 /// 物理計算ようの
 /// </summary>
 class Rigidbody :
-	public AOENGINE::AttributeGui {
+	public AOENGINE::AttributeGui, 
+	public IComponent {
 public:
 
 	Rigidbody() { Init(); }

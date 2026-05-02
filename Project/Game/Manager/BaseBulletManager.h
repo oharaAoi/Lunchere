@@ -33,7 +33,7 @@ public:
 	/// </summary>
 	/// <param name="collider">; コライダーのポインタ</param>
 	/// <returns></returns>
-	BaseBullet* SearchCollider(AOENGINE::BaseCollider* collider);
+	BaseBullet* SearchCollider(AOENGINE::BaseCollider* collider, const std::string& tag);
 
 public: // member method
 

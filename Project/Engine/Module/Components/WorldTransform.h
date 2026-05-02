@@ -9,6 +9,7 @@
 #include "Engine/Lib/Math/MyMath.h"
 #include "Engine/Lib/Math/Quaternion.h"
 #include "Engine/System/Manager/ImGuiManager.h"
+#include "Engine/Module/Components/IComponent.h"
 
 namespace AOENGINE {
 
@@ -24,18 +25,19 @@ struct WorldTransformData {
 /// <summary>
 /// 3d空間での座標などを持ったクラス
 /// </summary>
-class WorldTransform {
-public:
+class WorldTransform :
+	public IComponent{
+public: // constructor
 
 	WorldTransform();
-	~WorldTransform();
+	~WorldTransform() override;
 
-public:
+public: // public method
 
 	// 終了
 	void Finalize();
 	// 初期化
-	void Init(ID3D12Device* device);
+	void Init();
 	// 更新
 	void Update(const Math::Matrix4x4& mat = Math::Matrix4x4::MakeUnit());
 
@@ -69,7 +71,7 @@ public:
 	// gizumo描画
 	void Manipulate(const ImVec2& windowSize, const ImVec2& imagePos);
 
-public:
+public: // accessor method
 
 	void SetParent(const Math::Matrix4x4& parentMat);
 	
@@ -107,7 +109,7 @@ public:
 
 	void SetBillBoard(bool _isBillBoard) { isBillboard_ = _isBillBoard; }
 
-private:
+private: // private variable
 
 	// id情報
 	int id_;

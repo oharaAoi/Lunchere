@@ -10,7 +10,7 @@ void FlamethrowerToPlayerCallBacks::Update() {
 }
 
 void FlamethrowerToPlayerCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const player) {
-	BaseBullet* pBullet = pBossBulletManager_->SearchCollider(bullet);
+	BaseBullet* pBullet = pBossBulletManager_->SearchCollider(bullet, ColliderTags::Bullet::flamethrower);
 	// bulletの処理
 	if (pBullet != nullptr) {
 		pBullet->SetIsAlive(false);

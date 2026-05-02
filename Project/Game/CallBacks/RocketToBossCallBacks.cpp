@@ -22,7 +22,7 @@ void RocketToBossCallBacks::Update() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void RocketToBossCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const boss) {
-	BaseBullet* playerBullet = pBulletManager_->SearchCollider(bullet);
+	BaseBullet* playerBullet = pBulletManager_->SearchCollider(bullet, ColliderTags::Bullet::rocket);
 	// bulletの処理
 	if (playerBullet != nullptr) {
 		playerBullet->SetIsAlive(false);

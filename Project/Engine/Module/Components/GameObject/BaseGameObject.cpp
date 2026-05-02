@@ -25,12 +25,13 @@ void BaseGameObject::Finalize() {
 	}
 	if (!colliders_.empty()) {
 		for (uint32_t index = 0; index < colliders_.size(); ++index) {
-			ColliderCollector::GetInstance()->RemoveCollider(colliders_[index].get());
-			colliders_[index].reset();
+			ColliderCollector::GetInstance()->RemoveCollider(colliders_[index]);
 			colliders_[index] = nullptr;
 		}
 	}
 	materials.clear();
+
+	components_.clear();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,7 +39,8 @@ void BaseGameObject::Finalize() {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 void BaseGameObject::Init() {
-	transform_ = Engine::CreateWorldTransform();
+	transform_ = AddComponent<WorldTransform>();
+	transform_->Init();
 	animetor_ = nullptr;
 
 	isDestroy_ = false;
@@ -141,9 +143,9 @@ void BaseGameObject::PreDraw() const {
 	Pipeline* pso = Engine::GetLastUsedPipeline();
 	for (uint32_t index = 0; index < model_->GetMeshsNum(); ++index) {
 		if (animetor_ == nullptr || !animetor_->GetIsSkinning()) {
-			AOENGINE::Render::SetShadowMesh(pso, model_->GetMesh(index), transform_.get(), model_->GetMesh(index)->GetVBV());
+			AOENGINE::Render::SetShadowMesh(pso, model_->GetMesh(index), transform_, model_->GetMesh(index)->GetVBV());
 		} else {
-			AOENGINE::Render::SetShadowMesh(pso, model_->GetMesh(index), transform_.get(), animetor_->GetSkinning(index)->GetVBV());
+			AOENGINE::Render::SetShadowMesh(pso, model_->GetMesh(index), transform_, animetor_->GetSkinning(index)->GetVBV());
 		}
 	}
 }
@@ -168,7 +170,7 @@ void BaseGameObject::Draw() const {
 			if (materials.size() > index) {
 				Pipeline* pso = Engine::GetLastUsedPipeline();
 				Mesh* pMesh = model_->GetMesh(index);
-				AOENGINE::Render::DrawEnvironmentModel(pso, pMesh, materials.at(pMesh->GetUseMaterial()).get(), transform_.get());
+				AOENGINE::Render::DrawEnvironmentModel(pso, pMesh, materials.at(pMesh->GetUseMaterial()).get(), transform_);
 			}
 		}
 		return;
@@ -176,9 +178,9 @@ void BaseGameObject::Draw() const {
 
 	Pipeline* pso = Engine::GetLastUsedPipeline();
 	if (animetor_ == nullptr || !animetor_->GetIsSkinning()) {
-		AOENGINE::Render::DrawModel(pso, model_, transform_.get(), materials);
+		AOENGINE::Render::DrawModel(pso, model_, transform_, materials);
 	} else {
-		AOENGINE::Render::DrawModel(pso, model_, transform_.get(), animetor_->GetSkinningArray(), materials);
+		AOENGINE::Render::DrawModel(pso, model_, transform_, animetor_->GetSkinningArray(), materials);
 	}
 }
 
@@ -189,32 +191,28 @@ void BaseGameObject::Draw() const {
 BaseCollider* BaseGameObject::GetCollider(const std::string& name) {
 	for (uint32_t index = 0; index < colliders_.size(); ++index) {
 		if (colliders_[index]->GetCategoryName() == name) {
-			return colliders_[index].get();
+			return colliders_[index];
 		}
-	}
-	return nullptr;
-}
-
-BaseCollider* BaseGameObject::GetCollider() {
-	if (!colliders_.empty()) {
-		return colliders_[0].get();
 	}
 	return nullptr;
 }
 
 BaseCollider* BaseGameObject::SetCollider(const std::string& categoryName, ColliderShape shape) {
 	if (shape == ColliderShape::Sphere) {
-		auto& newCollider = colliders_.emplace_back(std::make_unique<SphereCollider>());
-		AddCollider(newCollider.get(), categoryName, shape);
-		return newCollider.get();
+		BaseCollider* collider = AddComponent<SphereCollider>();
+		AddCollider(collider, categoryName, shape);
+		colliders_.push_back(collider);
+		return collider;
 	} else if (shape == ColliderShape::AABB || shape == ColliderShape::OBB) {
-		auto& newCollider = colliders_.emplace_back(std::make_unique<BoxCollider>());
-		AddCollider(newCollider.get(), categoryName, shape);
-		return newCollider.get();
+		BaseCollider* collider = AddComponent<BoxCollider>();
+		AddCollider(collider, categoryName, shape);
+		colliders_.push_back(collider);
+		return collider;
 	} else if (shape == ColliderShape::Line) {
-		auto& newCollider = colliders_.emplace_back(std::make_unique<LineCollider>());
-		AddCollider(newCollider.get(), categoryName, shape);
-		return newCollider.get();
+		BaseCollider* collider = AddComponent<LineCollider>();
+		AddCollider(collider, categoryName, shape);
+		colliders_.push_back(collider);
+		return collider;
 	}
 	return nullptr;
 }
@@ -231,22 +229,8 @@ void BaseGameObject::AddCollider(BaseCollider* _collider, const std::string& cat
 	);
 }
 
-void BaseGameObject::SetCollider(const std::string& categoryName, const std::string& shapeName) {
-	ColliderShape shape = ColliderShape::Sphere;
-
-	if (shapeName == "SPHERE") {
-		auto& newCollider = colliders_.emplace_back(std::make_unique<SphereCollider>());
-		shape = ColliderShape::Sphere;
-		AddCollider(newCollider.get(), categoryName, shape);
-	} else if (shapeName == "BOX") {
-		auto& newCollider = colliders_.emplace_back(std::make_unique<BoxCollider>());
-		shape = ColliderShape::AABB;
-		AddCollider(newCollider.get(), categoryName, shape);
-	} 
-}
-
 void BaseGameObject::SetPhysics() {
-	rigidbody_ = std::make_unique<Rigidbody>();
+	rigidbody_ = AddComponent<Rigidbody>();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -297,11 +281,6 @@ void BaseGameObject::SetParent(BaseGameObject* parent) {
 void BaseGameObject::SetAnimator(const std::string& directoryPath, const std::string& objName, bool isSkinning, bool isLoop, bool isControlScript) {
 	animetor_.reset(new Animator);
 	animetor_->LoadAnimation(directoryPath, objName, model_, isSkinning, isLoop, isControlScript);
-}
-
-void BaseGameObject::SetEndEffector(const std::string& _name, EndEffector* _effector) {
-	_effector->SetSkeleton(animetor_->GetSkeleton());
-	endEffectors_[_name] = _effector;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -415,10 +394,13 @@ void AOENGINE::BaseGameObject::AddComponent() {
 	if (ImGui::BeginPopup("AddComponentPopup")) {
 		if (ImGui::BeginMenu("Physics")) {
 			if (ImGui::MenuItem("Box Collider")) {
-				SetCollider("Default", "BOX");
+				SetCollider("Default", ColliderShape::AABB);
 			}
 			if (ImGui::MenuItem("Sphere Collider")) {
-				SetCollider("Default", "SPHERE");
+				SetCollider("Default", ColliderShape::Sphere);
+			}
+			if (ImGui::MenuItem("Rigid Body")) {
+				SetPhysics();
 			}
 			ImGui::EndMenu();
 		}

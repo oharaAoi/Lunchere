@@ -4,9 +4,9 @@
 // ↓ ポインタに対するColliderの探索
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-BaseBullet* BaseBulletManager::SearchCollider(AOENGINE::BaseCollider* collider) {
+BaseBullet* BaseBulletManager::SearchCollider(AOENGINE::BaseCollider* collider, const std::string& tag) {
 	for (std::unique_ptr<BaseBullet>& bullet : bulletList_) {
-		if (bullet->GetCollider() == collider) {
+		if (bullet->GetCollider(tag) == collider) {
 			return bullet.get();
 		}
 	}

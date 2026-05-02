@@ -171,7 +171,11 @@ void SceneRenderer::CreateObject(SceneLoader::LevelData* loadData) {
 		// colliderが設定されていたら
 		if (!data.collidersData.empty()) {
 			for (auto colliderData : data.collidersData) {
-				object->SetCollider(colliderData.colliderTag, colliderData.colliderType);
+				if (colliderData.colliderType == "BOX") {
+					object->SetCollider(colliderData.colliderTag, ColliderShape::AABB);
+				} else if(colliderData.colliderType == "SPHERE") {
+					object->SetCollider(colliderData.colliderTag, ColliderShape::Sphere);
+				}
 				BaseCollider* collider = object->GetCollider(colliderData.colliderTag);
 				collider->SetLocalPos(colliderData.center);
 				if (colliderData.colliderType == "BOX") {

@@ -35,7 +35,8 @@ void PulseArmor::Init() {
 	// material/worldTransformに関する設定
 	material_ = std::make_unique<AOENGINE::Material>();
 	material_->Init();
-	worldTransform_ = Engine::CreateWorldTransform();
+	worldTransform_ = std::make_unique<AOENGINE::WorldTransform>();
+	worldTransform_->Init();
 	material_->SetAlbedoTexture(armorParam_.baseTexture);
 
 	// dissolvebufferに関する設定

@@ -28,7 +28,8 @@ void Skybox::Init() {
 	// その他の作成
 	material_ = std::make_unique<AOENGINE::Material>();
 	material_->Init();
-	transform_ = Engine::CreateWorldTransform();
+	transform_ = std::make_unique<AOENGINE::WorldTransform>();
+	transform_->Init();
 	transform_->SetRotate(Math::Quaternion::AngleAxis(180.0f * kPI, CVector3::UP));
 }
 

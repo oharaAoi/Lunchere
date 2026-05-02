@@ -32,7 +32,7 @@ void PBulletToBossCallBacks::Update() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void PBulletToBossCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const boss) {
-	BaseBullet* playerBullet = pBulletManager_->SearchCollider(bullet);
+	BaseBullet* playerBullet = pBulletManager_->SearchCollider(bullet, ColliderTags::Bullet::machinegun);
 	Math::Vector3 pos = playerBullet->GetTransform()->GetPreTranslate();
 	// bulletの処理
 	if (playerBullet != nullptr) {

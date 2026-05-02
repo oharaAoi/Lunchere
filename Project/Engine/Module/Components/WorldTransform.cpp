@@ -1,8 +1,9 @@
 #include "WorldTransform.h"
 #include "Engine/System/Manager/ImGuiManager.h"
-#include <Lib/Math/MyMatrix.h>
+#include "Engine/Lib/Math/MyMatrix.h"
 #include "Engine/Render/Render.h"
 #include "Engine/System/Editor/Tool/ManipulateTool.h"
+#include "Engine/Core/GraphicsContext.h"
 
 using namespace AOENGINE;
 
@@ -25,8 +26,10 @@ void AOENGINE::WorldTransform::Finalize() {
 // ↓　初期化処理
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-void AOENGINE::WorldTransform::Init(ID3D12Device* device) {
-	cBuffer_ = CreateBufferResource(device, sizeof(AOENGINE::WorldTransformData));
+void AOENGINE::WorldTransform::Init() {
+	GraphicsContext* ctx = GraphicsContext::GetInstance();
+
+	cBuffer_ = CreateBufferResource(ctx->GetDevice(), sizeof(AOENGINE::WorldTransformData));
 	// データをマップ
 	cBuffer_->Map(0, nullptr, reinterpret_cast<void**>(&data_));
 

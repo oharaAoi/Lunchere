@@ -37,7 +37,8 @@ void AOENGINE::BaseParticles::Init(const std::string& name) {
 	isStop_ = false;
 	changeMesh_ = false;
 
-	worldTransform_ = Engine::CreateWorldTransform();
+	worldTransform_ = std::make_unique<WorldTransform>();
+	worldTransform_->Init();
 	worldTransform_->SetRotate(Math::Quaternion::EulerToQuaternion(emitter_.rotate));
 	worldTransform_->SetTranslate(emitter_.translate);
 }

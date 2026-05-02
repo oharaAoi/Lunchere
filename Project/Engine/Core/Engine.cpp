@@ -472,12 +472,6 @@ std::unique_ptr<AOENGINE::Model> Engine::CreateModel(const std::string& director
 	return model;
 }
 
-std::unique_ptr<AOENGINE::WorldTransform> Engine::CreateWorldTransform() {
-	std::unique_ptr<AOENGINE::WorldTransform> result = std::make_unique<AOENGINE::WorldTransform>();
-	result->Init(dxDevice_);
-	return result;
-}
-
 std::unique_ptr<Skinning> Engine::CreateSkinning(AOENGINE::Skeleton* skeleton, AOENGINE::Model* model, uint32_t index) {
 	std::unique_ptr<Skinning> result = std::make_unique<Skinning>();
 	result->CreateSkinCluster(dxDevice_, skeleton, model->GetMesh(index), dxHeap_, model->GetSkinClustersData(index));

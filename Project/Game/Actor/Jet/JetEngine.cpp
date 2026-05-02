@@ -91,7 +91,8 @@ void JetEngine::Init() {
 	// effectの親にする空のTransform作成
 	// -------------------------------------
 
-	burnParentTransform_ = Engine::CreateWorldTransform();
+	burnParentTransform_ = std::make_unique<AOENGINE::WorldTransform>();
+	burnParentTransform_->Init();
 	burnParentTransform_->SetParent(transform_->GetWorldMatrix());
 
 	// -------------------------------------

@@ -5,6 +5,7 @@
 #include "Engine/Lib/Math/MathStructures.h"
 #include "Engine/Module/Components/WorldTransform.h"
 #include "Engine/Module/Components/Attribute/AttributeGui.h"
+#include "Engine/Module/Components/IComponent.h"
 
 enum class CollisionFlags {
 	None = 0b00,
@@ -26,7 +27,8 @@ namespace AOENGINE {
 /// Colliderの基底クラス
 /// </summary>
 class BaseCollider :
-	public AOENGINE::AttributeGui {
+	public AOENGINE::AttributeGui, 
+	public IComponent {
 public:
 
 	BaseCollider();

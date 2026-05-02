@@ -70,5 +70,5 @@ void GeometryObject::Init() {
 	mesh_ = std::make_unique<Mesh>();
 	material_ = std::make_unique<Material>();
 	material_->Init();
-	transform_ = Engine::CreateWorldTransform();
+	transform_ = std::make_unique<WorldTransform>();
 }

@@ -1,8 +1,12 @@
 #pragma once
+// c++
+#include <list>
 #include <vector>
 #include <string>
 #include <memory>
+#include <algorithm>
 #include <unordered_map>
+// engine
 #include "Engine/Core/Engine.h"
 #include "Engine/Lib/Math/MyMatrix.h"
 #include "Engine/Lib/Color.h"
@@ -13,10 +17,10 @@
 #include "Engine/Module/Components/GameObject/ISceneObject.h"
 #include "Engine/Module/Components/WorldTransform.h"
 #include "Engine/Module/Components/Animation/Animator.h"
-#include "Engine/Module/Components/Rigging/EndEffector.h"
-
 #include "Engine/Module/Components/Collider/BaseCollider.h"
 #include "Engine/Module/Components/Physics/Rigidbody.h"
+
+#include "Engine/Module/Components/IComponent.h"
 
 namespace AOENGINE {
 
@@ -58,19 +62,42 @@ private: // private method
 
 public: // accessor method
 
+	template<class T>
+	T* GetComponent() {
+		for (auto& component : components_) {
+			if (auto result = dynamic_cast<T*>(component.get())) {
+				return result;
+			}
+		}
+		return nullptr;
+	}
+
+	template<class T, class... Args>
+	T* AddComponent(Args&&... args) {
+		auto component = std::make_unique<T>(std::forward<Args>(args)...);
+		T* ptr = component.get();
+
+		components_.push_back(std::move(component));
+		return ptr;
+	}
+
 	void SetObject(const std::string& _objName, MaterialType _type = MaterialType::Normal);
 
 	void SetParent(BaseGameObject* parent);
 
 	AOENGINE::Model* GetModel() { return model_; }
 
-	AOENGINE::WorldTransform* GetTransform() { return transform_.get(); }
+	AOENGINE::WorldTransform* GetTransform() { return transform_; }
 
 	Math::Vector3 GetPosition() const { return worldPos_ + offset_; }
 
 	void SetEnableShadow(bool _flag) { enableShadow_ = _flag; }
 
 	void SetOffset(const Math::Vector3& _offset) { offset_ = _offset; }
+
+	void SetIsReflection(bool isReflection) { isReflection_ = isReflection; }
+
+	void SetIsRendering(bool _isRendering) { isRendering_ = _isRendering; }
 
 	// -------------------------------------------------
 	// ↓ Material関連
@@ -97,38 +124,30 @@ public: // accessor method
 
 	AOENGINE::Animator* GetAnimator() { return animetor_.get(); }
 
-	void SetEndEffector(const std::string& _name, EndEffector* _effector);
-
 	// -------------------------------------------------
 	// ↓ Collider関連
 	// -------------------------------------------------
 
 	AOENGINE::BaseCollider* GetCollider(const std::string& name);
-	AOENGINE::BaseCollider* GetCollider();
 	AOENGINE::BaseCollider* SetCollider(const std::string& categoryName, ColliderShape shape);
 	void AddCollider(AOENGINE::BaseCollider* _collider, const std::string& categoryName, ColliderShape shape);
 
-	void SetCollider(const std::string& categoryName, const std::string& shapeName);
-
-	void SetIsReflection(bool isReflection) { isReflection_ = isReflection; }
-
-	void SetIsRendering(bool _isRendering) { isRendering_ = _isRendering; }
-
 	void SetPhysics();
-	AOENGINE::Rigidbody* GetRigidbody() { return rigidbody_.get(); }
+	AOENGINE::Rigidbody* GetRigidbody() { return rigidbody_; }
 
 protected:
+
+	// componts
+	std::list<std::unique_ptr<IComponent>> components_;
 
 	AOENGINE::Model* model_ = nullptr;
 	std::unordered_map<std::string, std::unique_ptr<AOENGINE::BaseMaterial>> materials;
 
-	std::unique_ptr<AOENGINE::WorldTransform> transform_ = nullptr;
 	std::unique_ptr<AOENGINE::Animator> animetor_ = nullptr;
-	std::unordered_map<std::string, EndEffector*> endEffectors_;
 
-	std::vector<std::unique_ptr<AOENGINE::BaseCollider>> colliders_;
-
-	std::unique_ptr<AOENGINE::Rigidbody> rigidbody_ = nullptr;
+	std::vector<AOENGINE::BaseCollider*> colliders_;
+	AOENGINE::WorldTransform* transform_ = nullptr;
+	AOENGINE::Rigidbody* rigidbody_ = nullptr;
 
 	AOENGINE::Color color_ = { 1.0f, 1.0f, 1.0f, 1.0f };
 	Math::Vector3 worldPos_ = { 1.0f, 1.0f, 1.0f };

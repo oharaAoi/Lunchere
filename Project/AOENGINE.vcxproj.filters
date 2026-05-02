@@ -1501,6 +1501,7 @@
     <ClInclude Include="Engine\System\Asset\AssetHandle.h" />
     <ClInclude Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.h" />
     <ClInclude Include="Engine\System\Editor\Window\Item\IWindowItem.h" />
+    <ClInclude Include="Engine\Module\Components\IComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Core\AoiFramework.cpp">
@@ -2600,5 +2601,6 @@
     <ClCompile Include="Engine\System\Asset\AssetHandle.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\Item\IWindowItem.cpp" />
+    <ClCompile Include="Engine\Module\Components\IComponent.cpp" />
   </ItemGroup>
 </Project>

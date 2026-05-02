@@ -73,7 +73,7 @@ void LaserBullet::Init() {
 	// ----------------------
 	// ↓ Parameter系の設定
 	// ----------------------
-	parentTransform_ = Engine::CreateWorldTransform();
+	parentTransform_ = std::make_unique<AOENGINE::WorldTransform>();
 
 	transform_->SetTranslationZ(1.0f);
 	transform_->SetParent(parentTransform_->GetWorldMatrix());

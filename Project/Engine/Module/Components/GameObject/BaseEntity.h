@@ -34,7 +34,6 @@ public:	// accessor method
 	AOENGINE::WorldTransform* GetTransform() const { return transform_; }
 
 	AOENGINE::BaseCollider* GetCollider(const std::string& tag) const { return object_->GetCollider(tag); }
-	AOENGINE::BaseCollider* GetCollider() const { return object_->GetCollider(); }
 
 	void SetParent(AOENGINE::BaseEntity* _parent) { object_->SetParent(_parent->GetGameObject()); }
 
