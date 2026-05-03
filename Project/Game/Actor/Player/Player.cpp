@@ -39,7 +39,9 @@ void Player::Finalize() {
 void Player::Debug_Gui() {
 	object_->Debug_Gui();
 
-	actionManager_->Debug_Gui();
+	if (ImGui::CollapsingHeader("ActionManager")) {
+		actionManager_->Debug_Gui();
+	}
 
 	if (ImGui::CollapsingHeader("現在のパラメータ")) {
 		param_.Debug_Gui();
@@ -50,15 +52,6 @@ void Player::Debug_Gui() {
 	}
 
 	object_->GetRigidbody()->SetDrag(param_.windDrag);
-
-	ImGui::Text("smoothedDiffX :%f", smoothedDiffX_);
-
-	if (ImGui::Button("KnockBackState")) {
-		stateMachine_->ChangeState<PlayerKnockbackState>();
-	}
-	if (ImGui::CollapsingHeader("ステート")) {
-		stateMachine_->Debug_Gui();
-	}
 
 	param_.bodyWeight = std::clamp(param_.bodyWeight, 1.0f, 100.0f);
 	invincibleTimer_.targetTime_ = param_.invincibleTime;
@@ -428,7 +421,6 @@ void Player::InitObject() {
 	object_ = AOENGINE::SceneRenderer::GetInstance()->GetGameObject<AOENGINE::BaseGameObject>("Player");
 	AOENGINE::SceneRenderer::GetInstance()->ChangeRenderingType("Object_PBR.json", object_);
 	transform_ = object_->GetTransform();
-	object_->SetOffset(param_.cameraOffset);
 	object_->SetMaterial(MaterialType::PBR);
 }
 

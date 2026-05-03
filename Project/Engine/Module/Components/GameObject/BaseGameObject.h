@@ -4,13 +4,13 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <utility>
 #include <algorithm>
 #include <unordered_map>
 // engine
 #include "Engine/Core/Engine.h"
 #include "Engine/Lib/Math/MyMatrix.h"
 #include "Engine/Lib/Color.h"
-#include "Engine/System/Manager/ModelManager.h"
 #include "Engine/System/ShaderGraph/ShaderGraph.h"
 #include "Engine/Module/Components/GameObject/Model.h"
 #include "Engine/Module/Components/Materials/BaseMaterial.h"
@@ -19,7 +19,6 @@
 #include "Engine/Module/Components/Animation/Animator.h"
 #include "Engine/Module/Components/Collider/BaseCollider.h"
 #include "Engine/Module/Components/Physics/Rigidbody.h"
-
 #include "Engine/Module/Components/IComponent.h"
 
 namespace AOENGINE {
@@ -89,11 +88,9 @@ public: // accessor method
 
 	AOENGINE::WorldTransform* GetTransform() { return transform_; }
 
-	Math::Vector3 GetPosition() const { return worldPos_ + offset_; }
+	Math::Vector3 GetPosition() const { return worldPos_; }
 
 	void SetEnableShadow(bool _flag) { enableShadow_ = _flag; }
-
-	void SetOffset(const Math::Vector3& _offset) { offset_ = _offset; }
 
 	void SetIsReflection(bool isReflection) { isReflection_ = isReflection; }
 
@@ -103,7 +100,6 @@ public: // accessor method
 	// ↓ Material関連
 	// -------------------------------------------------
 
-	const AOENGINE::Color& GetColor()const { return color_; }
 	void SetColor(const AOENGINE::Color& color);
 
 	void SetIsLighting(bool isLighting);
@@ -149,9 +145,7 @@ protected:
 	AOENGINE::WorldTransform* transform_ = nullptr;
 	AOENGINE::Rigidbody* rigidbody_ = nullptr;
 
-	AOENGINE::Color color_ = { 1.0f, 1.0f, 1.0f, 1.0f };
 	Math::Vector3 worldPos_ = { 1.0f, 1.0f, 1.0f };
-	Math::Vector3 offset_ = CVector3::ZERO;
 
 	bool isAnimation_ = false;
 

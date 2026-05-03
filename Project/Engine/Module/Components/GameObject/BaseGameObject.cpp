@@ -5,6 +5,7 @@
 #include "Engine/Module/Components/Materials/Material.h"
 #include "Engine/Module/Components/Materials/PBRMaterial.h"
 #include "Engine/System/Collision/ColliderCollector.h"
+#include "Engine/System/Manager/ModelManager.h"
 #include "Engine/Lib/GameTimer.h"
 #include "Engine/Render/Render.h"
 
@@ -379,6 +380,7 @@ void BaseGameObject::Debug_Gui() {
 		}
 	}
 
+	ImGui::Separator();
 	AddComponent();
 }
 
