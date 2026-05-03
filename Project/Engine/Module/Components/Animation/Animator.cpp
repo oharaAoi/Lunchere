@@ -110,7 +110,5 @@ void Animator::TransitionAnimation(const std::string& afterAnimation, float blen
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void Animator::Debug_Gui() {
-	if (ImGui::CollapsingHeader("AnimationClip")) {
-		animationClip_->Debug_Gui();
-	}
+	animationClip_->Debug_Gui();
 }

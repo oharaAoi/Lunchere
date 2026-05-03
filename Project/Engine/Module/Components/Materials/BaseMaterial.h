@@ -8,6 +8,7 @@
 #include "Engine/Lib/Color.h"
 #include "Engine/Lib/Math/Vector3.h"
 #include "Engine/Lib/Math/MathStructures.h"
+#include "Engine/Module/Components/IComponent.h"
 
 enum class MaterialShaderType {
 	UniversalRender,	// 一般的なレンダリング
@@ -19,11 +20,12 @@ namespace AOENGINE {
 /// <summary>
 /// BaseとなるMaterial
 /// </summary>
-class BaseMaterial {
+class BaseMaterial :
+	public IComponent {
 public:
 
 	BaseMaterial() = default;
-	virtual ~BaseMaterial() = default;
+	virtual ~BaseMaterial() override = default;
 
 public:
 

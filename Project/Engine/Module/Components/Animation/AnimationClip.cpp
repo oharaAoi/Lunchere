@@ -24,6 +24,9 @@ void AnimationClip::Init(const std::string& rootName, bool isSkinning, bool isLo
 	isAnimationChange_ = false;
 	blendFactor_ = 0.0f;
 	blendSpeed_ = 1.0f;
+
+	lerpAnimationNamesIndex_[0] = 0;
+	lerpAnimationNamesIndex_[1] = 0;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -290,22 +293,6 @@ void AnimationClip::Debug_Gui() {
 	}
 
 	{
-		ImGui::BulletText("Transition Animation");
-		ImGui::SliderFloat("lerpAnimationTime_0", &lerpAnimationTime_[0], 0.0f, lerpAnimetion_[0].duration);
-		ImGui::SliderFloat("lerpAnimationTime_1", &lerpAnimationTime_[1], 0.0f, lerpAnimetion_[1].duration);
-		// 遷移前アニメーション
-		if (ImGui::BeginCombo("before", animationNames_[lerpAnimationNamesIndex_[0]].c_str())) {
-			for (int i = 0; i < animationNames_.size(); ++i) {
-				bool isSelected = (i == lerpAnimationNamesIndex_[0]);
-				if (ImGui::Selectable(animationNames_[i].c_str(), isSelected)) {
-					lerpAnimationNamesIndex_[0] = i; // インデックスを更新
-				}
-				if (isSelected) {
-					ImGui::SetItemDefaultFocus(); // 初期選択のフォーカス
-				}
-			}
-			ImGui::EndCombo();
-		}
 
 		// 遷移後アニメーション
 		if (ImGui::BeginCombo("after", animationNames_[lerpAnimationNamesIndex_[1]].c_str())) {
@@ -329,6 +316,23 @@ void AnimationClip::Debug_Gui() {
 				animationNames_[lerpAnimationNamesIndex_[1]],
 				blendSpeed_
 			);
+		}
+
+		ImGui::BulletText("Transition Animation");
+		ImGui::SliderFloat("lerpAnimationTime_0", &lerpAnimationTime_[0], 0.0f, lerpAnimetion_[0].duration);
+		ImGui::SliderFloat("lerpAnimationTime_1", &lerpAnimationTime_[1], 0.0f, lerpAnimetion_[1].duration);
+		// 遷移前アニメーション
+		if (ImGui::BeginCombo("before", animationNames_[lerpAnimationNamesIndex_[0]].c_str())) {
+			for (int i = 0; i < animationNames_.size(); ++i) {
+				bool isSelected = (i == lerpAnimationNamesIndex_[0]);
+				if (ImGui::Selectable(animationNames_[i].c_str(), isSelected)) {
+					lerpAnimationNamesIndex_[0] = i; // インデックスを更新
+				}
+				if (isSelected) {
+					ImGui::SetItemDefaultFocus(); // 初期選択のフォーカス
+				}
+			}
+			ImGui::EndCombo();
 		}
 	}
 
