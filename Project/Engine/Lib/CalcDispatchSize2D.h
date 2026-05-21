@@ -1,6 +1,9 @@
 #pragma once
 #include <d3dx12.h>
 
+/// <summary>
+/// 2D ComputeShaderのDispatchサイズ
+/// </summary>
 struct ComputeDispatchSize2D {
 	UINT x;
 	UINT y;

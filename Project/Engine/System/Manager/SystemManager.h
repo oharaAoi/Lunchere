@@ -3,6 +3,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// システム管理クラス
+/// </summary>
 class SystemManager {
 public: // コンストラクタ
 

@@ -20,6 +20,9 @@ public: // data
 
 	using ActionNode = std::function<std::unique_ptr<BaseBehaviorNode>()>;
 
+	/// <summary>
+	/// ドラッグ選択矩形情報
+	/// </summary>
 	struct DragRect {
 		bool   dragging = false;
 		ImVec2 startScreen;

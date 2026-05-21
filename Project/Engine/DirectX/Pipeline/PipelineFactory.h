@@ -9,6 +9,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// Pipeline生成クラス
+/// </summary>
 class PipelineFactory {
 public:
 

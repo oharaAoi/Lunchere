@@ -16,6 +16,9 @@ namespace AOENGINE {
 class ParticleInstancingRenderer {
 public:		// 構造体
 
+	/// <summary>
+	/// インスタンシング用パーティクルデータ
+	/// </summary>
 	struct ParticleData {
 		Math::Matrix4x4 worldMat;		// 座標
 		Math::Matrix4x4 uvTransform;	// uv座標
@@ -27,6 +30,9 @@ public:		// 構造体
 		uint32_t draw2d;		// 2d描画かどうか
 	};
 
+	/// <summary>
+	/// パーティクル描画情報
+	/// </summary>
 	struct Information {
 		std::shared_ptr<AOENGINE::Mesh> pMesh;
 		std::shared_ptr<AOENGINE::Material> materials;
@@ -40,6 +46,9 @@ public:		// 構造体
 		bool anyParticleAlive = false;
 	};
 
+	/// <summary>
+	/// ビューごとのパーティクル描画情報
+	/// </summary>
 	struct PerView {
 		Math::Matrix4x4 viewProjection;
 		Math::Matrix4x4 viewProjection2d;

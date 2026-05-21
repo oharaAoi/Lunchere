@@ -18,6 +18,9 @@ namespace AOENGINE {
 class GpuParticles {
 public:	// メンバ構造体
 
+	/// <summary>
+	/// GPUパーティクル情報
+	/// </summary>
 	struct Particle {
 		Math::Vector4 color;			// 色
 		Math::Vector3 scale;			// 拡縮
@@ -33,11 +36,17 @@ public:	// メンバ構造体
 		float pad;
 	};
 
+	/// <summary>
+	/// ビューごとのGPUパーティクル情報
+	/// </summary>
 	struct PerView {
 		Math::Matrix4x4 viewProjection;
 		Math::Matrix4x4 billboardMat;
 	};
 
+	/// <summary>
+	/// フレームごとのGPUパーティクル情報
+	/// </summary>
 	struct PerFrame {
 		float time;
 		float deltaTime;

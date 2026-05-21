@@ -12,6 +12,9 @@ class GlitchNoise :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// グリッチノイズ設定
+	/// </summary>
 	struct GlitchSetting {
 		Math::Vector2 texelSize;	// texelのサイズ
 		float time;			// 時間
@@ -19,6 +22,9 @@ public:
 		uint32_t frameIndex;
 	};
 
+	/// <summary>
+	/// グリッチノイズ保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		Math::Vector2 texelSize = Math::Vector2(1, 1);

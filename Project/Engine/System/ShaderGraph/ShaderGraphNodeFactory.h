@@ -18,6 +18,9 @@ namespace AOENGINE {
 class ShaderGraphNodeFactory {
 public:
 
+	/// <summary>
+	/// ShaderGraphノード登録情報
+	/// </summary>
 	struct NodeEntry {
 		std::string path;
 		std::function<std::shared_ptr<ImFlow::BaseNode>(const ImVec2&)> spawn;

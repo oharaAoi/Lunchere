@@ -14,6 +14,9 @@ namespace AOENGINE {
 class GpuParticleRenderer {
 public:	// メンバ構造体
 
+	/// <summary>
+	/// 描画用GPUパーティクル情報
+	/// </summary>
 	struct Particle {
 		Math::Vector4 color;			// 色
 		Math::Vector3 scale;			// 拡縮
@@ -37,16 +40,25 @@ public:	// メンバ構造体
 		int beAffectedByField = 0;
 	};
 
+	/// <summary>
+	/// ビューごとのGPUパーティクル描画情報
+	/// </summary>
 	struct PerView {
 		Math::Matrix4x4 viewProjection;
 		Math::Matrix4x4 billboardMat;
 	};
 
+	/// <summary>
+	/// フレームごとのGPUパーティクル描画情報
+	/// </summary>
 	struct PerFrame {
 		float time;
 		float deltaTime;
 	};
 
+	/// <summary>
+	/// 最大パーティクル数情報
+	/// </summary>
 	struct MaxParticles {
 		int count;
 	};

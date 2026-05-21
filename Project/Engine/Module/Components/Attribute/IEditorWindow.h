@@ -2,6 +2,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// エディタウィンドウ用インターフェース
+/// </summary>
 class IEditorWindow {
 public:
 

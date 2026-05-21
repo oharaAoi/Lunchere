@@ -11,6 +11,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// InputLayout設定クラス
+/// </summary>
 class InputLayout {
 public:
 

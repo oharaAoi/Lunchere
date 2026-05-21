@@ -13,17 +13,26 @@ struct VertexData {
 	Math::Vector4 tangent;
 };
 
+/// <summary>
+/// パーティクル用頂点データ
+/// </summary>
 struct ParticleVertexData {
 	Math::Vector4 pos;
 	Math::Vector2 texcoord;
 };
 
+/// <summary>
+/// 三角形頂点情報
+/// </summary>
 struct TriangleVertices {
 	Math::Vector4 vertex1;// 左下
 	Math::Vector4 vertex2;// 上
 	Math::Vector4 vertex3;// 右下
 };
 
+/// <summary>
+/// 矩形頂点情報
+/// </summary>
 struct RectangleVertices {
 	Math::Vector4 leftTop		= {-1.0f, -1.0f, 0.0f, 1.0f};
 	Math::Vector4 rightTop	= { 1.0f, -1.0f, 0.0f, 1.0f };

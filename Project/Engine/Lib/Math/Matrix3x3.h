@@ -3,6 +3,9 @@
 
 namespace Math {
 
+/// <summary>
+/// 3x3行列クラス
+/// </summary>
 class Matrix3x3 final {
 public:
 	float m[3][3];

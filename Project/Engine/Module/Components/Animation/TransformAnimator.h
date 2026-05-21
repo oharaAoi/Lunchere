@@ -5,6 +5,9 @@
 namespace AOENGINE {
 
 template<typename RotateT>
+/// <summary>
+/// トランスフォームキーフレーム情報
+/// </summary>
 struct TransformKeyFrame {
 	float time = 0.0f;
 	Math::Vector3 scale{};
@@ -16,12 +19,18 @@ template<typename SRTType>
 struct KeyFrameTraits;
 
 template<>
+/// <summary>
+/// キーフレーム型特性
+/// </summary>
 struct KeyFrameTraits<Math::SRT> {
 	using RotateType = Math::Vector3;
 	using KeyFrameType = TransformKeyFrame<RotateType>;
 };
 
 template<>
+/// <summary>
+/// キーフレーム型特性
+/// </summary>
 struct KeyFrameTraits<Math::QuaternionSRT> {
 	using RotateType = Math::Quaternion;
 	using KeyFrameType = TransformKeyFrame<RotateType>;
@@ -32,6 +41,9 @@ struct KeyFrameTraits<Math::QuaternionSRT> {
 /// </summary>
 /// <typeparam name="T">WorldTransform or ScreenTransform</typeparam>
 template<typename T>
+/// <summary>
+/// トランスフォームアニメータークラス
+/// </summary>
 class TransformAnimator {
 public:
 

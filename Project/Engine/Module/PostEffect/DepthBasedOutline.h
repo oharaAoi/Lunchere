@@ -12,11 +12,17 @@ class DepthBasedOutline :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// 深度ベースアウトライン設定
+	/// </summary>
 	struct Setting {
 		Math::Matrix4x4 projectionInverse;
 		float edgeGain;
 	};
 
+	/// <summary>
+	/// 深度ベースアウトライン保存設定
+	/// </summary>
 	struct SaveSetting : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		float edgeGain;

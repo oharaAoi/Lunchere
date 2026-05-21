@@ -13,6 +13,9 @@ class RadialBlur :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// ラジアルブラー設定
+	/// </summary>
 	struct BlurSetting {
 		Math::Vector2 blurCenter = { 0.5f, 0.5f };	// 放射ブラーの中心（通常はfloat2(0.5, 0.5)）
 		float blurStrength = 0.00f;			// ブラーの強度（例: 0.02）
@@ -20,6 +23,9 @@ public:
 		uint32_t sampleCount = 16;				// サンプル数（例: 16）
 	};
 
+	/// <summary>
+	/// ラジアルブラー保存設定
+	/// </summary>
 	struct SaveSetting : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		uint32_t sampleCount;

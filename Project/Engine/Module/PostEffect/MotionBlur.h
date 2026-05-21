@@ -11,6 +11,9 @@ class MotionBlur :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// モーションブラー保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		

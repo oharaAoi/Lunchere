@@ -12,10 +12,16 @@ class GaussianBlurHeight :
 	public IPostEffect {
 public:	// 構造体
 
+	/// <summary>
+	/// 縦方向ガウスブラー設定
+	/// </summary>
 	struct BlurSettings {
 		Math::Vector2 texelSize;
 	};
 
+	/// <summary>
+	/// 縦方向ガウスブラー保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		uint32_t sampleCount = 1;
 

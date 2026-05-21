@@ -8,6 +8,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// パーティクル実行状態
+/// </summary>
 struct ParticleRuntimeState {
 	std::shared_ptr<std::list<AOENGINE::ParticleSingle>> particles;
 	std::vector<AOENGINE::ParticleInstancingRenderer::ParticleData> forGpuData_;

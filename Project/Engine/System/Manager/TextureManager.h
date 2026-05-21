@@ -21,9 +21,15 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// テクスチャ管理クラス
+/// </summary>
 class TextureManager {
 private:
 
+	/// <summary>
+	/// テクスチャパス情報
+	/// </summary>
 	struct TexturePath {
 		std::string directory;
 		std::string fileName;
@@ -163,6 +169,9 @@ public:
 
 private:
 
+	/// <summary>
+	/// テクスチャデータ情報
+	/// </summary>
 	struct TextureData {
 		AOENGINE::DxResource* resource_ = nullptr;;
 		ComPtr<ID3D12Resource> intermediateResource_ = nullptr;

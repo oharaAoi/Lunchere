@@ -11,11 +11,17 @@ class GaussianFilter :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// ガウシアンフィルター設定
+	/// </summary>
 	struct Setting {
 		float deviation;
 		uint32_t size;
 	};
 
+	/// <summary>
+	/// ガウシアンフィルター保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		float deviation = 1;

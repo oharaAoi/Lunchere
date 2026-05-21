@@ -9,6 +9,9 @@ namespace AOENGINE {
 /// </summary>
 /// <typeparam name="T"></typeparam>
 template<typename T>
+/// <summary>
+/// プロパティノードクラス
+/// </summary>
 class PropertyNode :
 	public BaseShaderGraphNode {
 public: // コンストラクタ

@@ -9,10 +9,16 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// パーティクル管理クラス
+/// </summary>
 class ParticleManager :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// パーティクルデータ情報
+	/// </summary>
 	struct ParticlesData {
 		std::shared_ptr<std::list<AOENGINE::ParticleSingle>> particles;
 		std::vector<AOENGINE::ParticleInstancingRenderer::ParticleData> forGpuData_;

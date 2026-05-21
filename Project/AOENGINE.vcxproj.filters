@@ -142,6 +142,9 @@
     <Filter Include="Engine\System\AI\UtilityAI">
       <UniqueIdentifier>{756E1C2C-617E-C8FC-CA37-2D1BB666B795}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\System\Asset">
+      <UniqueIdentifier>{5E1ABF4E-CA7B-9C5C-53E9-E20EBF49D31B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Engine\System\Audio">
       <UniqueIdentifier>{D0F3BF4E-3C55-9D5C-C5C2-E30E3123D41B}</UniqueIdentifier>
     </Filter>
@@ -157,6 +160,9 @@
     <Filter Include="Engine\System\Editor\Window">
       <UniqueIdentifier>{2C569250-9863-C036-214A-BC218D568CED}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\System\Editor\Window\Item">
+      <UniqueIdentifier>{EA939781-D6E4-82C3-FF48-7185EBF8152D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Engine\System\Input">
       <UniqueIdentifier>{CE154D4F-3A77-2A5D-C3E4-700F2F45611C}</UniqueIdentifier>
     </Filter>
@@ -165,6 +171,9 @@
     </Filter>
     <Filter Include="Engine\System\ParticleSystem">
       <UniqueIdentifier>{97A4631C-835F-53C8-2C17-CC1218B19D58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System\ParticleSystem\Data">
+      <UniqueIdentifier>{6090FE43-CCFE-53C3-15E8-0EC38195495F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\System\ParticleSystem\Emitter">
       <UniqueIdentifier>{40B1A662-2C98-685A-D5E8-CE77C1AEE1C0}</UniqueIdentifier>
@@ -357,6 +366,9 @@
     <ClInclude Include="Engine\Core\AoiFramework.h">
       <Filter>Engine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Core\Engine.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\Core\GraphicsContext.h">
       <Filter>Engine\Core</Filter>
     </ClInclude>
@@ -429,9 +441,6 @@
     <ClInclude Include="Engine\DirectX\Utilities\DirectXUtils.h">
       <Filter>Engine\DirectX\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Core\Engine.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Lib\CalcDispatchSize2D.h">
       <Filter>Engine\Lib</Filter>
     </ClInclude>
@@ -448,6 +457,9 @@
       <Filter>Engine\Lib\Json</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Lib\Json\JsonItems.h">
+      <Filter>Engine\Lib\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Lib\Json\JsonSerializer.h">
       <Filter>Engine\Lib\Json</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Lib\Math\Curve.h">
@@ -519,6 +531,9 @@
     <ClInclude Include="Engine\Module\Components\Animation\Animator.h">
       <Filter>Engine\Module\Components\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Module\Components\Animation\TransformAnimator.h">
+      <Filter>Engine\Module\Components\Animation</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\Module\Components\Animation\VectorTween.h">
       <Filter>Engine\Module\Components\Animation</Filter>
     </ClInclude>
@@ -563,6 +578,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Module\Components\GameObject\Model.h">
       <Filter>Engine\Module\Components\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Module\Components\IComponent.h">
+      <Filter>Engine\Module\Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Module\Components\Light\BaseLight.h">
       <Filter>Engine\Module\Components\Light</Filter>
@@ -708,9 +726,6 @@
     <ClInclude Include="Engine\Module\PostEffect\Vignette.h">
       <Filter>Engine\Module\PostEffect</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Render\Render.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Render\GpuParticleRenderer.h">
       <Filter>Engine\Render</Filter>
     </ClInclude>
@@ -718,6 +733,9 @@
       <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Render\ParticleInstancingRenderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Render.h">
       <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Render\RenderingCommands.h">
@@ -798,6 +816,9 @@
     <ClInclude Include="Engine\System\AI\UtilityAI\UtilityEvaluator.h">
       <Filter>Engine\System\AI\UtilityAI</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\Asset\AssetHandle.h">
+      <Filter>Engine\System\Asset</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\System\Audio\Audio.h">
       <Filter>Engine\System\Audio</Filter>
     </ClInclude>
@@ -821,6 +842,12 @@
     </ClInclude>
     <ClInclude Include="Engine\System\Editor\Window\GameObjectWindow.h">
       <Filter>Engine\System\Editor\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.h">
+      <Filter>Engine\System\Editor\Window\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Editor\Window\Item\IWindowItem.h">
+      <Filter>Engine\System\Editor\Window\Item</Filter>
     </ClInclude>
     <ClInclude Include="Engine\System\Editor\Window\PackagesWindow.h">
       <Filter>Engine\System\Editor\Window</Filter>
@@ -849,6 +876,9 @@
     <ClInclude Include="Engine\System\Manager\ImGuiManager.h">
       <Filter>Engine\System\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\Manager\MaterialManager.h">
+      <Filter>Engine\System\Manager</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\System\Manager\MeshManager.h">
       <Filter>Engine\System\Manager</Filter>
     </ClInclude>
@@ -867,6 +897,9 @@
     <ClInclude Include="Engine\System\Manager\TextureManager.h">
       <Filter>Engine\System\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\ParticleSystem\Data\ParticleRuntimeState.h">
+      <Filter>Engine\System\ParticleSystem\Data</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\System\ParticleSystem\EffectSystemCamera.h">
       <Filter>Engine\System\ParticleSystem</Filter>
     </ClInclude>
@@ -876,8 +909,14 @@
     <ClInclude Include="Engine\System\ParticleSystem\Field\GpuParticleField.h">
       <Filter>Engine\System\ParticleSystem\Field</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\System\ParticleSystem\Particle\CpuParticleUpdater.h">
+      <Filter>Engine\System\ParticleSystem\Particle</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\System\ParticleSystem\Particle\GpuParticles.h">
       <Filter>Engine\System\ParticleSystem\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\ParticleSystem\Tool\ParticleEditorSerializer.h">
+      <Filter>Engine\System\ParticleSystem\Tool</Filter>
     </ClInclude>
     <ClInclude Include="Engine\System\ParticleSystem\Tool\ParticleSystemEditor.h">
       <Filter>Engine\System\ParticleSystem\Tool</Filter>
@@ -964,6 +1003,9 @@
       <Filter>Engine\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Utilities\Convert.h">
+      <Filter>Engine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utilities\ConvertDDS.h">
       <Filter>Engine\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Utilities\Debug.h">
@@ -1074,6 +1116,12 @@
     <ClInclude Include="Game\Actor\Boss\Action\Attack\BossActionAllRangeMissile.h">
       <Filter>Game\Actor\Boss\Action\Attack</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Actor\Boss\Action\Attack\BossActionApproachFlamethrower.h">
+      <Filter>Game\Actor\Boss\Action\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Actor\Boss\Action\Attack\BossActionBackSweep.h">
+      <Filter>Game\Actor\Boss\Action\Attack</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Actor\Boss\Action\Attack\BossActionDualStageMissile.h">
       <Filter>Game\Actor\Boss\Action\Attack</Filter>
     </ClInclude>
@@ -1128,6 +1176,9 @@
     <ClInclude Include="Game\Actor\Boss\BossEvaluationFormula.h">
       <Filter>Game\Actor\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Actor\Boss\BossFlamethrowers.h">
+      <Filter>Game\Actor\Boss</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Actor\Boss\BossRoot.h">
       <Filter>Game\Actor\Boss</Filter>
     </ClInclude>
@@ -1180,6 +1231,9 @@
       <Filter>Game\Actor\Enemy\Action</Filter>
     </ClInclude>
     <ClInclude Include="Game\Actor\Enemy\Action\EnemyActionWait.h">
+      <Filter>Game\Actor\Enemy\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Actor\Enemy\Action\EnemyActionWalk.h">
       <Filter>Game\Actor\Enemy\Action</Filter>
     </ClInclude>
     <ClInclude Include="Game\Actor\Enemy\BaseEnemy.h">
@@ -1254,6 +1308,9 @@
     <ClInclude Include="Game\Actor\Player\PlayerManager.h">
       <Filter>Game\Actor\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Actor\Player\PlayerParameter.h">
+      <Filter>Game\Actor\Player</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Actor\Player\State\PlayerDeadState.h">
       <Filter>Game\Actor\Player\State</Filter>
     </ClInclude>
@@ -1269,6 +1326,9 @@
     <ClInclude Include="Game\Actor\Weapon\BaseWeapon.h">
       <Filter>Game\Actor\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Actor\Weapon\Bullet\FlamethrowerBullet.h">
+      <Filter>Game\Actor\Weapon\Bullet</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Actor\Weapon\Bullet\LaserBullet.h">
       <Filter>Game\Actor\Weapon\Bullet</Filter>
     </ClInclude>
@@ -1277,6 +1337,9 @@
     </ClInclude>
     <ClInclude Include="Game\Actor\Weapon\Bullet\RocketBullet.h">
       <Filter>Game\Actor\Weapon\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Actor\Weapon\Flamethrower.h">
+      <Filter>Game\Actor\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="Game\Actor\Weapon\LaserRifle.h">
       <Filter>Game\Actor\Weapon</Filter>
@@ -1303,6 +1366,12 @@
       <Filter>Game\CallBacks</Filter>
     </ClInclude>
     <ClInclude Include="Game\CallBacks\EnemySearchToPlayerCallBacks.h">
+      <Filter>Game\CallBacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\CallBacks\FlamethrowerSwordToPlayerCallBacks.h">
+      <Filter>Game\CallBacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\CallBacks\FlamethrowerToPlayerCallBacks.h">
       <Filter>Game\CallBacks</Filter>
     </ClInclude>
     <ClInclude Include="Game\CallBacks\GameCallBacksManager.h">
@@ -1482,29 +1551,12 @@
     <ClInclude Include="Game\WorldObject\Skydome.h">
       <Filter>Game\WorldObject</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Utilities\ConvertDDS.h" />
-    <ClInclude Include="Game\Actor\Player\PlayerParameter.h" />
-    <ClInclude Include="Game\Actor\Enemy\Action\EnemyActionWalk.h" />
-    <ClInclude Include="Engine\System\ParticleSystem\Tool\ParticleEditorSerializer.h" />
-    <ClInclude Include="Engine\System\ParticleSystem\Particle\CpuParticleUpdater.h" />
-    <ClInclude Include="Engine\System\ParticleSystem\Data\ParticleRuntimeState.h" />
-    <ClInclude Include="Game\Actor\Boss\Action\Attack\BossActionApproachFlamethrower.h" />
-    <ClInclude Include="Game\Actor\Weapon\Flamethrower.h" />
-    <ClInclude Include="Engine\Module\Components\Animation\TransformAnimator.h" />
-    <ClInclude Include="Game\Actor\Boss\BossFlamethrowers.h" />
-    <ClInclude Include="Game\Actor\Weapon\Bullet\FlamethrowerBullet.h" />
-    <ClInclude Include="Game\CallBacks\FlamethrowerToPlayerCallBacks.h" />
-    <ClInclude Include="Game\Actor\Boss\Action\Attack\BossActionBackSweep.h" />
-    <ClInclude Include="Game\CallBacks\FlamethrowerSwordToPlayerCallBacks.h" />
-    <ClInclude Include="Engine\Lib\Json\JsonSerializer.h" />
-    <ClInclude Include="Engine\System\Manager\MaterialManager.h" />
-    <ClInclude Include="Engine\System\Asset\AssetHandle.h" />
-    <ClInclude Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.h" />
-    <ClInclude Include="Engine\System\Editor\Window\Item\IWindowItem.h" />
-    <ClInclude Include="Engine\Module\Components\IComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Core\AoiFramework.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\Engine.cpp">
       <Filter>Engine\Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Core\GraphicsContext.cpp">
@@ -1579,9 +1631,6 @@
     <ClCompile Include="Engine\DirectX\Utilities\DirectXUtils.cpp">
       <Filter>Engine\DirectX\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Core\Engine.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Lib\CalcDispatchSize2D.cpp">
       <Filter>Engine\Lib</Filter>
     </ClCompile>
@@ -1598,6 +1647,9 @@
       <Filter>Engine\Lib\Json</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Lib\Json\JsonItems.cpp">
+      <Filter>Engine\Lib\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Lib\Json\JsonSerializer.cpp">
       <Filter>Engine\Lib\Json</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Lib\Math\Curve.cpp">
@@ -1663,6 +1715,9 @@
     <ClCompile Include="Engine\Module\Components\Animation\Animator.cpp">
       <Filter>Engine\Module\Components\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Module\Components\Animation\TransformAnimator.cpp">
+      <Filter>Engine\Module\Components\Animation</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Module\Components\Animation\VectorTween.cpp">
       <Filter>Engine\Module\Components\Animation</Filter>
     </ClCompile>
@@ -1707,6 +1762,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Module\Components\GameObject\Model.cpp">
       <Filter>Engine\Module\Components\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Module\Components\IComponent.cpp">
+      <Filter>Engine\Module\Components</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Module\Components\Light\BaseLight.cpp">
       <Filter>Engine\Module\Components\Light</Filter>
@@ -1849,9 +1907,6 @@
     <ClCompile Include="Engine\Module\PostEffect\Vignette.cpp">
       <Filter>Engine\Module\PostEffect</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Render\Render.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Render\GpuParticleRenderer.cpp">
       <Filter>Engine\Render</Filter>
     </ClCompile>
@@ -1859,6 +1914,9 @@
       <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Render\ParticleInstancingRenderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Render.cpp">
       <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Render\RenderingCommands.cpp">
@@ -1939,6 +1997,9 @@
     <ClCompile Include="Engine\System\AI\UtilityAI\UtilityEvaluator.cpp">
       <Filter>Engine\System\AI\UtilityAI</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\Asset\AssetHandle.cpp">
+      <Filter>Engine\System\Asset</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\System\Audio\Audio.cpp">
       <Filter>Engine\System\Audio</Filter>
     </ClCompile>
@@ -1962,6 +2023,12 @@
     </ClCompile>
     <ClCompile Include="Engine\System\Editor\Window\GameObjectWindow.cpp">
       <Filter>Engine\System\Editor\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.cpp">
+      <Filter>Engine\System\Editor\Window\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Editor\Window\Item\IWindowItem.cpp">
+      <Filter>Engine\System\Editor\Window\Item</Filter>
     </ClCompile>
     <ClCompile Include="Engine\System\Editor\Window\PackagesWindow.cpp">
       <Filter>Engine\System\Editor\Window</Filter>
@@ -1990,6 +2057,9 @@
     <ClCompile Include="Engine\System\Manager\ImGuiManager.cpp">
       <Filter>Engine\System\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\Manager\MaterialManager.cpp">
+      <Filter>Engine\System\Manager</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\System\Manager\MeshManager.cpp">
       <Filter>Engine\System\Manager</Filter>
     </ClCompile>
@@ -2008,6 +2078,9 @@
     <ClCompile Include="Engine\System\Manager\TextureManager.cpp">
       <Filter>Engine\System\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\ParticleSystem\Data\ParticleRuntimeState.cpp">
+      <Filter>Engine\System\ParticleSystem\Data</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\System\ParticleSystem\EffectSystemCamera.cpp">
       <Filter>Engine\System\ParticleSystem</Filter>
     </ClCompile>
@@ -2017,8 +2090,14 @@
     <ClCompile Include="Engine\System\ParticleSystem\Field\GpuParticleField.cpp">
       <Filter>Engine\System\ParticleSystem\Field</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\System\ParticleSystem\Particle\CpuParticleUpdater.cpp">
+      <Filter>Engine\System\ParticleSystem\Particle</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\System\ParticleSystem\Particle\GpuParticles.cpp">
       <Filter>Engine\System\ParticleSystem\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\ParticleSystem\Tool\ParticleEditorSerializer.cpp">
+      <Filter>Engine\System\ParticleSystem\Tool</Filter>
     </ClCompile>
     <ClCompile Include="Engine\System\ParticleSystem\Tool\ParticleSystemEditor.cpp">
       <Filter>Engine\System\ParticleSystem\Tool</Filter>
@@ -2107,6 +2186,9 @@
     <ClCompile Include="Engine\Utilities\Convert.cpp">
       <Filter>Engine\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Utilities\ConvertDDS.cpp">
+      <Filter>Engine\Utilities</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Utilities\Debug.cpp">
       <Filter>Engine\Utilities</Filter>
     </ClCompile>
@@ -2188,6 +2270,12 @@
     <ClCompile Include="Game\Actor\Boss\Action\Attack\BossActionAllRangeMissile.cpp">
       <Filter>Game\Actor\Boss\Action\Attack</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Actor\Boss\Action\Attack\BossActionApproachFlamethrower.cpp">
+      <Filter>Game\Actor\Boss\Action\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Actor\Boss\Action\Attack\BossActionBackSweep.cpp">
+      <Filter>Game\Actor\Boss\Action\Attack</Filter>
+    </ClCompile>
     <ClCompile Include="Game\Actor\Boss\Action\Attack\BossActionDualStageMissile.cpp">
       <Filter>Game\Actor\Boss\Action\Attack</Filter>
     </ClCompile>
@@ -2242,6 +2330,9 @@
     <ClCompile Include="Game\Actor\Boss\BossEvaluationFormula.cpp">
       <Filter>Game\Actor\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Actor\Boss\BossFlamethrowers.cpp">
+      <Filter>Game\Actor\Boss</Filter>
+    </ClCompile>
     <ClCompile Include="Game\Actor\Boss\BossRoot.cpp">
       <Filter>Game\Actor\Boss</Filter>
     </ClCompile>
@@ -2291,6 +2382,9 @@
       <Filter>Game\Actor\Enemy\Action</Filter>
     </ClCompile>
     <ClCompile Include="Game\Actor\Enemy\Action\EnemyActionWait.cpp">
+      <Filter>Game\Actor\Enemy\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Actor\Enemy\Action\EnemyActionWalk.cpp">
       <Filter>Game\Actor\Enemy\Action</Filter>
     </ClCompile>
     <ClCompile Include="Game\Actor\Enemy\BaseEnemy.cpp">
@@ -2365,6 +2459,9 @@
     <ClCompile Include="Game\Actor\Player\PlayerManager.cpp">
       <Filter>Game\Actor\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Actor\Player\PlayerParameter.cpp">
+      <Filter>Game\Actor\Player</Filter>
+    </ClCompile>
     <ClCompile Include="Game\Actor\Player\State\PlayerDeadState.cpp">
       <Filter>Game\Actor\Player\State</Filter>
     </ClCompile>
@@ -2380,6 +2477,9 @@
     <ClCompile Include="Game\Actor\Weapon\BaseWeapon.cpp">
       <Filter>Game\Actor\Weapon</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Actor\Weapon\Bullet\FlamethrowerBullet.cpp">
+      <Filter>Game\Actor\Weapon\Bullet</Filter>
+    </ClCompile>
     <ClCompile Include="Game\Actor\Weapon\Bullet\LaserBullet.cpp">
       <Filter>Game\Actor\Weapon\Bullet</Filter>
     </ClCompile>
@@ -2388,6 +2488,9 @@
     </ClCompile>
     <ClCompile Include="Game\Actor\Weapon\Bullet\RocketBullet.cpp">
       <Filter>Game\Actor\Weapon\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Actor\Weapon\Flamethrower.cpp">
+      <Filter>Game\Actor\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="Game\Actor\Weapon\LaserRifle.cpp">
       <Filter>Game\Actor\Weapon</Filter>
@@ -2414,6 +2517,12 @@
       <Filter>Game\CallBacks</Filter>
     </ClCompile>
     <ClCompile Include="Game\CallBacks\EnemySearchToPlayerCallBacks.cpp">
+      <Filter>Game\CallBacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\CallBacks\FlamethrowerSwordToPlayerCallBacks.cpp">
+      <Filter>Game\CallBacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\CallBacks\FlamethrowerToPlayerCallBacks.cpp">
       <Filter>Game\CallBacks</Filter>
     </ClCompile>
     <ClCompile Include="Game\CallBacks\GameCallBacksManager.cpp">
@@ -2582,25 +2691,5 @@
       <Filter>Game\WorldObject</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Engine\Utilities\ConvertDDS.cpp" />
-    <ClCompile Include="Game\Actor\Player\PlayerParameter.cpp" />
-    <ClCompile Include="Game\Actor\Enemy\Action\EnemyActionWalk.cpp" />
-    <ClCompile Include="Engine\System\ParticleSystem\Tool\ParticleEditorSerializer.cpp" />
-    <ClCompile Include="Engine\System\ParticleSystem\Particle\CpuParticleUpdater.cpp" />
-    <ClCompile Include="Engine\System\ParticleSystem\Data\ParticleRuntimeState.cpp" />
-    <ClCompile Include="Game\Actor\Boss\Action\Attack\BossActionApproachFlamethrower.cpp" />
-    <ClCompile Include="Game\Actor\Weapon\Flamethrower.cpp" />
-    <ClCompile Include="Engine\Module\Components\Animation\TransformAnimator.cpp" />
-    <ClCompile Include="Game\Actor\Boss\BossFlamethrowers.cpp" />
-    <ClCompile Include="Game\Actor\Weapon\Bullet\FlamethrowerBullet.cpp" />
-    <ClCompile Include="Game\CallBacks\FlamethrowerToPlayerCallBacks.cpp" />
-    <ClCompile Include="Game\Actor\Boss\Action\Attack\BossActionBackSweep.cpp" />
-    <ClCompile Include="Game\CallBacks\FlamethrowerSwordToPlayerCallBacks.cpp" />
-    <ClCompile Include="Engine\Lib\Json\JsonSerializer.cpp" />
-    <ClCompile Include="Engine\System\Manager\MaterialManager.cpp" />
-    <ClCompile Include="Engine\System\Asset\AssetHandle.cpp" />
-    <ClCompile Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.cpp" />
-    <ClCompile Include="Engine\System\Editor\Window\Item\IWindowItem.cpp" />
-    <ClCompile Include="Engine\Module\Components\IComponent.cpp" />
   </ItemGroup>
 </Project>

@@ -14,10 +14,16 @@ namespace AOENGINE {
 class JsonItems {
 public:
 
+	/// <summary>
+	/// Json項目グループ
+	/// </summary>
 	struct Group {
 		std::unordered_map<std::string, json> items;
 	};
 
+	/// <summary>
+	/// Json変換グループ
+	/// </summary>
 	struct ConverterGroup {
 		std::unordered_map<std::string, std::function<json(const std::string&)>> items;
 		std::string key;

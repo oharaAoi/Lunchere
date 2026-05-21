@@ -24,6 +24,9 @@ namespace AOENGINE {
 class Material;
 class PBRMaterial;
 
+/// <summary>
+/// モデルクラス
+/// </summary>
 class Model {
 public: // data
 

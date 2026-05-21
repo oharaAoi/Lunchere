@@ -3,6 +3,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// 乗算ノードクラス
+/// </summary>
 class MathMultiplyNode :
 	public BaseShaderGraphNode {
 public:	// コンストラクタ

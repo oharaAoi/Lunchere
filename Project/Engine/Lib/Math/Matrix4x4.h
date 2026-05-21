@@ -6,6 +6,9 @@ namespace Math {
 class Vector3;
 class Quaternion;
 
+/// <summary>
+/// 4x4行列クラス
+/// </summary>
 class Matrix4x4 final {
 public:
 

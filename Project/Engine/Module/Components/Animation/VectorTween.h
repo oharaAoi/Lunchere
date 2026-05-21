@@ -21,6 +21,9 @@ namespace AOENGINE {
 /// </summary>
 /// <typeparam name="T">: float, Math::Vector2, Math::Vector3, Math::Vector4</typeparam>
 template <typename T>
+/// <summary>
+/// ベクトル補間クラス
+/// </summary>
 class VectorTween {
 public:
 

@@ -12,6 +12,9 @@ class DissolveNode :
 	public BaseShaderGraphNode {
 public:	// データ構造体
 
+	/// <summary>
+	/// ディゾルブ用パラメータ
+	/// </summary>
 	struct DissolveParams {
 		AOENGINE::Color dissolveColor; // エッジの色
 		float threshold;	// しきい値

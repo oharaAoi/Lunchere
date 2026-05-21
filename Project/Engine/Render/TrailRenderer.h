@@ -4,11 +4,17 @@
 #include "Engine/Lib/Math/Vector2.h"
 #include "Engine/Lib/Math/Vector3.h"
 
+/// <summary>
+/// Trailの制御点情報
+/// </summary>
 struct TrailPoint {
     Math::Vector3 position;
     float lifetime;
 };
 
+/// <summary>
+/// Trail描画用頂点情報
+/// </summary>
 struct TrailVertex {
     Math::Vector3 position;
     Math::Vector2 uv;

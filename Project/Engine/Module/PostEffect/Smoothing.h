@@ -11,10 +11,16 @@ class Smoothing :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// 平滑化設定
+	/// </summary>
 	struct Setting {
 		uint32_t size;
 	};
 
+	/// <summary>
+	/// 平滑化保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		uint32_t size = 1;

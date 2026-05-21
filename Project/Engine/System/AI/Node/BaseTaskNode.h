@@ -15,6 +15,9 @@ namespace AI {
 /// </summary>
 /// <typeparam name="OwnerType"></typeparam>
 template<typename OwnerType>
+/// <summary>
+/// タスクノード基底クラス
+/// </summary>
 class BaseTaskNode :
 	public BaseBehaviorNode {
 public: // constructor

@@ -4,14 +4,23 @@
 
 namespace PostEffect {
 
+/// <summary>
+/// トゥーンマップクラス
+/// </summary>
 class ToonMap :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// トゥーンマップパラメータ
+	/// </summary>
 	struct Parameter {
 		float exposure;
 	};
 
+	/// <summary>
+	/// トゥーンマップ保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		float exposure = 1;

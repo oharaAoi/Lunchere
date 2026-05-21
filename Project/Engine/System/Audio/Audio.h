@@ -46,11 +46,17 @@ struct SoundData {
 	unsigned int bufferSize;
 };
 
+/// <summary>
+/// 音声データ情報
+/// </summary>
 struct AudioData {
 	SoundData data;
 	IXAudio2SourceVoice* pSourceVoice;
 };
 
+/// <summary>
+/// 再生中の音声情報
+/// </summary>
 struct PlayingSound {
 	IXAudio2SourceVoice* pSourceVoice;
 	std::vector<BYTE> buffer;

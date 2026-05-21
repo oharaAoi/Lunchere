@@ -9,6 +9,9 @@ enum class MaterialType {
 	PBR
 };
 
+/// <summary>
+/// モデルマテリアル情報
+/// </summary>
 struct ModelMaterialData {
 	AOENGINE::Color color = { 1.0f, 1.0f, 1.0f, 1.0f };
 	std::string textureFilePath = "white.png";

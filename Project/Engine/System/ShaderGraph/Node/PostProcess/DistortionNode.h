@@ -12,6 +12,9 @@ class DistortionNode :
 	public BaseShaderGraphNode {
 public:	// データ構造体
 
+	/// <summary>
+	/// ディストーション用パラメータ
+	/// </summary>
 	struct DistortionParam {
 		Math::Vector2 tiling = CMath::Vector2::UNIT;
 		Math::Vector2 scroll = CMath::Vector2::UNIT;;

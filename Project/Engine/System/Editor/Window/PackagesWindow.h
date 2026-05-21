@@ -9,6 +9,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// アセットツリーのノード情報
+/// </summary>
 struct AssetNode {
 	std::string name;
 	std::filesystem::path path;

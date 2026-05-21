@@ -3,6 +3,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// 減算ノードクラス
+/// </summary>
 class MathSubtractionNode :
 	public BaseShaderGraphNode {
 public:	// コンストラクタ

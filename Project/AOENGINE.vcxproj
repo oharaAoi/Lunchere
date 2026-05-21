@@ -115,6 +115,7 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\AoiFramework.h" />
+    <ClInclude Include="Engine\Core\Engine.h" />
     <ClInclude Include="Engine\Core\GraphicsContext.h" />
     <ClInclude Include="Engine\DirectX\Descriptor\DescriptorAllocator.h" />
     <ClInclude Include="Engine\DirectX\Descriptor\DescriptorHeap.h" />
@@ -139,7 +140,6 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
     <ClInclude Include="Engine\DirectX\Resource\DxResource.h" />
     <ClInclude Include="Engine\DirectX\Resource\DxResourceManager.h" />
     <ClInclude Include="Engine\DirectX\Utilities\DirectXUtils.h" />
-    <ClInclude Include="Engine\Core\Engine.h" />
     <ClInclude Include="Engine\Lib\CalcDispatchSize2D.h" />
     <ClInclude Include="Engine\Lib\Color.h" />
     <ClInclude Include="Engine\Lib\GameTimer.h" />
@@ -235,10 +235,10 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
     <ClInclude Include="Engine\Module\PostEffect\Smoothing.h" />
     <ClInclude Include="Engine\Module\PostEffect\ToonMap.h" />
     <ClInclude Include="Engine\Module\PostEffect\Vignette.h" />
-    <ClInclude Include="Engine\Render\Render.h" />
     <ClInclude Include="Engine\Render\GpuParticleRenderer.h" />
     <ClInclude Include="Engine\Render\InstancingRenderer.h" />
     <ClInclude Include="Engine\Render\ParticleInstancingRenderer.h" />
+    <ClInclude Include="Engine\Render\Render.h" />
     <ClInclude Include="Engine\Render\RenderingCommands.h" />
     <ClInclude Include="Engine\Render\SceneRenderer.h" />
     <ClInclude Include="Engine\Render\ShadowMap.h" />
@@ -272,9 +272,9 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
     <ClInclude Include="Engine\System\Collision\ColliderCollector.h" />
     <ClInclude Include="Engine\System\Collision\PenetrationResolution.h" />
     <ClInclude Include="Engine\System\Editor\Tool\ManipulateTool.h" />
-    <ClInclude Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.h" />
     <ClInclude Include="Engine\System\Editor\Window\EditorWindows.h" />
     <ClInclude Include="Engine\System\Editor\Window\GameObjectWindow.h" />
+    <ClInclude Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.h" />
     <ClInclude Include="Engine\System\Editor\Window\Item\IWindowItem.h" />
     <ClInclude Include="Engine\System\Editor\Window\PackagesWindow.h" />
     <ClInclude Include="Engine\System\Editor\Window\PackagesWindowSerializer.h" />
@@ -513,6 +513,7 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Core\AoiFramework.cpp" />
+    <ClCompile Include="Engine\Core\Engine.cpp" />
     <ClCompile Include="Engine\Core\GraphicsContext.cpp" />
     <ClCompile Include="Engine\DirectX\Descriptor\DescriptorAllocator.cpp" />
     <ClCompile Include="Engine\DirectX\Descriptor\DescriptorHeap.cpp" />
@@ -537,7 +538,6 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
     <ClCompile Include="Engine\DirectX\Resource\DxResource.cpp" />
     <ClCompile Include="Engine\DirectX\Resource\DxResourceManager.cpp" />
     <ClCompile Include="Engine\DirectX\Utilities\DirectXUtils.cpp" />
-    <ClCompile Include="Engine\Core\Engine.cpp" />
     <ClCompile Include="Engine\Lib\CalcDispatchSize2D.cpp" />
     <ClCompile Include="Engine\Lib\Color.cpp" />
     <ClCompile Include="Engine\Lib\GameTimer.cpp" />
@@ -630,10 +630,10 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
     <ClCompile Include="Engine\Module\PostEffect\Smoothing.cpp" />
     <ClCompile Include="Engine\Module\PostEffect\ToonMap.cpp" />
     <ClCompile Include="Engine\Module\PostEffect\Vignette.cpp" />
-    <ClCompile Include="Engine\Render\Render.cpp" />
     <ClCompile Include="Engine\Render\GpuParticleRenderer.cpp" />
     <ClCompile Include="Engine\Render\InstancingRenderer.cpp" />
     <ClCompile Include="Engine\Render\ParticleInstancingRenderer.cpp" />
+    <ClCompile Include="Engine\Render\Render.cpp" />
     <ClCompile Include="Engine\Render\RenderingCommands.cpp" />
     <ClCompile Include="Engine\Render\SceneRenderer.cpp" />
     <ClCompile Include="Engine\Render\ShadowMap.cpp" />
@@ -667,9 +667,9 @@ copy /Y "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir
     <ClCompile Include="Engine\System\Collision\ColliderCollector.cpp" />
     <ClCompile Include="Engine\System\Collision\PenetrationResolution.cpp" />
     <ClCompile Include="Engine\System\Editor\Tool\ManipulateTool.cpp" />
-    <ClCompile Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\EditorWindows.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\GameObjectWindow.cpp" />
+    <ClCompile Include="Engine\System\Editor\Window\Item\ColliderCategorySettingWindow.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\Item\IWindowItem.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\PackagesWindow.cpp" />
     <ClCompile Include="Engine\System\Editor\Window\PackagesWindowSerializer.cpp" />

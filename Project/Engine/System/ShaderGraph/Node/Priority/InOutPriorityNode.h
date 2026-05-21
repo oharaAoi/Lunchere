@@ -5,6 +5,9 @@
 namespace AOENGINE {
 
 template<typename T>
+/// <summary>
+/// 入出力優先度ノードクラス
+/// </summary>
 class InOutPriorityNode :
 	public BaseShaderGraphNode {
 public: // コンストラクタ

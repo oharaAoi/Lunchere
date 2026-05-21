@@ -7,6 +7,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// Blend設定クラス
+/// </summary>
 class Blend {
 public:
 

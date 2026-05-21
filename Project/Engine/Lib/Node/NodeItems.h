@@ -25,11 +25,17 @@ enum class PinKind{
     Input
 };
 
+/// <summary>
+/// ノードピン情報
+/// </summary>
 struct Pin {
 	ax::NodeEditor::PinId id;
 	ax::NodeEditor::PinKind kind;
 };
 
+/// <summary>
+/// ノード情報
+/// </summary>
 struct Node {
 	ax::NodeEditor::NodeId id;
 	Pin inputId;
@@ -37,12 +43,18 @@ struct Node {
 	std::string name;
 };
 
+/// <summary>
+/// ノードリンク情報
+/// </summary>
 struct Link {
 	ax::NodeEditor::LinkId id;
 	ax::NodeEditor::PinId  from;
 	ax::NodeEditor::PinId  to;
 };
 
+/// <summary>
+/// ノード項目情報
+/// </summary>
 struct NodeItems {
 	std::string nodeName;
 	int nodeType;
@@ -51,6 +63,9 @@ struct NodeItems {
 };
 
 namespace Custom {
+	/// <summary>
+	/// ノードピン情報
+	/// </summary>
 	struct Pin {
 		int32_t id;
 		PinKind kind;
@@ -62,6 +77,9 @@ namespace Custom {
 		}
 	};
 
+	/// <summary>
+	/// ノード情報
+	/// </summary>
 	struct Node {
 		int32_t id;
 		std::vector<Pin> inputs;
@@ -70,6 +88,9 @@ namespace Custom {
 		ImVec2 position;
 	};
 
+	/// <summary>
+	/// ノードリンク情報
+	/// </summary>
 	struct Link {
 		int32_t id;
 		int32_t from;
@@ -77,6 +98,9 @@ namespace Custom {
 	};
 }
 
+/// <summary>
+/// ノードUVトランスフォーム情報
+/// </summary>
 struct NodeUVTransform {
 	Math::Vector2 scale = CMath::Vector2::UNIT;
 	Math::Vector2 translate = CMath::Vector2::ZERO;

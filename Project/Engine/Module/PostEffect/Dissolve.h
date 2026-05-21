@@ -13,6 +13,9 @@ class Dissolve :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// ディゾルブ設定
+	/// </summary>
 	struct DissolveSetting {
 		Math::Matrix4x4 uvTransform;
 		AOENGINE::Color color;
@@ -20,6 +23,9 @@ public:
 		float threshold = 0.5f;
 	};
 
+	/// <summary>
+	/// ディゾルブ保存設定
+	/// </summary>
 	struct SaveDissolveSetting : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		Math::SRT uvTransform;

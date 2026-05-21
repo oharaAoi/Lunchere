@@ -4,6 +4,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// ループ値ノードクラス
+/// </summary>
 class LoopValueNode :
 	public BaseShaderGraphNode {
 public:	// コンストラクタ

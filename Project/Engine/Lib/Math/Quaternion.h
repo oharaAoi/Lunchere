@@ -6,6 +6,9 @@
 
 namespace Math {
 
+/// <summary>
+/// クォータニオンクラス
+/// </summary>
 class Quaternion final {
 public:
 

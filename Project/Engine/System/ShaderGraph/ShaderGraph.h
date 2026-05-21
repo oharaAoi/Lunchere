@@ -16,6 +16,9 @@ class ShaderGraph :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// ShaderGraphのファイルパス保存用構造体
+	/// </summary>
 	struct FilePathParam : public AOENGINE::IJsonConverter {
 		std::string path = "";
 

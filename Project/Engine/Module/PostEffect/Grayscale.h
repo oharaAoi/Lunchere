@@ -12,10 +12,16 @@ class Grayscale :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// グレースケール設定
+	/// </summary>
 	struct Setting {
 		AOENGINE::Color color;
 	};
 
+	/// <summary>
+	/// グレースケール保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		AOENGINE::Color color = Colors::Linear::black;

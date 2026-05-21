@@ -9,6 +9,9 @@ namespace AOENGINE {
 class AssetsManager final {
 public:
 
+	/// <summary>
+	/// アセットパス情報
+	/// </summary>
 	struct AssetPaths {
 		std::string textures;
 		std::string models;

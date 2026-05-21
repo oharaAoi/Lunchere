@@ -5,6 +5,9 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// ジオメトリ基底クラス
+/// </summary>
 class IGeometry {
 public:
 

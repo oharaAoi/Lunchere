@@ -12,6 +12,9 @@ class GpuParticleField :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// GPUパーティクル加速フィールド情報
+	/// </summary>
 	struct AccelerationField {
 		Math::Vector3 acceleration;
 		float pad1;
@@ -21,6 +24,9 @@ public:
 		float pad3;
 	};
 
+	/// <summary>
+	/// フレームごとのフィールド情報
+	/// </summary>
 	struct PerFrame {
 		float time;
 		float deltaTime;

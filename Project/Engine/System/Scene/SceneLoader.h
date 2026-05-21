@@ -27,6 +27,9 @@ public:		// data
 		std::vector<std::string> filter;
 	};
 
+	/// <summary>
+	/// マテリアル読み込み情報
+	/// </summary>
 	struct MaterialData {
 		std::string shader = "";
 		float roughness;
@@ -37,6 +40,9 @@ public:		// data
 		std::string normalMap = "";
 	};
 
+	/// <summary>
+	/// シーンオブジェクト読み込み情報
+	/// </summary>
 	struct Objects {
 		std::string name;
 		std::string modelName;

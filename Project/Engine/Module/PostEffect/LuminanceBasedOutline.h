@@ -11,10 +11,16 @@ class LuminanceBasedOutline :
 	public IPostEffect {
 public:
 
+	/// <summary>
+	/// 輝度ベースアウトライン設定
+	/// </summary>
 	struct Setting {
 		float scale;
 	};
 
+	/// <summary>
+	/// 輝度ベースアウトライン保存設定
+	/// </summary>
 	struct SaveSetting : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		float scale;

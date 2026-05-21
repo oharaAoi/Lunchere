@@ -7,11 +7,17 @@
 namespace AI {
 
 template<typename T>
+/// <summary>
+/// Blackboard値の型情報
+/// </summary>
 struct ValueType {
 	using type = T;
 };
 
 template<typename T>
+/// <summary>
+/// Blackboard値の型情報
+/// </summary>
 struct ValueType<T*> {
 	using type = T;
 };

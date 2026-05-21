@@ -12,12 +12,18 @@ class Vignette :
 	public IPostEffect {
 public:	// 構造体
 
+	/// <summary>
+	/// ビネット設定
+	/// </summary>
 	struct VignetteSetting {
 		AOENGINE::Color color;
 		float scale = 16.0f;
 		float power = 0.8f;
 	};
 
+	/// <summary>
+	/// ビネット保存設定
+	/// </summary>
 	struct SaveSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		AOENGINE::Color color;

@@ -10,6 +10,9 @@
 /// </summary>
 /// <typeparam name="tValue"></typeparam>
 template <typename tValue>
+/// <summary>
+/// アニメーションキーフレーム情報
+/// </summary>
 struct Keyframe {
 	float time;
 	tValue value;
@@ -23,6 +26,9 @@ using KeyframeQuaternion = Keyframe<Math::Quaternion>;
 /// </summary>
 /// <typeparam name="tValue"></typeparam>
 template <typename tValue>
+/// <summary>
+/// アニメーションカーブ情報
+/// </summary>
 struct AnimationCurve {
 	std::vector<Keyframe<tValue>> keyframes;
 };

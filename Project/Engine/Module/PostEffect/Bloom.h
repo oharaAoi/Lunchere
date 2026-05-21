@@ -14,10 +14,16 @@ class Bloom :
 	public IPostEffect {
 public:	// 構造体
 
+	/// <summary>
+	/// Bloom設定
+	/// </summary>
 	struct BloomSettings {
 		float bloomIntensity = 0.5f;
 	};
 
+	/// <summary>
+	/// Bloom保存設定
+	/// </summary>
 	struct SaveBloomSettings : public AOENGINE::IJsonConverter {
 		bool isEnable = false;
 		float bloomIntensity = 0.5f;

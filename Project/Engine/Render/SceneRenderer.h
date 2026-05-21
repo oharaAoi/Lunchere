@@ -18,6 +18,9 @@ class SceneRenderer :
 	public AttributeGui {
 public:	// 構造体データ
 
+	/// <summary>
+	/// 描画対象ペアのインターフェース
+	/// </summary>
 	struct IObjectPair {
 		virtual ~IObjectPair() = default;
 		virtual AOENGINE::ISceneObject* GetSceneObject() = 0;
@@ -35,6 +38,9 @@ public:	// 構造体データ
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	template <typename T>
+	/// <summary>
+	/// 描画対象のオブジェクトペア
+	/// </summary>
 	struct ObjectPair : IObjectPair {
 		std::unique_ptr<T> object;
 		std::string renderingType;

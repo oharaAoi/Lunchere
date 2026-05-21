@@ -6,6 +6,9 @@
 #include "Engine/System/Collision/ColliderCollector.h"
 #include "Engine/Module/Components/Collider/BaseCollider.h"
 
+/// <summary>
+/// 衝突ペア情報
+/// </summary>
 struct CollisionPair {
 	uint32_t categoryA;
 	uint32_t categoryB;
@@ -23,6 +26,9 @@ struct CollisionPair {
 /// </summary>
 namespace std {
 	template <>
+	/// <summary>
+	/// CollisionPair用ハッシュ構造体
+	/// </summary>
 	struct hash<CollisionPair> {
 		std::size_t operator()(const CollisionPair& p) const noexcept {
 			// categoryA と categoryB を組み合わせてハッシュ化
@@ -44,6 +50,9 @@ public:	// using
 
 	using CollisionFunctions = std::function<void(AOENGINE::BaseCollider* const, AOENGINE::BaseCollider* const)>;
 
+	/// <summary>
+	/// 衝突コールバック種別情報
+	/// </summary>
 	struct CallBackKinds {
 		CollisionFunctions enter;
 		CollisionFunctions stay;

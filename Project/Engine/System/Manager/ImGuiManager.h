@@ -15,6 +15,9 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg
 
 namespace AOENGINE {
 
+/// <summary>
+/// ImGui管理クラス
+/// </summary>
 class ImGuiManager {
 
 public: // 静的メンバ関数

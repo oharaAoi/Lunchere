@@ -14,6 +14,9 @@ class GpuParticleEmitter :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// フレームごとのエミッター情報
+	/// </summary>
 	struct PerFrame {
 		float time;
 		float deltaTime;

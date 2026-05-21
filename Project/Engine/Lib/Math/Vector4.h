@@ -4,6 +4,9 @@
 
 namespace Math {
 
+/// <summary>
+/// 4次元ベクトル
+/// </summary>
 class Vector4 final {
 public:
 

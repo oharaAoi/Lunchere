@@ -17,6 +17,151 @@ function Add_DXC_DLL_CopyCommands()
     }
 end
 
+-- ===============================================================
+-- VSCode 設定生成
+-- ===============================================================
+local function WriteTextFile(path, contents)
+    local file = io.open(path, "w")
+    if not file then
+        error("Failed to open " .. path)
+    end
+
+    file:write(contents)
+    file:close()
+end
+
+newaction {
+    trigger = "vscode",
+    description = "Generate VSCode launch and build task files",
+    execute = function()
+        os.mkdir(".vscode")
+
+        WriteTextFile(".vscode/build-msbuild.ps1", [[
+param(
+    [ValidateSet("Debug", "Release")]
+    [string]$Configuration = "Debug"
+)
+
+$ErrorActionPreference = "Stop"
+
+$vswhere = Join-Path ([Environment]::GetFolderPath("ProgramFilesX86")) "Microsoft Visual Studio\Installer\vswhere.exe"
+if (!(Test-Path $vswhere)) {
+    throw "vswhere.exe was not found."
+}
+
+$msbuild = & $vswhere -latest -products * -requires Microsoft.Component.MSBuild -find "MSBuild\**\Bin\MSBuild.exe" | Select-Object -First 1
+if (!$msbuild) {
+    throw "MSBuild.exe was not found."
+}
+
+$solution = Resolve-Path (Join-Path $PSScriptRoot "..\Project\AOENGINE.sln")
+& $msbuild $solution /m /nr:false "/p:Configuration=$Configuration" /p:Platform=x64
+exit $LASTEXITCODE
+]])
+
+        WriteTextFile(".vscode/tasks.json", [[
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "premake: vs2022",
+            "type": "process",
+            "command": "${workspaceFolder}\\premake5.exe",
+            "args": [
+                "vs2022"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build: Debug",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}\\.vscode\\build-msbuild.ps1",
+                "Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "premake: vs2022"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "build: Release",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}\\.vscode\\build-msbuild.ps1",
+                "Release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "premake: vs2022"
+            ],
+            "dependsOrder": "sequence"
+        }
+    ]
+}
+]])
+
+        WriteTextFile(".vscode/launch.json", [[
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "AOENGINE Debug",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Generated\\Outputs\\Debug\\AOENGINE.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal",
+            "preLaunchTask": "build: Debug"
+        },
+        {
+            "name": "AOENGINE Release",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Generated\\Outputs\\Release\\AOENGINE.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal",
+            "preLaunchTask": "build: Release"
+        }
+    ]
+}
+]])
+
+        print("Generated VSCode files: .vscode/build-msbuild.ps1, .vscode/tasks.json, .vscode/launch.json")
+    end
+}
+
 
 -- ===============================================================
 -- AOENGINE Premake5 Build Script

@@ -5,6 +5,9 @@
 #include <string>
 #include <dxgi1_3.h>
 
+/// <summary>
+/// D3Dリソースリーク確認用構造体
+/// </summary>
 struct D3DResourceLeakChecker {
 	~D3DResourceLeakChecker() {
 		Microsoft::WRL::ComPtr<IDXGIDebug1> debug;

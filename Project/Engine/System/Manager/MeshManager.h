@@ -7,9 +7,15 @@
 
 namespace AOENGINE {
 
+/// <summary>
+/// メッシュ管理クラス
+/// </summary>
 class MeshManager {
 public:
 
+	/// <summary>
+	/// メッシュ名とデータの組み合わせ
+	/// </summary>
 	struct MeshPair {
 		std::string meshName;
 		std::shared_ptr<AOENGINE::Mesh> mesh;
@@ -20,6 +26,9 @@ public:
 		}
 	};
 
+	/// <summary>
+	/// メッシュ配列情報
+	/// </summary>
 	struct MeshArray {
 		std::vector<MeshPair> meshArray;
 	};

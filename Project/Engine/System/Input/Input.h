@@ -40,6 +40,9 @@ enum InputDevice {
 
 namespace AOENGINE {
 
+/// <summary>
+/// コントローラー振動情報
+/// </summary>
 struct ControllerVibration {
 	float leftStrength = 0.0f;
 	float rightStrength = 0.0f;

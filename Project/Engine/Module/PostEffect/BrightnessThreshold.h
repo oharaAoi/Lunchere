@@ -11,10 +11,16 @@ class BrightnessThreshold :
 	public IPostEffect {
 public:	// 構造体
 
+	/// <summary>
+	/// 輝度抽出設定
+	/// </summary>
 	struct BloomSettings {
 		float threshold = 1.0f;
 	};
 
+	/// <summary>
+	/// 輝度抽出保存設定
+	/// </summary>
 	struct SaveBloomSettings : public AOENGINE::IJsonConverter {
 		float threshold = 0.5f;
 
