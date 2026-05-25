@@ -21,6 +21,7 @@ void CommentBox::Init(const ImVec2& _min, const ImVec2& _max, const std::string&
 	text_ = _text;
 	
 	ax::NodeEditor::SetNodePosition(id_, min_);
+	ax::NodeEditor::SetGroupSize(id_, size_);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +56,11 @@ void CommentBox::Draw() {
 
 	std::string guiId = "##comment" + std::to_string(id_);
 	InputTextWithString("input", guiId.c_str(), text_);
+	ImVec2 groupCursorPos = ImGui::GetCursorScreenPos();
 	ax::NodeEditor::Group(size_);
+	bool groupSubmitted = ImGui::GetCursorScreenPos().x != groupCursorPos.x ||
+		ImGui::GetCursorScreenPos().y != groupCursorPos.y;
+	ImVec2 groupSize = ImGui::GetItemRectSize();
 
 	ax::NodeEditor::EndNode();
 
@@ -100,28 +105,10 @@ void CommentBox::Draw() {
 	ax::NodeEditor::PopStyleColor(2);
 	ImGui::PopStyleVar();
 
-	ImVec2 newNodeSize = ax::NodeEditor::GetNodeSize(id_);
-
-	// 現在のスタイルのパディングを取得
-	// (NodePaddingは通常 ImVec4(左, 上, 右, 下) です)
-	auto& style = ax::NodeEditor::GetStyle();
-	float paddingX = style.NodePadding.x + style.NodePadding.z; // 左 + 右
-	float paddingY = style.NodePadding.y + style.NodePadding.w; // 上 + 下
-
-	// パディング分を引いて「中身のサイズ」に変換する
-	ImVec2 newContentSize = ImVec2(
-		newNodeSize.x - paddingX,
-		newNodeSize.y - paddingY
-	);
-
-	// サイズが変わっていたら更新 (中身のサイズで比較・更新する)
-	if (newContentSize.x != size_.x || newContentSize.y != size_.y) {
-		// 念のため、極端に小さくならないようガードを入れても良い
-		if (newContentSize.x > 0 && newContentSize.y > 0) {
-			size_ = newContentSize;
-			min_ = ax::NodeEditor::GetNodePosition(id_);
-			max_ = min_ + size_;
-		}
+	if (groupSubmitted && groupSize.x > 0.0f && groupSize.y > 0.0f) {
+		size_ = groupSize;
+		min_ = ax::NodeEditor::GetNodePosition(id_);
+		max_ = min_ + size_;
 	}
 }
 
@@ -166,6 +153,7 @@ void CommentBox::FromJson(const nlohmann::json& _json) {
 
 	// ノードエディタ上の位置を設定
 	ax::NodeEditor::SetNodePosition(id_, min_);
+	ax::NodeEditor::SetGroupSize(id_, size_);
 
 	// 【重要】ID競合の回避
 	// ロードしたIDが現在のカウンター以上なら、カウンターを進める

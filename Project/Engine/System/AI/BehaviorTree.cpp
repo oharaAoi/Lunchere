@@ -99,51 +99,54 @@ void BehaviorTree::DisplayState(const ImVec2& _pos, float _aggressionScore, cons
 
 void BehaviorTree::Edit() {
 	if (!isOpenEditor_) return;
-	ImGui::Begin(GetName().c_str(), &isOpenEditor_);
+	if (ImGui::Begin(GetName().c_str(), &isOpenEditor_)) {
 		// Treeに関する処理
-	ImGui::Text("isExecute");
-	ImGui::SameLine();
-	ImGui::Checkbox("##isExecute", &isExecute_);
-	ImGui::SameLine();
-	if (ImGui::Button("OverWirte")) {
-		json data = root_->ToJson();
-		editor_.CommentsToJson(data);
-		BehaviorTreeSerializer::Save(fileDirectory_ + fileName_, data);
-	}
-	ImGui::SameLine();
-	if (ImGui::Button("ReSet")) {
-		CreateTree(fileDirectory_, fileName_);
-	}
-	ImGui::SameLine();
-	editor_.Edit(name_, nodeList_, links_, root_, blackboard_, creators_, goalArray_);
-
-	ImGui::Begin("Blackboard");
-	if (blackboard_) {
-		blackboard_->Debug_Gui();
-	}
-	ImGui::End();
-
-	ImGui::Begin("WeightTable");
-	if (ImGui::BeginTable("WeightTable", 3, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg)) {
-		ImGui::TableSetupColumn("name");
-		ImGui::TableSetupColumn("重み");
-		ImGui::TableSetupColumn("積極性");
-		ImGui::TableHeadersRow();
-
-		for (auto it = nodeList_.begin(); it != nodeList_.end();) {
-			BaseBehaviorNode* node = (*it).get();
-			if (node->GetNodeType() == NodeType::Task) {
-				ImGui::TableNextRow();
-				ImGui::TableSetColumnIndex(0);
-				ImGui::Text(node->GetName().c_str());
-				ImGui::TableSetColumnIndex(1);
-				node->WeightTableItem();
-			}
-			it++;
+		ImGui::Text("isExecute");
+		ImGui::SameLine();
+		ImGui::Checkbox("##isExecute", &isExecute_);
+		ImGui::SameLine();
+		if (ImGui::Button("OverWirte")) {
+			json data = root_->ToJson();
+			editor_.CommentsToJson(data);
+			BehaviorTreeSerializer::Save(fileDirectory_ + fileName_, data);
 		}
-		ImGui::EndTable();
+		ImGui::SameLine();
+		if (ImGui::Button("ReSet")) {
+			CreateTree(fileDirectory_, fileName_);
+		}
+		ImGui::SameLine();
+		editor_.Edit(name_, nodeList_, links_, root_, blackboard_, creators_, goalArray_);
+
+		if (ImGui::Begin("Blackboard")) {
+			if (blackboard_) {
+				blackboard_->Debug_Gui();
+			}
+		}
+		ImGui::End();
+
+		if (ImGui::Begin("WeightTable")) {
+			if (ImGui::BeginTable("WeightTable", 3, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg)) {
+				ImGui::TableSetupColumn("name");
+				ImGui::TableSetupColumn("重み");
+				ImGui::TableSetupColumn("積極性");
+				ImGui::TableHeadersRow();
+
+				for (auto it = nodeList_.begin(); it != nodeList_.end();) {
+					BaseBehaviorNode* node = (*it).get();
+					if (node->GetNodeType() == NodeType::Task) {
+						ImGui::TableNextRow();
+						ImGui::TableSetColumnIndex(0);
+						ImGui::Text(node->GetName().c_str());
+						ImGui::TableSetColumnIndex(1);
+						node->WeightTableItem();
+					}
+					it++;
+				}
+				ImGui::EndTable();
+			}
+		}
+		ImGui::End();
 	}
-	ImGui::End();
 
 	ImGui::End();
 }
