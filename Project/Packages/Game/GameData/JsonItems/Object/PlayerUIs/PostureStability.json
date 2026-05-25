@@ -12,8 +12,8 @@
         "clockwise": 0,
         "color": {
             "a": 1.0,
-            "b": 0.0,
-            "g": 0.9209302067756653,
+            "b": 0.06976741552352905,
+            "g": 0.6928068995475769,
             "r": 1.0
         },
         "drawRange": {
@@ -24,6 +24,7 @@
         "fillMethod": 3,
         "fillStartingPoint": 4,
         "innerRadius": 0.0,
+        "isActive": true,
         "isFlipX": false,
         "isFlipY": false,
         "leftTop": {
@@ -31,6 +32,8 @@
             "y": 0.0
         },
         "outerRadius": 1.0,
+        "psoName": "Sprite_Normal.json",
+        "renderQueue": 0,
         "spriteSize": {
             "x": 360.0,
             "y": 16.0
@@ -51,7 +54,7 @@
             "translate": {
                 "x": 640.0,
                 "y": 610.0,
-                "z": 0.0
+                "z": 1.0
             }
         },
         "uvTransform": {
@@ -70,6 +73,8 @@
                 "y": 610.0,
                 "z": 0.0
             }
-        }
+        },
+        "windowHeight": 720,
+        "windowWidth": 1280
     }
 }

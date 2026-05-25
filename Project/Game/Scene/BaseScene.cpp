@@ -59,7 +59,7 @@ void BaseScene::Draw() const {
 
 void BaseScene::SaveSceneEffect() {
 	Engine::GetPostProcess()->Save(this->sceneName_ + "/");
-	Engine::GetCanvas2d()->Save(this->sceneName_);
+	//Engine::GetCanvas2d()->Save(this->sceneName_);
 }
 
 void BaseScene::LoadSceneEffect() {
@@ -67,5 +67,5 @@ void BaseScene::LoadSceneEffect() {
 	AOENGINE::JsonItems::GetInstance()->LoadDesignationPath(path);
 	Engine::GetPostProcess()->Load(this->sceneName_ + "/");
 
-	Engine::GetCanvas2d()->Load(this->sceneName_);
+	//Engine::GetCanvas2d()->Load(this->sceneName_);
 }

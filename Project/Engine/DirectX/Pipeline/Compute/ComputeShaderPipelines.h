@@ -35,6 +35,13 @@ public:
 	void Load(const std::string& _path);
 
 	/// <summary>
+	/// 指定したjsonファイルを読み込む
+	/// </summary>
+	/// <param name="directory">: ディレクトリパス</param>
+	/// <param name="fileName">: ファイル名</param>
+	void LoadFile(const std::string& _directory, const std::string& _fileName);
+
+	/// <summary>
 	/// Jsonファイルを読み込む関数
 	/// </summary>
 	/// <param name="directory">: ディレクトリパス</param>

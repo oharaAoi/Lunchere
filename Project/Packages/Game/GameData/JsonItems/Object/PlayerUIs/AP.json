@@ -24,6 +24,7 @@
         "fillMethod": 0,
         "fillStartingPoint": 0,
         "innerRadius": 0.0,
+        "isActive": true,
         "isFlipX": false,
         "isFlipY": false,
         "leftTop": {
@@ -31,6 +32,8 @@
             "y": 0.0
         },
         "outerRadius": 0.0,
+        "psoName": "Sprite_Normal.json",
+        "renderQueue": 0,
         "spriteSize": {
             "x": 400.0,
             "y": 260.0
@@ -51,7 +54,7 @@
             "translate": {
                 "x": 100.0,
                 "y": 540.0,
-                "z": 0.0
+                "z": 1.0
             }
         },
         "uvTransform": {
@@ -70,6 +73,8 @@
                 "y": 540.0,
                 "z": 0.0
             }
-        }
+        },
+        "windowHeight": 720,
+        "windowWidth": 1280
     }
 }

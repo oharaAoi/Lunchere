@@ -207,6 +207,7 @@ void Engine::InitEditor() {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 void Engine::Finalize() {
+	AssetsManager::GetInstance()->Finalize();
 	canvas2d_.reset();
 	blendTexture_.reset();
 	postProcess_->Finalize();
@@ -237,6 +238,7 @@ bool Engine::ProcessMessage() {
 void Engine::BeginFrame() {
 	dxCommon_->Begin();
 	input_->Update();
+	AssetsManager::GetInstance()->Update();
 
 	if (Input::IsTriggerKey(DIK_F11)) {
 		isFullScreen_ = !isFullScreen_;
@@ -472,6 +474,13 @@ std::unique_ptr<AOENGINE::Model> Engine::CreateModel(const std::string& director
 	return model;
 }
 
+void Engine::ReloadModel(AOENGINE::Model* model, const std::string& directoryPath, const std::string& filePath) {
+	if (model == nullptr) {
+		return;
+	}
+	model->Init(dxDevice_, directoryPath, filePath);
+}
+
 std::unique_ptr<Skinning> Engine::CreateSkinning(AOENGINE::Skeleton* skeleton, AOENGINE::Model* model, uint32_t index) {
 	std::unique_ptr<Skinning> result = std::make_unique<Skinning>();
 	result->CreateSkinCluster(dxDevice_, skeleton, model->GetMesh(index), dxHeap_, model->GetSkinClustersData(index));
@@ -521,6 +530,14 @@ void Engine::SetSkinning(Skinning* skinning) {
 Pipeline* Engine::SetPipelineCS(const std::string& jsonFile) {
 	computeShaderPipelines_->SetPipeline(dxCmdList_, jsonFile);
 	return computeShaderPipelines_->GetLastUsedPipeline();
+}
+
+void Engine::ReloadPipeline(PSOType type, const std::string& directoryPath, const std::string& filePath) {
+	graphicsPipeline_->LoadFile(directoryPath, filePath, type);
+}
+
+void Engine::ReloadPipelineCS(const std::string& directoryPath, const std::string& filePath) {
+	computeShaderPipelines_->LoadFile(directoryPath, filePath);
 }
 
 AOENGINE::Canvas2d* Engine::GetCanvas2d() {

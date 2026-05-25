@@ -31,7 +31,7 @@ public: // public method
 	/// </summary>
 	/// <param name="directoryPath"></param>
 	/// <param name="modelName"></param>
-	void LoadModel(const std::string& directoryPath, const std::string& modelName);
+	void LoadModel(const std::string& directoryPath, const std::string& modelName, bool _forceReload = false);
 
 	/// <summary>
 	/// idからモデルを探す

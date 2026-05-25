@@ -1,5 +1,6 @@
 #include "MeshManager.h"
 #include "Engine/System/Manager/ImGuiManager.h"
+#include <algorithm>
 
 using namespace AOENGINE;
 
@@ -98,6 +99,21 @@ bool MeshManager::ExistMesh(const std::string& modelName) {
 	} else {
 		return true;
 	}
+}
+
+void MeshManager::RemoveMeshes(const std::string& modelName) {
+	auto it = meshArrayMap_.find(modelName);
+	if (it == meshArrayMap_.end()) {
+		return;
+	}
+
+	for (const MeshPair& meshPair : it->second.meshArray) {
+		meshMap_.erase(meshPair.meshName);
+		std::erase(meshNameList_, meshPair.meshName);
+	}
+
+	meshArrayMap_.erase(it);
+	std::erase(modelNameList_, modelName);
 }
 
 std::string MeshManager::SelectMeshName() {

@@ -74,6 +74,12 @@ public:
 	bool ExistMesh(const std::string& modelName);
 
 	/// <summary>
+	/// Modelに紐づくMeshを削除する
+	/// </summary>
+	/// <param name="modelName"></param>
+	void RemoveMeshes(const std::string& modelName);
+
+	/// <summary>
 	/// Mesh単体の取得
 	/// </summary>
 	/// <param name="meshName"></param>

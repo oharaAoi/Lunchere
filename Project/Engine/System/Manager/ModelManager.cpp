@@ -1,5 +1,6 @@
 #include "ModelManager.h"
 #include "Engine/Utilities/Logger.h"
+#include "Engine/System/Manager/MeshManager.h"
 
 using namespace AOENGINE;
 
@@ -22,8 +23,13 @@ void ModelManager::Finalize() {
 // ↓ モデルの読み込み
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-void ModelManager::LoadModel(const std::string& directoryPath, const std::string& modelName) {
+void ModelManager::LoadModel(const std::string& directoryPath, const std::string& modelName, bool _forceReload) {
 	if (auto it = modelMap_.find(modelName); it != modelMap_.end()) {
+		if (_forceReload) {
+			MeshManager::GetInstance()->RemoveMeshes(modelName);
+			modelPathMap_[modelName] = directoryPath;
+			Engine::ReloadModel(it->second.get(), directoryPath, modelName);
+		}
 		return;
 	}
 	modelPathMap_.try_emplace(modelName, directoryPath);

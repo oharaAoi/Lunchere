@@ -19,11 +19,14 @@ void SoundDatabase::Init() {
 	audioLoadData_.clear();
 }
 
-void SoundDatabase::AddMap(const std::string& directoryPath, const std::string& fileName) {
+void SoundDatabase::AddMap(const std::string& directoryPath, const std::string& fileName, bool _forceReload) {
 	std::string name = directoryPath + fileName;
 	AOENGINE::Logger::Log("[Load][Audio] :" + fileName);
 	if (auto it = audioLoadData_.find(fileName); it != audioLoadData_.end()) {
-		return;
+		if (!_forceReload) {
+			return;
+		}
+		audioLoadData_.erase(it);
 	}
 	AOENGINE::Logger::Log(" --- success!\n");
 
@@ -37,6 +40,6 @@ SoundData SoundDatabase::GetAudioData(const std::string& fileName) {
 	return audioLoadData_[fileName];
 }
 
-void SoundDatabase::LoadAudio(const std::string& directoryPath, const std::string& fileName) {
-	GetInstance()->AddMap(directoryPath, fileName);
+void SoundDatabase::LoadAudio(const std::string& directoryPath, const std::string& fileName, bool _forceReload) {
+	GetInstance()->AddMap(directoryPath, fileName, _forceReload);
 }

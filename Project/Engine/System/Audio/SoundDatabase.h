@@ -27,7 +27,7 @@ public:
 	/// </summary>
 	/// <param name="directoryPath"></param>
 	/// <param name="fileName"></param>
-	void AddMap(const std::string& directoryPath, const std::string& fileName);
+	void AddMap(const std::string& directoryPath, const std::string& fileName, bool _forceReload = false);
 
 	/// <summary>
 	/// Audioを構成するデータを取得
@@ -41,7 +41,7 @@ public:
 	/// </summary>
 	/// <param name="directoryPath"></param>
 	/// <param name="fileName"></param>
-	static void LoadAudio(const std::string& directoryPath, const std::string& fileName);
+	static void LoadAudio(const std::string& directoryPath, const std::string& fileName, bool _forceReload = false);
 
 private:
 

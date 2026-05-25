@@ -5,8 +5,28 @@
 #include "Engine/Utilities/Loader.h"
 #include "Engine/Utilities/Convert.h"
 #include "Engine/Utilities/ConvertDDS.h"
+#include <cctype>
+#include <sstream>
 
 using namespace AOENGINE;
+
+namespace {
+
+std::string ToHRESULTString(HRESULT hr) {
+	std::ostringstream stream;
+	stream << "0x" << std::hex << static_cast<unsigned long>(hr);
+	return stream.str();
+}
+
+std::string ToLowerExtension(const std::filesystem::path& path) {
+	std::string extension = path.extension().string();
+	std::transform(extension.begin(), extension.end(), extension.begin(), [](unsigned char c) {
+		return static_cast<char>(std::tolower(c));
+				   });
+	return extension;
+}
+
+}
 
 TextureManager* AOENGINE::TextureManager::GetInstance() {
 	static TextureManager instance;
@@ -45,14 +65,14 @@ void TextureManager::Init(ID3D12Device* _dxDevice, ID3D12GraphicsCommandList* _c
 // 読み込み処理
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-void TextureManager::LoadStack() {
+void TextureManager::LoadStack(bool _forceReload) {
 	// 画像ファイルをddsに変換する
 #ifdef _DEBUG
 	AOENGINE::Logger::CommentLog("Conversion Image To DDS");
 	ConvertAllTexturesFromStack(loadStack_, L"./Project/Packages/Converter/convert.ps1", "./Project/Packages/Converter/ConvertedDDS/");
 #endif
 	// ddsファイルを読み込む
-	LoadFileDDS("./Project/Packages/Converter/ConvertedDDS/");
+	LoadFileDDS("./Project/Packages/Converter/ConvertedDDS/", _forceReload);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,20 +87,25 @@ void TextureManager::StackTexture(const std::string& directoryPath, const std::s
 // Textureを読み込む
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-void TextureManager::LoadTextureFile(const std::string& directoryPath, const std::string& filePath) {
-	// 一度読み込んだファイルか確認する
-	auto it = textureData_.find(filePath);
-	if (it != textureData_.end()) {
-		return;
-	}
+bool TextureManager::LoadTextureFile(const std::string& directoryPath, const std::string& filePath, bool _forceReload) {
+	std::filesystem::path texturePath = filePath;
+	std::string textureKey = texturePath.stem().string();
 
-	// 配列に格納しておく
-	fileNames_.push_back(filePath);
+	// 一度読み込んだファイルか確認する
+	auto it = textureData_.find(textureKey);
+	if (it != textureData_.end()) {
+		if (!_forceReload) {
+			return true;
+		}
+	}
 
 	AOENGINE::Logger::Log("[Load][Texture] :" + filePath);
 	TextureData data{};
 
-	DirectX::ScratchImage mipImage = LoadMipImage(directoryPath, filePath);
+	DirectX::ScratchImage mipImage{};
+	if (!LoadMipImage(directoryPath, filePath, mipImage)) {
+		return false;
+	}
 	const DirectX::TexMetadata& metadata = mipImage.GetMetadata();
 
 	// resourceDescの作成
@@ -121,28 +146,78 @@ void TextureManager::LoadTextureFile(const std::string& directoryPath, const std
 	// 配列に入れる
 	// 生成
 	device_->CreateShaderResourceView(data.resource_->GetCompResource().Get(), &srvDesc, data.resource_->GetSRV().handleCPU);
-	std::filesystem::path path = filePath;
-	textureData_[path.stem().string()] = std::move(data);
+
+	if (it != textureData_.end()) {
+		it->second.resource_->Destroy();
+		it->second.intermediateResource_.Reset();
+		textureData_.erase(it);
+	}
+
+	// 配列に格納しておく
+	auto nameIt = std::find_if(fileNames_.begin(), fileNames_.end(), [&textureKey](const std::string& name) {
+		return std::filesystem::path(name).stem().string() == textureKey;
+							   });
+	if (nameIt == fileNames_.end()) {
+		fileNames_.push_back(filePath);
+	} else {
+		*nameIt = filePath;
+	}
+
+	textureData_[textureKey] = std::move(data);
 	AOENGINE::Logger::Log(" --- success!\n");
+	return true;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Textureアセットを読み込む
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+bool TextureManager::LoadTextureAsset(const std::string& directoryPath, const std::string& filePath, bool _forceReload) {
+	std::filesystem::path texturePath = filePath;
+	std::string extension = ToLowerExtension(texturePath);
+
+	if (extension == ".dds") {
+		return LoadTextureFile(directoryPath, filePath, _forceReload);
+	}
+
+#ifdef _DEBUG
+	std::stack<TexturePath> stack;
+	stack.push(TexturePath{ directoryPath, filePath });
+	ConvertAllTexturesFromStack(stack, L"./Project/Packages/Converter/convert.ps1", "./Project/Packages/Converter/ConvertedDDS/");
+
+	std::filesystem::path convertedPath = std::filesystem::path("./Project/Packages/Converter/ConvertedDDS/") / (texturePath.stem().string() + ".dds");
+	if (std::filesystem::exists(convertedPath)) {
+		if (LoadTextureFile(convertedPath.parent_path().string() + "/", convertedPath.filename().string(), _forceReload)) {
+			return true;
+		}
+		AOENGINE::Logger::Log("[Load][Texture] Converted DDS load failed. Try source texture: " + filePath);
+	}
+#endif
+
+	return LoadTextureFile(directoryPath, filePath, _forceReload);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Textrueデータを読む
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-DirectX::ScratchImage TextureManager::LoadMipImage(const std::string& directoryPath, const std::string& filePath) {
+bool TextureManager::LoadMipImage(const std::string& directoryPath, const std::string& filePath, DirectX::ScratchImage& outMipImage) {
 	DirectX::ScratchImage image{};
-	std::wstring filePathW = ConvertWString(directoryPath + filePath);
-	HRESULT hr;
-	// より安全な方法で行うべき
-	if (filePathW.ends_with(L".dds")) {
+	std::filesystem::path fullPath = std::filesystem::path(directoryPath) / filePath;
+	std::wstring filePathW = fullPath.wstring();
+	HRESULT hr = E_FAIL;
+	// 拡張子に応じてDDS/WICの読み込み処理を切り替える
+	if (ToLowerExtension(fullPath) == ".dds") {
 		hr = DirectX::LoadFromDDSFile(filePathW.c_str(), DirectX::DDS_FLAGS_NONE, nullptr, image);
 	} else {
 		hr = DirectX::LoadFromWICFile(filePathW.c_str(), DirectX::WIC_FLAGS_FORCE_SRGB, nullptr, image);
 	}
-	assert(SUCCEEDED(hr));
+	if (FAILED(hr)) {
+		AOENGINE::Logger::Log("[Load][Texture] Failed to load image: " + (directoryPath + filePath) + " hr=" + ToHRESULTString(hr));
+		return false;
+	}
 
-	// ミニマップの作成
+	// mipmapを作成する
 	DirectX::ScratchImage mipImages{};
 	if (DirectX::IsCompressed(image.GetMetadata().format)) {
 		mipImages = std::move(image);
@@ -150,9 +225,13 @@ DirectX::ScratchImage TextureManager::LoadMipImage(const std::string& directoryP
 		hr = DirectX::GenerateMipMaps(image.GetImages(), image.GetImageCount(), image.GetMetadata(), DirectX::TEX_FILTER_SRGB, 4, mipImages);
 	}
 	
-	assert(SUCCEEDED(hr));
+	if (FAILED(hr)) {
+		AOENGINE::Logger::Log("[Load][Texture] Failed to generate mipmaps: " + (directoryPath + filePath) + " hr=" + ToHRESULTString(hr));
+		return false;
+	}
 
-	return mipImages;
+	outMipImage = std::move(mipImages);
+	return true;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -443,8 +522,7 @@ void AOENGINE::TextureManager::ConvertAllTexturesFromStack(std::stack<TexturePat
 		stack.pop();
 
 		if (tp.fileName.find(' ') != std::string::npos) {
-			std::string message = "Textureの名前に空白が含まれているため読み込めません(" + tp.fileName + ")";
-			AOENGINE::Logger::AssertLog(message);
+			AOENGINE::Logger::Log("[Load][Texture] Warning: Texture file name contains spaces. " + tp.fileName);
 		}
 
 		std::string fullPath = tp.directory;
@@ -482,7 +560,7 @@ void AOENGINE::TextureManager::ConvertAllTexturesFromStack(std::stack<TexturePat
 // DDSファイルを読み込む
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-void AOENGINE::TextureManager::LoadFileDDS(const std::filesystem::path& folderPath) {
+void AOENGINE::TextureManager::LoadFileDDS(const std::filesystem::path& folderPath, bool _forceReload) {
 	if (!std::filesystem::exists(folderPath) || !std::filesystem::is_directory(folderPath)) {
 		std::cerr << "フォルダが存在しません: " << folderPath << std::endl;
 		return;
@@ -492,7 +570,7 @@ void AOENGINE::TextureManager::LoadFileDDS(const std::filesystem::path& folderPa
 		if (entry.is_regular_file()) {
 			const std::filesystem::path& filePath = entry.path();
 			std::cout << "ファイル: " << filePath << std::endl;
-			LoadTextureFile(filePath.parent_path().string() + "/", filePath.filename().string());
+			LoadTextureFile(filePath.parent_path().string() + "/", filePath.filename().string(), _forceReload);
 		}
 	}
 }

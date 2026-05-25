@@ -64,21 +64,29 @@ public:
 	/// <summary>
 	/// Stackに入っているTextureをすべて読み込む
 	/// </summary>
-	void LoadStack();
+	void LoadStack(bool _forceReload = false);
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="directoryPath"></param>
 	/// <param name="filePath"></param>
-	void LoadTextureFile(const std::string& directoryPath, const std::string& filePath);
+	bool LoadTextureFile(const std::string& directoryPath, const std::string& filePath, bool _forceReload = false);
+
+	/// <summary>
+	/// アセットとしてTextureを読み込む
+	/// </summary>
+	/// <param name="directoryPath"></param>
+	/// <param name="filePath"></param>
+	/// <param name="_forceReload"></param>
+	bool LoadTextureAsset(const std::string& directoryPath, const std::string& filePath, bool _forceReload = false);
 
 	/// <summary>
 	/// Textrueデータを読む
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	DirectX::ScratchImage LoadMipImage(const std::string& directoryPath, const std::string& filePath);
+	bool LoadMipImage(const std::string& directoryPath, const std::string& filePath, DirectX::ScratchImage& outMipImage);
 
 	/// <summary>
 	/// TextureResourceにデータを転送する
@@ -143,7 +151,7 @@ private:
 	/// DDSファイルを読み込む
 	/// </summary>
 	/// <param name="folderPath"></param>
-	void LoadFileDDS(const std::filesystem::path& folderPath);
+	void LoadFileDDS(const std::filesystem::path& folderPath, bool _forceReload = false);
 
 public:
 

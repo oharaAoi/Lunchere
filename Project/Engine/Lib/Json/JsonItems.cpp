@@ -124,7 +124,7 @@ void JsonItems::AddGroup(const std::string& _groupName, const json& _jsonData) {
 		rootKey = _jsonData.begin().key();
 	}
 	
-	jsonMap_[_groupName].items.emplace(rootKey, _jsonData);
+	jsonMap_[_groupName].items[rootKey] = _jsonData;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

@@ -3,7 +3,7 @@
         "path": "./Project/Packages\\Game\\GameData\\BehaviorTree"
     },
     "openDir": {
-        "./Project/Packages": true,
+        "./Project/Packages": false,
         "./Project/Packages/": false,
         "./Project/Packages/Engine": false,
         "./Project/Packages/Game": true,

@@ -110,6 +110,8 @@ public:
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// モデルのポインタを作成
 	static std::unique_ptr<AOENGINE::Model> CreateModel(const std::string& directoryPath, const std::string& filePath);
+	// Modelを再読み込みする
+	static void ReloadModel(AOENGINE::Model* model, const std::string& directoryPath, const std::string& filePath);
 	// Skinningの作成
 	static std::unique_ptr<AOENGINE::Skinning> CreateSkinning(AOENGINE::Skeleton* skeleton, AOENGINE::Model* model, uint32_t index);
 
@@ -119,6 +121,8 @@ public:
 
 	static AOENGINE::Pipeline* SetPipeline(PSOType type, const std::string& typeName);
 	static AOENGINE::Pipeline* SetPipelineCS(const std::string& jsonFile);
+	static void ReloadPipeline(PSOType type, const std::string& directoryPath, const std::string& filePath);
+	static void ReloadPipelineCS(const std::string& directoryPath, const std::string& filePath);
 
 	static AOENGINE::Pipeline* GetLastUsedPipeline();
 	static AOENGINE::Pipeline* GetLastUsedPipelineCS();

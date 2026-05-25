@@ -52,11 +52,15 @@ void ComputeShaderPipelines::Load(const std::string& _path) {
 				std::string directory = entry.path().parent_path().string();
 				std::string fileName = entry.path().filename().string();
 
-				computeShaderPipeline_->AddPipeline(fileName, LoadJson(directory, fileName));
+				LoadFile(directory, fileName);
 			}
 		}
 
 	}
+}
+
+void ComputeShaderPipelines::LoadFile(const std::string& _directory, const std::string& _fileName) {
+	computeShaderPipeline_->AddPipeline(_fileName, LoadJson(_directory, _fileName));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -59,6 +59,14 @@ public :
 	void Load(const std::string& _path, PSOType _type);
 
 	/// <summary>
+	/// 指定したjsonファイルを読み込む
+	/// </summary>
+	/// <param name="directory">: ディレクトリパス</param>
+	/// <param name="fileName">: ファイル名</param>
+	/// <param name="type">: パイプラインのタイプ</param>
+	void LoadFile(const std::string& _directory, const std::string& _fileName, PSOType _type);
+
+	/// <summary>
 	/// jsonデータ読み込み
 	/// </summary>
 	/// <param name="directory">: ディレクトリパス</param>

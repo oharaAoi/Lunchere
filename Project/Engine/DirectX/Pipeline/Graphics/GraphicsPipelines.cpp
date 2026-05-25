@@ -71,26 +71,29 @@ void GraphicsPipelines::Load(const std::string& _path, PSOType _type) {
 			if (ext == ".json") {
 				std::string directory = entry.path().parent_path().string();
 				std::string fileName = entry.path().filename().string();
-				
-				switch (_type) {
-				case PSOType::Object3d:
-					obj3dPipeline_->AddPipeline(fileName, LoadJson(directory, fileName));
-					break;
-				case PSOType::Sprite:
-					spritePipeline_->AddPipeline(fileName, LoadJson(directory, fileName));
-					break;
-				case PSOType::ProcessedScene:
-					processedScenePipeline_->AddPipeline(fileName, LoadJson(directory, fileName));
-					break;
-				case PSOType::Primitive:
-					primitivePipeline_->AddPipeline(fileName, LoadJson(directory, fileName));
-					break;
-				default:
-					break;
-				}
+				LoadFile(directory, fileName, _type);
 			}
 		}
 
+	}
+}
+
+void GraphicsPipelines::LoadFile(const std::string& _directory, const std::string& _fileName, PSOType _type) {
+	switch (_type) {
+	case PSOType::Object3d:
+		obj3dPipeline_->AddPipeline(_fileName, LoadJson(_directory, _fileName));
+		break;
+	case PSOType::Sprite:
+		spritePipeline_->AddPipeline(_fileName, LoadJson(_directory, _fileName));
+		break;
+	case PSOType::ProcessedScene:
+		processedScenePipeline_->AddPipeline(_fileName, LoadJson(_directory, _fileName));
+		break;
+	case PSOType::Primitive:
+		primitivePipeline_->AddPipeline(_fileName, LoadJson(_directory, _fileName));
+		break;
+	default:
+		break;
 	}
 }
 
