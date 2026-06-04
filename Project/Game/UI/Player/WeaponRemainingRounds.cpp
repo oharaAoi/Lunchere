@@ -8,6 +8,7 @@ void WeaponRemainingRounds::Init(const std::string& _name) {
 	gauge_ = canvas->AddSprite("white.png", "WeaponRemainingRounds");
 	gauge_->ReSetTexture("white.png");
 	gauge_->Load("PlayerUIs", _name);
+	gauge_->SetIsActive(true);
 	
 	colorAnimation_.Init(Colors::Linear::red, Colors::Linear::white, kAnimationDuration_, (int)EasingType::None::Liner, LoopType::Return);
 	timer_ = 0;

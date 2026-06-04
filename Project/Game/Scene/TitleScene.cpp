@@ -35,6 +35,9 @@ void TitleScene::Init() {
 	fadePanel_->Init();
 	fadePanel_->SetBlackOutOpen();
 
+	titleUIs_ = std::make_unique<TitleUIs>();
+	titleUIs_->Init();
+
 	ChangeBehavior(new TitlePushSpaceBehavior(this));
 
 	AOENGINE::DirectionalLight* light = AOENGINE::Render::GetLightGroup()->GetDirectionalLight();
@@ -47,6 +50,8 @@ void TitleScene::Update() {
 	fadePanel_->Update();
 
 	titleBehavior_->Update();
+
+	titleUIs_->Update();
 
 	// -------------------------------------------------
 	// ↓ cameraの更新 

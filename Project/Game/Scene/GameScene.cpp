@@ -83,6 +83,7 @@ void GameScene::Init() {
 
 	fadePanel_ = std::make_unique<FadePanel>();
 	fadePanel_->Init();
+	fadePanel_->SetBlackOutOpen(0.5f);
 	
 	ChangeBehavior(new GamePlayBehavior(this));
 
@@ -119,6 +120,8 @@ void GameScene::Update() {
 	// ↓ spriteの更新
 	// -------------------------------------------------
 	canvas_->Update();
+
+	fadePanel_->Update();
 
 	if (canvas_->IsFinishClearNotification()) {
 		fadePanel_->SetBlackOut(3.0f);

@@ -223,7 +223,7 @@ void PlayerActionMove::Move() {
 
 		// 横成分を減衰（重量感に合わせて 5〜10 程度）
 		side = Lerp(side, CVector3::ZERO, 5.0f * AOENGINE::GameTimer::DeltaTime());
-		velocity_ = forward * forwardMag + side;
+		velocity_ = (forward * forwardMag + side);
 	}
 
 	// ----------------------
@@ -231,7 +231,7 @@ void PlayerActionMove::Move() {
 	// ----------------------
 	float dot = Math::Vector2::Dot(preInputStick_, inputStick_);
 	if (dot < param_.turnAroundThreshold) {
-		velocity_ *= param_.turnSpeed;
+		velocity_ *= param_.turnSpeed * AOENGINE::GameTimer::DeltaTime();
 	}
 
 	// ----------------------
@@ -248,7 +248,7 @@ void PlayerActionMove::Move() {
 	// ----------------------
 	float length = velocity_.Length();
 	if (length > param_.maxSpeed) {
-		velocity_ = velocity_.Normalize() * param_.maxSpeed;
+		velocity_ = velocity_.Normalize() * param_.maxSpeed * AOENGINE::GameTimer::DeltaTime();
 	}
 
 	// Rigidbodyへ適用

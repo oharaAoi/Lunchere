@@ -10,6 +10,7 @@ void TitleUIs::Init() {
 	SetName("TitleUIs");
 	gameTitle_ = Engine::GetCanvas2d()->AddSprite("title.png", "title");
 	gameTitle_->Load("TitleUI", "title");
+	gameTitle_->SetIsActive(true);
 	
 	AddChild(gameTitle_);
 	AOENGINE::EditorWindows::AddObjectWindow(this, GetName());

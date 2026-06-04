@@ -9,6 +9,7 @@
 //ui
 #include "Game/UI/FadePanel.h"
 #include "Game/UI/Guide/GameModeGuide.h"
+#include "Game/UI/TitleUIs.h"
 
 // クラスの前方宣言
 class ITitleBahavior;
@@ -41,6 +42,8 @@ private:
 
 	// ------------------- actor ------------------- //
 	std::unique_ptr<FadePanel> fadePanel_;
+
+	std::unique_ptr<TitleUIs> titleUIs_;
 
 	std::unique_ptr<ITitleBahavior> titleBehavior_;
 };
