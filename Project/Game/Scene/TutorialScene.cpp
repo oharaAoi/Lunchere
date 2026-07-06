@@ -94,7 +94,7 @@ void TutorialScene::Init() {
 	// -------------------------------------------------
 	// ↓ その他設定
 	// -------------------------------------------------
-	ChangeBehavior(new TutorialMoveBehavior(this));
+	ChangeBehavior(std::make_unique<TutorialMoveBehavior>(this));
 
 	Player* pPlayer = playerManager_->GetPlayer();
 	pPlayer->SetFollowCamera(followCamera_.get());
@@ -166,8 +166,8 @@ void TutorialScene::PostUpdate() {
 // ↓　behaviorの更新
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-void TutorialScene::ChangeBehavior(ITutorialBehavior* _newBehavior) {
-	tutorialBehavior_.reset(_newBehavior);
+void TutorialScene::ChangeBehavior(std::unique_ptr<ITutorialBehavior> _newBehavior) {
+	tutorialBehavior_ = std::move(_newBehavior);
 	if (tutorialBehavior_) {
 		tutorialBehavior_->Init();
 	}

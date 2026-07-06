@@ -27,7 +27,7 @@ public:
 	void Init() override;
 	void Update() override;
 
-	void ChangeBehavior(ITitleBahavior* _newBehavior);
+	void ChangeBehavior(std::unique_ptr<ITitleBahavior> _newBehavior);
 
 	FadePanel* GetFadePanel() const { return fadePanel_.get(); }
 

@@ -37,7 +37,7 @@ void TutorialMoveBehavior::Update() {
 
 	if (isNext_) {
 		if (host_->tutorialMissionGauge_->GetIsSuccessFinish()) {
-			host_->ChangeBehavior(new TutorialJumpBehavior(host_));
+			host_->ChangeBehavior(std::make_unique<TutorialJumpBehavior>(host_));
 			return;
 		}
 	}
@@ -79,7 +79,7 @@ void TutorialJumpBehavior::Update() {
 
 	if (isNext_) {
 		if (host_->tutorialMissionGauge_->GetIsSuccessFinish()) {
-			host_->ChangeBehavior(new TutorialBoostBehavior(host_));
+			host_->ChangeBehavior(std::make_unique<TutorialBoostBehavior>(host_));
 			return;
 		}
 	}
@@ -125,7 +125,7 @@ void TutorialBoostBehavior::Update() {
 
 	if (isNext_) {
 		if (host_->tutorialMissionGauge_->GetIsSuccessFinish()) {
-			host_->ChangeBehavior(new TutorialLockOnBehavior(host_));
+			host_->ChangeBehavior(std::make_unique<TutorialLockOnBehavior>(host_));
 			return;
 		}
 	}
@@ -161,7 +161,7 @@ void TutorialLockOnBehavior::Update() {
 
 	if (isNext_) {
 		if (host_->tutorialMissionGauge_->GetIsSuccessFinish()) {
-			host_->ChangeBehavior(new TutorialAttackBehavior(host_));
+			host_->ChangeBehavior(std::make_unique<TutorialAttackBehavior>(host_));
 			return;
 		}
 	}
@@ -197,7 +197,7 @@ void TutorialAttackBehavior::Update() {
 
 	if (isNext_) {
 		if (host_->tutorialMissionGauge_->GetIsSuccessFinish()) {
-			host_->ChangeBehavior(new TutorialFreeModeBehavior(host_));
+			host_->ChangeBehavior(std::make_unique<TutorialFreeModeBehavior>(host_));
 			return;
 		}
 	}

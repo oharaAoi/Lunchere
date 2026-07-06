@@ -35,7 +35,7 @@ public:
 
 private:
 
-	void ChangeBehavior(IGameSceneBehavior* _newBehavior);
+	void ChangeBehavior(std::unique_ptr<IGameSceneBehavior> _newBehavior);
 
 	void CharacterUpdate();
 	

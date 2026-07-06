@@ -38,7 +38,7 @@ void TitleScene::Init() {
 	titleUIs_ = std::make_unique<TitleUIs>();
 	titleUIs_->Init();
 
-	ChangeBehavior(new TitlePushSpaceBehavior(this));
+	ChangeBehavior(std::make_unique<TitlePushSpaceBehavior>(this));
 
 	AOENGINE::DirectionalLight* light = AOENGINE::Render::GetLightGroup()->GetDirectionalLight();
 	light->SetIntensity(0.3f);
@@ -64,8 +64,8 @@ void TitleScene::Update() {
 	camera2d_->Update();
 }
 
-void TitleScene::ChangeBehavior(ITitleBahavior* _newBehavior) {
-	titleBehavior_.reset(_newBehavior);
+void TitleScene::ChangeBehavior(std::unique_ptr<ITitleBahavior> _newBehavior) {
+	titleBehavior_ = std::move(_newBehavior);
 	if (titleBehavior_) {
 		titleBehavior_->Init();
 	}
@@ -87,7 +87,7 @@ void TitlePushSpaceBehavior::Update() {
 		}
 	} else {
 		if (host_->GetFadePanel()->GetIsFinished()) {
-			host_->ChangeBehavior(new TitleGameModeGuideBehavior(host_));
+			host_->ChangeBehavior(std::make_unique<TitleGameModeGuideBehavior>(host_));
 		}
 	}
 }

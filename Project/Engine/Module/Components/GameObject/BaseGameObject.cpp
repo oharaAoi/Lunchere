@@ -280,7 +280,7 @@ void BaseGameObject::SetParent(BaseGameObject* parent) {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 void BaseGameObject::SetAnimator(const std::string& directoryPath, const std::string& objName, bool isSkinning, bool isLoop, bool isControlScript) {
-	animetor_.reset(new Animator);
+	animetor_ = std::make_unique<Animator>();
 	animetor_->LoadAnimation(directoryPath, objName, model_, isSkinning, isLoop, isControlScript);
 }
 

@@ -41,7 +41,7 @@ public:
 	
 private:
 
-	void ChangeBehavior(ITutorialBehavior* _newBehavior);
+	void ChangeBehavior(std::unique_ptr<ITutorialBehavior> _newBehavior);
 
 	void ToGameScene();
 

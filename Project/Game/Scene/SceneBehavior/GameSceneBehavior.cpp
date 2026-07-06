@@ -14,7 +14,7 @@ void GamePlayBehavior::Update() {
 
 	AOENGINE::Input* input = AOENGINE::Input::GetInstance();
 	if (input->IsTriggerButton(XInputButtons::Start)) {
-		host_->ChangeBehavior(new GameMenuBehavior(host_));
+		host_->ChangeBehavior(std::make_unique<GameMenuBehavior>(host_));
 
 		AOENGINE::GameTimer::SetTimeScale(0.0f);
 	}
@@ -37,7 +37,7 @@ void GameMenuBehavior::Update() {
 		host_->SetNextSceneType(SceneType::Title);
 		AOENGINE::GameTimer::SetTimeScale(1.0f);
 	} else if(item == GameMenuSelectItem::Go_Game) {
-		host_->ChangeBehavior(new GamePlayBehavior(host_));
+		host_->ChangeBehavior(std::make_unique<GamePlayBehavior>(host_));
 		AOENGINE::GameTimer::SetTimeScale(1.0f);
 	}
 }

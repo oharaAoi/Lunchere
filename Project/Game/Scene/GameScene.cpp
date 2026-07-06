@@ -85,7 +85,7 @@ void GameScene::Init() {
 	fadePanel_->Init();
 	fadePanel_->SetBlackOutOpen(0.5f);
 	
-	ChangeBehavior(new GamePlayBehavior(this));
+	ChangeBehavior(std::make_unique<GamePlayBehavior>(this));
 
 	// -------------------------------------------------
 	// ↓ その他設定
@@ -163,8 +163,8 @@ void GameScene::PostUpdate() {
 	canvas_->PostUpdate();
 }
 
-void GameScene::ChangeBehavior(IGameSceneBehavior* _newBehavior) {
-	gameSceneBehavior_.reset(_newBehavior);
+void GameScene::ChangeBehavior(std::unique_ptr<IGameSceneBehavior> _newBehavior) {
+	gameSceneBehavior_ = std::move(_newBehavior);
 	if (gameSceneBehavior_) {
 		gameSceneBehavior_->Init();
 	}
