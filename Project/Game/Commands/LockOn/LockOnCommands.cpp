@@ -2,6 +2,7 @@
 #include "Engine/Render/Render.h"
 #include "Engine/Lib/Math/Vector2.h"
 #include "Engine/Lib/Math/Matrix4x4.h"
+#include <limits>
 
 LockOnCommand::LockOnCommand(EnemyManager* enemyManager, Reticle* reticle)
 	: pEnemyManager_(enemyManager), pReticle_(reticle) {
@@ -9,7 +10,7 @@ LockOnCommand::LockOnCommand(EnemyManager* enemyManager, Reticle* reticle)
 
 void LockOnCommand::Execute() {
 	// 最も距離が近い値を保持しておく
-	float mostNearDistance = 9999;
+	float mostNearDistance = (std::numeric_limits<float>::max)();
 
 	// reticleの座標
 	Math::Vector2 reticlePos = pReticle_->GetPos();

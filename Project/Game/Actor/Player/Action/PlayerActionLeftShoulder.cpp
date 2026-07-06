@@ -1,6 +1,10 @@
 #include "PlayerActionLeftShoulder.h"
 #include "Game/Actor/Player/Player.h"
 
+namespace {
+constexpr float kNoLockOnShotDistance = 200.0f;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 設定時のみ行う処理
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +79,6 @@ void PlayerActionLeftShoulder::Shot() {
 	if (pOwner_->GetIsLockOn()) {
 		pOwner_->Attack(PlayerWeapon::Left_Shoulder, AttackContext(dire, pOwner_->GetTargetPos()));
 	} else {
-		pOwner_->Attack(PlayerWeapon::Left_Shoulder, AttackContext(dire, dire * 200.0f));
+		pOwner_->Attack(PlayerWeapon::Left_Shoulder, AttackContext(dire, dire * kNoLockOnShotDistance));
 	}
 }

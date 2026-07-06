@@ -4,6 +4,10 @@
 #include "Game/Actor/Player/Player.h"
 #include "Game/Actor/Player/Action/PlayerActionMove.h"
 
+namespace {
+constexpr float kSpeedDecayRate = 0.9f;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 編集処理
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,7 +61,7 @@ void PlayerActionTurnAround::OnUpdate() {
 	float t = actionTimer_ / param_.rotateTime;
 	srt.rotate = Math::Quaternion::Slerp(prevRotate_, targetRotate_, t);
 	srt.translate += direction_ * speed_ * AOENGINE::GameTimer::DeltaTime();
-	speed_ *= 0.9f;
+	speed_ *= kSpeedDecayRate;
 
 	pOwner_->GetTransform()->SetSRT(srt);
 }

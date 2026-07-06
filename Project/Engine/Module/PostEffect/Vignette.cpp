@@ -5,6 +5,16 @@
 using namespace AOENGINE;
 using namespace PostEffect;
 
+namespace {
+constexpr AOENGINE::Color kDefaultColor{ 0.0f, 0.0f, 0.0f, 1.0f };
+constexpr float kDefaultScale = 16.0f;
+constexpr float kDefaultPower = 0.8f;
+constexpr float kMinScale = 0.0f;
+constexpr float kMaxScale = 20.0f;
+constexpr float kMinPower = 0.0f;
+constexpr float kMaxPower = 1.0f;
+}
+
 Vignette::~Vignette() {
 	settingBuffer_->Destroy();
 }
@@ -19,9 +29,9 @@ void Vignette::Init() {
 	settingBuffer_->CreateResource(sizeof(VignetteSetting));
 	settingBuffer_->GetResource()->Map(0, nullptr, reinterpret_cast<void**>(&setting_));
 
-	setting_->color = Color(0, 0, 0, 1.0f);
-	setting_->scale = 16.0f;
-	setting_->power = 0.8f;
+	setting_->color = kDefaultColor;
+	setting_->scale = kDefaultScale;
+	setting_->power = kDefaultPower;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,6 +102,6 @@ void Vignette::SaveSettings::Debug_Gui() {
 	ImGui::DragFloat("scale", &scale, 0.1f);
 	ImGui::DragFloat("power", &power, 0.01f);
 
-	scale = std::clamp(scale, 0.0f, 20.0f);
-	power = std::clamp(power, 0.0f, 1.0f);
+	scale = std::clamp(scale, kMinScale, kMaxScale);
+	power = std::clamp(power, kMinPower, kMaxPower);
 }

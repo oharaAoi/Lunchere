@@ -5,6 +5,10 @@
 #include <Game/Actor/Player/Action/PlayerActionJump.h>
 #include <Game/Actor/Player/Action/PlayerActionQuickBoost.h>
 
+namespace {
+constexpr float kJumpTriggerProgressRatio = 0.2f;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 移動のTutorial
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,7 +62,7 @@ void TutorialJumpBehavior::Update() {
 	AOENGINE::Input* input = AOENGINE::Input::GetInstance();
 	// 移動のアクションが実行されている間は時間を計測’する
 	if (input->IsTriggerButton(XInputButtons::ButtonA)) {
-		totalJumpTime_ += (targetValue_ * 0.2f);
+		totalJumpTime_ += (targetValue_ * kJumpTriggerProgressRatio);
 	}
 
 	if (input->IsPressButton(XInputButtons::ButtonA)) {

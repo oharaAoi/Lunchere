@@ -4,6 +4,11 @@
 #include "Engine/System/Manager/MeshManager.h"
 #include "Engine/System/Manager/TextureManager.h"
 
+namespace {
+constexpr float kSkyboxScale = 300.0f;
+constexpr float kSkyboxRotateY = 180.0f * kPI;
+}
+
 Skybox::~Skybox() {
 }
 
@@ -12,7 +17,7 @@ Skybox::~Skybox() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void Skybox::Init() {
-	cube_.Init(Math::Vector3(300,300,300));
+	cube_.Init(Math::Vector3(kSkyboxScale, kSkyboxScale, kSkyboxScale));
 	cube_.Inverse();
 
 	// meshの作成
@@ -30,7 +35,7 @@ void Skybox::Init() {
 	material_->Init();
 	transform_ = std::make_unique<AOENGINE::WorldTransform>();
 	transform_->Init();
-	transform_->SetRotate(Math::Quaternion::AngleAxis(180.0f * kPI, CVector3::UP));
+	transform_->SetRotate(Math::Quaternion::AngleAxis(kSkyboxRotateY, CVector3::UP));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -4,6 +4,10 @@
 #include "Engine/Module/PostEffect/PostProcess.h"
 #include "Engine/Render/Render.h"
 
+namespace {
+constexpr int kSkyboxRenderQueue = -999;
+}
+
 BaseScene::~BaseScene() {
 	pSceneRenderer_->Finalize();
 	collisionManager_->Finalize();
@@ -26,7 +30,7 @@ void BaseScene::LoadScene(const std::string& directory, const std::string& fileN
 	pSceneRenderer_->CreateObject(pSceneLoader_->GetLevelData());
 	AOENGINE::EditorWindows::GetInstance()->SetSceneRenderer(pSceneRenderer_);
 
-	skybox_ = AOENGINE::SceneRenderer::GetInstance()->AddObject<Skybox>("Skybox", "Object_Skybox.json", -999);
+	skybox_ = AOENGINE::SceneRenderer::GetInstance()->AddObject<Skybox>("Skybox", "Object_Skybox.json", kSkyboxRenderQueue);
 	AOENGINE::Render::SetSkyboxTexture(skybox_->GetTexture());
 
 	AOENGINE::EditorWindows::GetInstance()->AddObjectWindow(pSceneRenderer_, "sceneRenderer");

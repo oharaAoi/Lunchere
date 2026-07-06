@@ -4,6 +4,14 @@
 #include "Game/Actor/Boss/Bullet/BossMissile.h"
 #include "Game/UI/Boss/BossUIs.h"
 
+namespace {
+constexpr float kShotInterval = 0.2f;
+constexpr float kLaneOffsets[] = { 2.0f, -2.0f };
+constexpr float kBaseShotAngleDeg = 90.0f;
+constexpr float kShotAngleStepDeg = 10.0f;
+constexpr float kMissileDamage = 30.0f;
+}
+
 BehaviorStatus BossActionVerticalMissile::Execute() {
 	return Action();
 }
@@ -74,7 +82,7 @@ void BossActionVerticalMissile::Update() {
 	}
 
 	taskTimer_ += AOENGINE::GameTimer::DeltaTime();
-	if (taskTimer_ > 0.2f) {
+	if (taskTimer_ > kShotInterval) {
 		Shot();
 		taskTimer_ = 0.0f;
 	} 
@@ -91,11 +99,8 @@ void BossActionVerticalMissile::End() {
 void BossActionVerticalMissile::Shot() {
 	Math::Vector3 forward = pTarget_->GetTransform()->GetRotate().MakeForward();
 	Math::Vector3 right = pTarget_->GetTransform()->GetRotate().MakeRight();
-	Math::Vector3 up = pTarget_->GetTransform()->GetRotate().MakeUp(); // Y軸に限らず回転軸として使う
 
-	const float dx[2] = {2, -2};
-	
-	angle_ = 90.0f - (static_cast<float>(fireCount_) * 10.0f);
+	angle_ = kBaseShotAngleDeg - (static_cast<float>(fireCount_) * kShotAngleStepDeg);
 	angle_ *= -kToRadian;
 	// クォータニオンで回転を生成（up軸周りに角度回転）
 	Math::Quaternion rot = Math::Quaternion::AngleAxis(angle_, right);
@@ -103,13 +108,13 @@ void BossActionVerticalMissile::Shot() {
 	// 正面ベクトルを回転させて発射方向に
 	Math::Vector3 dir = rot.Rotate(forward);
 	
-	for (uint32_t i = 0; i < 2; i++) {
+	for (float laneOffset : kLaneOffsets) {
 		Math::Vector3 pos = pTarget_->GetTransform()->GetWorldPos() + (param_.fireRadius * dir);
-		pos += right * dx[i];
+		pos += right * laneOffset;
 		Math::Vector3 velocity = dir.Normalize() * param_.bulletSpeed;
 		BossMissile* missile = pTarget_->GetBulletManager()->AddBullet<BossMissile>(pos, velocity, pTarget_->GetTargetPos(),
 																					param_.bulletSpeed, param_.firstSpeedRaito, param_.trakingRaito, true);
-		missile->SetTakeDamage(30.0f);
+		missile->SetTakeDamage(kMissileDamage);
 	}
 
 	fireCount_++;

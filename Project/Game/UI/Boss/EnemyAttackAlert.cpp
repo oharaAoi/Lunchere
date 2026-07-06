@@ -4,6 +4,14 @@
 #include "Engine/System/Audio/AudioPlayer.h"
 #include "Engine/Lib/GameTimer.h"
 
+namespace {
+constexpr float kBackRotation = 180.0f * kToRadian;
+constexpr float kLeftRotation = 90.0f * kToRadian;
+constexpr float kRightRotation = -90.0f * kToRadian;
+constexpr float kAttackAlertVolume = 0.6f;
+constexpr float kCenterRatio = 0.5f;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 初期化処理
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,19 +29,19 @@ void EnemyAttackAlert::Init(AttackAlertDirection _dir) {
 		alert_->SetRotate(0);
 		break;
 	case AttackAlertDirection::Back:
-		alert_->SetRotate(180.f * kToRadian);
+		alert_->SetRotate(kBackRotation);
 		break;
 	case AttackAlertDirection::Left:
-		alert_->SetRotate(90.f * kToRadian);
+		alert_->SetRotate(kLeftRotation);
 		break;
 	case AttackAlertDirection::Right:
-		alert_->SetRotate(-90.f * kToRadian);
+		alert_->SetRotate(kRightRotation);
 		break;
 	default:
 		break;
 	}
 
-	AOENGINE::AudioPlayer::SingleShotPlay("attackAlertSE.mp3", 0.6f);
+	AOENGINE::AudioPlayer::SingleShotPlay("attackAlertSE.mp3", kAttackAlertVolume);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,8 +50,8 @@ void EnemyAttackAlert::Init(AttackAlertDirection _dir) {
 
 void EnemyAttackAlert::Update() {
 	centerPos_ = Math::Vector2(
-		static_cast<float>(AOENGINE::WinApp::sClientWidth) * 0.5f,
-		static_cast<float>(AOENGINE::WinApp::sClientHeight) * 0.5f
+		static_cast<float>(AOENGINE::WinApp::sClientWidth) * kCenterRatio,
+		static_cast<float>(AOENGINE::WinApp::sClientHeight) * kCenterRatio
 	);
 	alert_->SetTranslate(centerPos_);
 	alert_->SetScale(scale_);
@@ -82,7 +90,7 @@ void EnemyAttackAlert::Alert() {
 		blinkingCount_++;
 
 		if (isDraw_) {
-			AOENGINE::AudioPlayer::SingleShotPlay("attackAlertSE.mp3", 0.6f);
+			AOENGINE::AudioPlayer::SingleShotPlay("attackAlertSE.mp3", kAttackAlertVolume);
 		}
 	}
 }

@@ -6,6 +6,10 @@
 #include "Engine/Lib/GameTimer.h"
 #include "Game/Information/ColliderCategory.h"
 
+namespace {
+constexpr float kDebugShotDistance = 200.0f;
+}
+
 LaserBullet::~LaserBullet() {
 	BaseBullet::Finalize();
 }
@@ -26,7 +30,7 @@ void LaserBullet::Debug_Gui() {
 	if (ImGui::Button("shot")) {
 		isShot_ = true;
 		parentTransform_->SetScale(Math::Vector3(1, 1, 0.0f));
-		Reset(CVector3::ZERO, targetPos_, 200.0f);
+		Reset(CVector3::ZERO, targetPos_, kDebugShotDistance);
 	}
 }
 

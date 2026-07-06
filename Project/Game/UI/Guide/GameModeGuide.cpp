@@ -4,6 +4,13 @@
 #include "Engine/System/Editor/Window/EditorWindows.h"
 #include "Engine/System/Input/Input.h"
 
+namespace {
+constexpr int kGuideRenderQueue = 200;
+constexpr int kSelectRenderQueue = 1000;
+constexpr float kSelectCoolTime = 0.2f;
+constexpr float kSelectStickDeadZone = 0.5f;
+}
+
 GameModeGuide::GameModeGuide() = default;
 GameModeGuide::~GameModeGuide() = default;
 
@@ -14,9 +21,9 @@ GameModeGuide::~GameModeGuide() = default;
 void GameModeGuide::Init() {
 	SetName("GameModeGuide");
 	AOENGINE::Canvas2d* canvas = Engine::GetCanvas2d();
-	goGame_ = canvas->AddSprite("goGame.png", "goGame", 200);
-	goTutorial_ = canvas->AddSprite("goTutorial.png", "goTutorial", 200);
-	select_ = canvas->AddSprite("gradation.png", "select", 1000);
+	goGame_ = canvas->AddSprite("goGame.png", "goGame", kGuideRenderQueue);
+	goTutorial_ = canvas->AddSprite("goTutorial.png", "goTutorial", kGuideRenderQueue);
+	select_ = canvas->AddSprite("gradation.png", "select", kSelectRenderQueue);
 
 	goGame_->Load("Guide","goGame");
 	goTutorial_->Load("Guide","goTutorial");
@@ -30,7 +37,7 @@ void GameModeGuide::Init() {
 	AddChild(select_);
 
 	selectModeType_ = SelectModeType::ToTutorial;
-	selectModeIndex_ = 1;
+	selectModeIndex_ = static_cast<int>(SelectModeType::ToTutorial);
 	isOpen_ = false;
 	isSelectCoolTime_ = false;
 	timer_ = 0.0f;
@@ -50,7 +57,7 @@ void GameModeGuide::Update() {
 	} else {
 		timer_ += AOENGINE::GameTimer::DeltaTime();
 
-		if (timer_ >= 0.2f) {
+		if (timer_ >= kSelectCoolTime) {
 			isSelectCoolTime_ = false;
 			timer_ = 0.0f;
 		}
@@ -95,12 +102,12 @@ bool GameModeGuide::Decide() {
 bool GameModeGuide::Select() {
 	// 選択する
 	bool isSelect = false;
-	if (AOENGINE::Input::GetInstance()->IsTriggerButton(XInputButtons::DpadUp) || AOENGINE::Input::GetInstance()->GetLeftJoyStick(.5f).y > 0.0f) {
+	if (AOENGINE::Input::GetInstance()->IsTriggerButton(XInputButtons::DpadUp) || AOENGINE::Input::GetInstance()->GetLeftJoyStick(kSelectStickDeadZone).y > 0.0f) {
 		selectModeIndex_++;
 		isSelect = true;
 	}
 
-	if (AOENGINE::Input::GetInstance()->IsTriggerButton(XInputButtons::DpadDown) || AOENGINE::Input::GetInstance()->GetLeftJoyStick(.5f).y < 0.0f) {
+	if (AOENGINE::Input::GetInstance()->IsTriggerButton(XInputButtons::DpadDown) || AOENGINE::Input::GetInstance()->GetLeftJoyStick(kSelectStickDeadZone).y < 0.0f) {
 		selectModeIndex_--;
 		isSelect = true;
 	}

@@ -4,6 +4,10 @@
 #include "Engine/System/Audio/AudioPlayer.h"
 #include "Game/Actor/Weapon/Bullet/LauncherBullet.h"
 
+namespace {
+constexpr float kShotSeVolume = 0.08f;
+}
+
 void LauncherGun::Finalize() {
 }
 
@@ -56,7 +60,7 @@ bool LauncherGun::Attack(const AttackContext& cxt) {
 	gunFireParticles_->SetPos(pos);
 	gunFireParticles_->SetIsStop(false);
 
-	AOENGINE::AudioPlayer::SingleShotPlay("shotLauncher.mp3", 0.08f);
+	AOENGINE::AudioPlayer::SingleShotPlay("shotLauncher.mp3", kShotSeVolume);
 
 	AttackAfter();
 	return true;

@@ -2,6 +2,10 @@
 #include "Game/Information/ColliderCategory.h"
 #include "Engine/Lib/GameTimer.h"
 
+namespace {
+constexpr float kAliveAreaLimit = 200.0f;
+}
+
 FlamethrowerBullet::~FlamethrowerBullet() {
 	BaseBullet::Finalize();
 }
@@ -33,15 +37,15 @@ void FlamethrowerBullet::Init() {
 
 void FlamethrowerBullet::Update() {
 	Math::Vector3 pos = transform_->GetTranslate();
-	if (std::abs(pos.x) >= 200.0f) {
+	if (std::abs(pos.x) >= kAliveAreaLimit) {
 		isAlive_ = false;
 	}
 
-	if (std::abs(pos.y) >= 200.0f) {
+	if (std::abs(pos.y) >= kAliveAreaLimit) {
 		isAlive_ = false;
 	}
 
-	if (std::abs(pos.z) >= 200.0f) {
+	if (std::abs(pos.z) >= kAliveAreaLimit) {
 		isAlive_ = false;
 	}
 

@@ -3,6 +3,10 @@
 #include "Game/Information/ColliderCategory.h"
 #include "Engine/System/Manager/ParticleManager.h"
 
+namespace {
+constexpr float kAliveAreaLimit = 200.0f;
+}
+
 LauncherBullet::~LauncherBullet() {
 	BaseBullet::Finalize();
 	AOENGINE::ParticleManager::GetInstance()->DeleteParticles(burn_);
@@ -50,15 +54,15 @@ void LauncherBullet::Init() {
 
 void LauncherBullet::Update() {
 	Math::Vector3 pos = transform_->GetTranslate();
-	if (std::abs(pos.x) >= 200.0f) {
+	if (std::abs(pos.x) >= kAliveAreaLimit) {
 		isAlive_ = false;
 	}
 
-	if (std::abs(pos.y) >= 200.0f) {
+	if (std::abs(pos.y) >= kAliveAreaLimit) {
 		isAlive_ = false;
 	}
 
-	if (std::abs(pos.z) >= 200.0f) {
+	if (std::abs(pos.z) >= kAliveAreaLimit) {
 		isAlive_ = false;
 	}
 

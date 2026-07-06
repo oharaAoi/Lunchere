@@ -11,6 +11,10 @@
 
 using namespace AOENGINE;
 
+namespace {
+constexpr size_t kMaxBehaviorTreeLogFileCount = 20;
+}
+
 BehaviorTreeLogger::~BehaviorTreeLogger() {
 	std::ofstream logStream(filePath_, std::ios::app);
 	logStream << "FINISHED LOG" << std::endl;
@@ -31,7 +35,7 @@ void BehaviorTreeLogger::Init(const std::string& _fileName) {
 	}
 
 	// ファイル数が多くなりすぎないように
-	DeleteOldLogFile(20);
+	DeleteOldLogFile(kMaxBehaviorTreeLogFileCount);
 
 	std::filesystem::path path(_fileName);
 	// 現在時刻を取得

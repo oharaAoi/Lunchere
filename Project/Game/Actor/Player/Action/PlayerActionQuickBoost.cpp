@@ -7,6 +7,10 @@
 #include "Engine/Core/Engine.h"
 #include <Module/PostEffect/PostProcess.h>
 
+namespace {
+constexpr float kBoostInputDeadZone = 0.1f;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 編集処理
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,7 +67,7 @@ void PlayerActionQuickBoost::OnStart() {
 		Math::Vector3 right = pOwnerTransform_->GetRotate().MakeRight()* stick_.x;
 		direction_ = right;
 	} else {
-		if (stick_.Length() <= 0.1f) {
+		if (stick_.Length() <= kBoostInputDeadZone) {
 			direction_ = pOwner_->GetTransform()->GetRotate().MakeForward();
 		} else {
 			direction_ = pOwner_->GetFollowCamera()->GetAngleX().Rotate(Math::Vector3{ stick_.x, 0.0f, stick_.y });

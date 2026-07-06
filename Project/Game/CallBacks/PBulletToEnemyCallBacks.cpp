@@ -3,6 +3,10 @@
 #include "Engine/System/Manager/ParticleManager.h"
 #include "Engine/System/Audio/AudioPlayer.h"
 
+namespace {
+constexpr float kBulletHitVolume = 0.04f;
+}
+
 void PBulletToEnemyCallBacks::Init() {
 	SetCallBacks();
 	SetPair(pCollisionManager_, ColliderTags::Bullet::machinegun, ColliderTags::Enemy::own);
@@ -43,7 +47,7 @@ void PBulletToEnemyCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseColl
 	hitBossSmoke_->SetIsStop(false);
 	hitBossSmokeBorn_->SetIsStop(false);
 
-	AOENGINE::AudioPlayer::SingleShotPlay("bulletHit.mp3", 0.04f);
+	AOENGINE::AudioPlayer::SingleShotPlay("bulletHit.mp3", kBulletHitVolume);
 }
 
 void PBulletToEnemyCallBacks::CollisionStay([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const enemy) {

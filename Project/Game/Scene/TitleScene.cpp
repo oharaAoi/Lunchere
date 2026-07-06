@@ -5,6 +5,10 @@
 #include "Engine/Module/Components/Light/DirectionalLight.h"
 #include "Engine/Lib/Json/JsonItems.h"
 
+namespace {
+constexpr float kTitleLightIntensity = 0.3f;
+}
+
 TitleScene::TitleScene() {}
 TitleScene::~TitleScene() {Finalize();}
 
@@ -41,7 +45,7 @@ void TitleScene::Init() {
 	ChangeBehavior(std::make_unique<TitlePushSpaceBehavior>(this));
 
 	AOENGINE::DirectionalLight* light = AOENGINE::Render::GetLightGroup()->GetDirectionalLight();
-	light->SetIntensity(0.3f);
+	light->SetIntensity(kTitleLightIntensity);
 
 	putButton_ = false;
 }

@@ -22,6 +22,13 @@
 #include "Game/Actor/Player/Action/PlayerActionDeployArmor.h"
 #include <Module/PostEffect/PostProcess.h>
 
+namespace {
+constexpr float kLockOnRotateRate = 0.9f;
+constexpr float kPostureDamageRate = 0.5f;
+constexpr float kDamageShakeTime = 0.5f;
+constexpr float kDamageShakeStrength = 3.0f;
+}
+
 Player::Player() {}
 Player::~Player() {
 	Finalize();
@@ -218,7 +225,7 @@ void Player::LookTarget(float _rotateT_, bool isLockOn) {
 		toTarget.y = 0.0f; // Y軸の高さ成分を無視して水平方向ベクトルに
 		toTarget = toTarget.Normalize();
 		Math::Quaternion targetToRotate = Math::Quaternion::LookRotation(toTarget);
-		transform_->SetRotate(Math::Quaternion::Slerp(transform_->GetRotate(), targetToRotate, 0.9f));
+		transform_->SetRotate(Math::Quaternion::Slerp(transform_->GetRotate(), targetToRotate, kLockOnRotateRate));
 	} else {
 		transform_->SetRotate(object_->GetRigidbody()->LookVelocity(transform_->GetRotate(), _rotateT_));
 	}
@@ -302,7 +309,7 @@ void Player::Damage(float _damage) {
 		stateMachine_->ChangeState<PlayerDeadState>();
 	}
 	// 姿勢安定性を減らす
-	param_.postureStability += _damage * 0.5f;
+	param_.postureStability += _damage * kPostureDamageRate;
 
 	if (param_.postureStability >= initParam_.postureStability) {
 		if (deployArmor_) {
@@ -314,10 +321,10 @@ void Player::Damage(float _damage) {
 	}
 
 	// カメラを揺らす
-	pFollowCamera_->SetShake(.5f, 3.0f);
+	pFollowCamera_->SetShake(kDamageShakeTime, kDamageShakeStrength);
 
 	// ビネットを出す
-	if (param_.health <= initParam_.health * 0.3f) {
+	if (param_.health <= initParam_.health * param_.pinchOfPercentage) {
 		vignette_->SetIsEnable(true);
 		vignette_->SetPower(param_.pinchVignettePower);
 		vignette_->SetColor(param_.pinchVignetteColor);

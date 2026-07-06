@@ -4,6 +4,10 @@
 #include "Engine/System/Manager/ParticleManager.h"
 #include "Game/Information/ColliderCategory.h"
 
+namespace {
+constexpr float kBulletHitVolume = 0.04f;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 初期化処理
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +59,7 @@ void PBulletToBossCallBacks::CollisionEnter([[maybe_unused]] AOENGINE::BaseColli
 	hitBossSmoke_->SetIsStop(false);
 	hitBossSmokeBorn_->SetIsStop(false);
 
-	AOENGINE::AudioPlayer::SingleShotPlay("bulletHit.mp3", 0.04f);
+	AOENGINE::AudioPlayer::SingleShotPlay("bulletHit.mp3", kBulletHitVolume);
 }
 
 void PBulletToBossCallBacks::CollisionStay([[maybe_unused]] AOENGINE::BaseCollider* const bullet, [[maybe_unused]] AOENGINE::BaseCollider* const boss) {

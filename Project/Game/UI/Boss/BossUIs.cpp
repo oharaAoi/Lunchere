@@ -1,6 +1,7 @@
 #include "BossUIs.h"
 #include "Engine/Lib/Math/MyMath.h"
 #include "Engine/Lib/Json/JsonItems.h"
+#include <limits>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // ↓ 初期化処理
@@ -164,7 +165,7 @@ void BossUIs::PopAlert(const Math::Vector3& _targetPos, const Math::Vector3& _at
 	} };
 
 	// Dot値が最大の方向を選ぶ
-	float bestDot = -9999.0f;
+	float bestDot = std::numeric_limits<float>::lowest();
 	AttackAlertDirection bestDir = AttackAlertDirection::Front;
 
 	for (auto& [dir, vec] : dirs) {

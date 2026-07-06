@@ -3,6 +3,12 @@
 #include "Engine/System/Input/Input.h"
 #include "Engine/Render/Render.h"
 
+namespace {
+constexpr float kDefaultMoveBaseSpeed = 15.0f;
+constexpr float kSprintSpeedMultiplier = 2.0f;
+constexpr Math::Vector3 kResetCameraPosition{ 0.0f, 5.0f, -30.0f };
+}
+
 DebugCamera::DebugCamera() {}
 DebugCamera::~DebugCamera() {}
 
@@ -16,7 +22,7 @@ void DebugCamera::Finalize() {
 void DebugCamera::Init() {
 	BaseCamera::Init();
 	
-	moveBaseSpeed_ = 15.0f;
+	moveBaseSpeed_ = kDefaultMoveBaseSpeed;
 	moveSpeed_ = moveBaseSpeed_;
 	moveRotate_ = transform_.rotate;
 	preMoveRotate_ = transform_.rotate;
@@ -65,7 +71,7 @@ void DebugCamera::Debug_Gui() {
 	ImGui::DragFloat4("qPitch", &qPitch.x, 0.01f);
 
 	if (ImGui::Button("Reset")) {
-		transform_ = { {1.0f, 1.0f, 1.0f}, Math::Quaternion(), {0.0f, 5.0f, -30.0f} };
+		transform_ = { CVector3::UNIT, Math::Quaternion(), kResetCameraPosition };
 		moveRotate_ = Math::Quaternion();
 		yaw_ = 0.0f;
 		pitch_ = 0.0f;
@@ -105,7 +111,7 @@ void DebugCamera::TransitionMove() {
 	}
 
 	if (AOENGINE::Input::IsPressKey(DIK_LSHIFT)) {
-		moveSpeed_ = moveBaseSpeed_ * 2.0f;
+		moveSpeed_ = moveBaseSpeed_ * kSprintSpeedMultiplier;
 	} else {
 		moveSpeed_ = moveBaseSpeed_;
 	}

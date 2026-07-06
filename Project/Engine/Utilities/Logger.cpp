@@ -13,6 +13,10 @@ using namespace AOENGINE;
 
 std::string AOENGINE::Logger::filePath_;
 
+namespace {
+constexpr size_t kMaxLogFileCount = 10;
+}
+
 AOENGINE::Logger::~Logger() {
 	std::ofstream logStream(filePath_, std::ios::app);
 	logStream << "FINISHED LOG" << std::endl;
@@ -32,7 +36,7 @@ void AOENGINE::Logger::Init() {
 		std::cerr << "Path2: " << e.path2() << std::endl;
 	}
 	// Logの数を制限する
-	DeleteOldLogFile(10);
+	DeleteOldLogFile(kMaxLogFileCount);
 
 	// 現在時刻を取得
 	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();

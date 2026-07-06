@@ -7,6 +7,11 @@
 #include "Game/Information/ColliderCategory.h"
 #include "Game/Scene/SceneBehavior/TutorialBehavior.h"
 
+namespace {
+constexpr float kTutorialLightIntensity = 0.5f;
+constexpr float kToGameFadeTime = 3.0f;
+}
+
 TutorialScene::TutorialScene() {}
 TutorialScene::~TutorialScene() { Finalize(); }
 
@@ -112,7 +117,7 @@ void TutorialScene::Init() {
 	followCamera_->SetReticle(canvas_->GetReticle());
 
 	AOENGINE::DirectionalLight* light = AOENGINE::Render::GetLightGroup()->GetDirectionalLight();
-	light->SetIntensity(0.5f);
+	light->SetIntensity(kTutorialLightIntensity);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,5 +183,5 @@ void TutorialScene::ChangeBehavior(std::unique_ptr<ITutorialBehavior> _newBehavi
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 void TutorialScene::ToGameScene() {
-	fadePanel_->SetBlackOut(3.0f);
+	fadePanel_->SetBlackOut(kToGameFadeTime);
 }

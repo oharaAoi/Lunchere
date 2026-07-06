@@ -13,6 +13,11 @@
 #include "Engine/Module/Components/Animation/AnimationClip.h"
 #include "Engine/System/Input/Input.h"
 
+namespace {
+constexpr float kStopVelocityThreshold = 0.1f;
+constexpr float kSideVelocityDamping = 5.0f;
+}
+
 void PlayerActionMove::Debug_Gui() {
 	const Math::Vector3 velocity = pOwner_->GetGameObject()->GetRigidbody()->GetMoveForce();
 	ImGui::Text("accel_ : x(%f) y(%f) z(%f)", accel_.x, accel_.y, accel_.z);
@@ -144,7 +149,7 @@ void PlayerActionMove::OnEnd() {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 void PlayerActionMove::CheckNextAction() {
-	if (pRigidbody_->GetVelocity().Length() <= 0.1f) {
+	if (pRigidbody_->GetVelocity().Length() <= kStopVelocityThreshold) {
 		if (pOwner_->GetIsLanding()) {
 			NextAction<PlayerActionIdle>();
 		}
@@ -216,13 +221,13 @@ void PlayerActionMove::Move() {
 	// ----------------------
 	// 滑りの実装
 	// ----------------------
-	if (inputStick_.Length() > 0.1f) {
+	if (inputStick_.Length() > kDeadZone_) {
 		Math::Vector3 forward = targetVelocity.Normalize();
 		float forwardMag = Math::Vector3::Dot(velocity_, forward);
 		Math::Vector3 side = velocity_ - forward * forwardMag;
 
 		// 横成分を減衰（重量感に合わせて 5〜10 程度）
-		side = Lerp(side, CVector3::ZERO, 5.0f * AOENGINE::GameTimer::DeltaTime());
+		side = Lerp(side, CVector3::ZERO, kSideVelocityDamping * AOENGINE::GameTimer::DeltaTime());
 		velocity_ = (forward * forwardMag + side);
 	}
 
@@ -237,7 +242,7 @@ void PlayerActionMove::Move() {
 	// ----------------------
 	// 加減速制御
 	// ----------------------
-	if (inputStick_.Length() > 0.1f) {
+	if (inputStick_.Length() > kDeadZone_) {
 		velocity_ = Lerp(velocity_, targetVelocity, param_.accel * AOENGINE::GameTimer::DeltaTime());
 	} else {
 		velocity_ = Lerp(velocity_, CVector3::ZERO, param_.decel * AOENGINE::GameTimer::DeltaTime());

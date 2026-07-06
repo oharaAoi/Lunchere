@@ -6,6 +6,11 @@
 #include "Game/Information/ColliderCategory.h"
 #include "Game/Scene/SceneBehavior/GameSceneBehavior.h"
 
+namespace {
+constexpr float kOpeningFadeTime = 0.5f;
+constexpr float kReturnTitleFadeTime = 3.0f;
+}
+
 GameScene::GameScene() {}
 GameScene::~GameScene() { Finalize(); }
 
@@ -83,7 +88,7 @@ void GameScene::Init() {
 
 	fadePanel_ = std::make_unique<FadePanel>();
 	fadePanel_->Init();
-	fadePanel_->SetBlackOutOpen(0.5f);
+	fadePanel_->SetBlackOutOpen(kOpeningFadeTime);
 	
 	ChangeBehavior(std::make_unique<GamePlayBehavior>(this));
 
@@ -124,7 +129,7 @@ void GameScene::Update() {
 	fadePanel_->Update();
 
 	if (canvas_->IsFinishClearNotification()) {
-		fadePanel_->SetBlackOut(3.0f);
+		fadePanel_->SetBlackOut(kReturnTitleFadeTime);
 		fadePanel_->Update();
 
 		if (fadePanel_->GetIsFinished()) {
@@ -136,7 +141,7 @@ void GameScene::Update() {
 	// ↓ playerの死亡確認
 	// -------------------------------------------------
 	if (playerManager_->CheckIsDead()) {
-		fadePanel_->SetBlackOut(3.0f);
+		fadePanel_->SetBlackOut(kReturnTitleFadeTime);
 		fadePanel_->Update();
 
 		if (fadePanel_->GetIsFinished()) {
