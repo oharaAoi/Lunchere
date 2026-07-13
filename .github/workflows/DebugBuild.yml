@@ -6,12 +6,12 @@ on:
       - master
 
 env:
-  SOLUTION_FILE_PATH: Project/AOENGINE.sln
+  SOLUTION_FILE_PATH: Project/AOENGINE.slnx
   CONFIGURATION: Debug
 
 jobs:
   build:
-    runs-on: windows-2025-vs2026
+    runs-on: windows-2025
 
     steps:
       - name: Checkout
@@ -25,6 +25,3 @@ jobs:
       - name: Build
         run: |
           msbuild "${{ env.SOLUTION_FILE_PATH }}" /m /p:Platform=x64 /p:Configuration=${{ env.CONFIGURATION }}
-
-
-      
