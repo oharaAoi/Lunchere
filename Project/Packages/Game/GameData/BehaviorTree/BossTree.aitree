@@ -126,7 +126,7 @@
                                             },
                                             "nodeType": 5,
                                             "orientedName": "TargetDead",
-                                            "treeFileName": "C:\\Users\\81801\\source\\repos\\LC2\\CG2\\AOENGINE\\Project\\Packages\\Game\\GameData\\BehaviorTree\\SecondBossAttackTree.aitree"
+                                            "treeFileName": "./Project\\Packages\\Game\\GameData\\BehaviorTree\\SecondBossAttackTree.aitree"
                                         },
                                         {
                                             "children": [],
@@ -144,7 +144,7 @@
                                             },
                                             "nodeType": 5,
                                             "orientedName": "TargetDead",
-                                            "treeFileName": "C:\\Users\\81801\\source\\repos\\LC2\\CG2\\AOENGINE\\Project\\Packages\\Game\\GameData\\BehaviorTree\\SafeDistanceTree.aitree"
+                                            "treeFileName": "./Project\\Packages\\Game\\GameData\\BehaviorTree\\SafeDistanceTree.aitree"
                                         }
                                     ],
                                     "name": "PlannerSelector",
