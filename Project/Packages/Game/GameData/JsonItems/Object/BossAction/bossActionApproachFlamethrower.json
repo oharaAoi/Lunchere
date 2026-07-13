@@ -1,0 +1,8 @@
+{
+    "bossActionApproachFlamethrower": {
+        "closeLength": 80.0,
+        "dampingValue": 5.0,
+        "speed": 55.0,
+        "stopLength": 35.0
+    }
+}

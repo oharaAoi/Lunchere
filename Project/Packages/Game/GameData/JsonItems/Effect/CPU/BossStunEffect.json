@@ -1,0 +1,96 @@
+{
+    "BossStunEffect": {
+        "angle": 27.0,
+        "angleMax": 360.0,
+        "angleMin": 0.0,
+        "color": {
+            "a": 1.0,
+            "b": 1.0,
+            "g": 0.7266415357589722,
+            "r": 0.4976744055747986
+        },
+        "damping": 0.49000000953674316,
+        "discardValue": 0.009999999776482582,
+        "duration": 1.0,
+        "emitDirection": 2,
+        "emitOrigin": 1,
+        "endDiscard": 1.0,
+        "fadeInTime": 0.0,
+        "fadeOutTime": 0.0,
+        "gravity": -9.399999618530273,
+        "height": 1.0,
+        "isBillBord": true,
+        "isDirectionRotate": false,
+        "isDraw2d": false,
+        "isFadeInOut": false,
+        "isLerpDiscardValue": false,
+        "isLifeOfAlpha": true,
+        "isLifeOfScale": false,
+        "isLoop": false,
+        "blendModeType": 2,
+        "isRandomColor": false,
+        "isScaleUp": false,
+        "isStretch": true,
+        "lifeOfMaxScale": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "lifeOfMinScale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        },
+        "lifeTime": 0.6899999976158142,
+        "maxScale": {
+            "x": 4.0,
+            "y": 1.0,
+            "z": 1.0
+        },
+        "minScale": {
+            "x": 2.0,
+            "y": 1.0,
+            "z": 1.0
+        },
+        "radius": 1.2000000476837158,
+        "randColor1": {
+            "a": 1.0,
+            "b": 0.0,
+            "g": 0.0,
+            "r": 1.0
+        },
+        "randColor2": {
+            "a": 1.0,
+            "b": 1.0,
+            "g": 0.0,
+            "r": 0.0
+        },
+        "rateOverTimeCout": 69,
+        "rotate": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "scaleUpScale": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "separateByAxisScale": false,
+        "shape": 0,
+        "size": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        },
+        "speed": 10.59000015258789,
+        "startDiscard": 0.009999999776482582,
+        "translate": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "useMesh": "plane",
+        "useTexture": "circle.png"
+    }
+}

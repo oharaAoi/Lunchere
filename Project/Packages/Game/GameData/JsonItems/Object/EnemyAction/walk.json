@@ -1,0 +1,6 @@
+{
+    "walk": {
+        "changeDirectionTime": 2.0,
+        "speed": 20.0
+    }
+}

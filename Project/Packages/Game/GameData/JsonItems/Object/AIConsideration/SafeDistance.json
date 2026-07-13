@@ -1,0 +1,7 @@
+{
+    "SafeDistance": {
+        "optimal": 50.0,
+        "optimalRange": 30.0,
+        "priority": 1.0
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "lockOnButton": {
+        "anchorPoint": {
+            "x": 0.5,
+            "y": 0.5
+        },
+        "arcRange": 3.1415927410125732,
+        "center": {
+            "x": 0.5,
+            "y": 0.5
+        },
+        "clockwise": 0,
+        "color": {
+            "a": 1.0,
+            "b": 1.0,
+            "g": 1.0,
+            "r": 1.0
+        },
+        "drawRange": {
+            "x": 64.0,
+            "y": 64.0
+        },
+        "fillAmount": 1.0,
+        "fillMethod": 0,
+        "fillStartingPoint": 2,
+        "innerRadius": 0.0,
+        "isFlipX": false,
+        "isFlipY": false,
+        "leftTop": {
+            "x": 0.0,
+            "y": 0.0
+        },
+        "outerRadius": 1.0,
+        "spriteSize": {
+            "x": 64.0,
+            "y": 64.0
+        },
+        "startAngle": 0.0,
+        "textureName": "lockOnButton.dds",
+        "transform": {
+            "rotate": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 0.6666666865348816,
+                "y": 0.7263556122779846,
+                "z": 1.0
+            },
+            "translate": {
+                "x": 768.0,
+                "y": 540.8631591796875,
+                "z": 1.0
+            }
+        },
+        "uvTransform": {
+            "rotate": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "translate": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        "windowHeight": 793,
+        "windowWidth": 1536
+    }
+}
