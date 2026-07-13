@@ -5,6 +5,8 @@
 #include <string>
 #include <dxgi1_3.h>
 
+namespace AOENGINE {
+
 /// <summary>
 /// D3Dリソースリーク確認用構造体
 /// </summary>
@@ -31,3 +33,8 @@ public:
 	void Log(const std::string& message);
 
 };
+
+}
+
+using AOENGINE::D3DResourceLeakChecker;
+using AOENGINE::Debug;

@@ -31,6 +31,8 @@ enum class NodeType {
 	Parallel
 };
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -183,3 +185,10 @@ protected: // protected variable
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

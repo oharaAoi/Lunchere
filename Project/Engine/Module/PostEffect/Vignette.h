@@ -3,6 +3,8 @@
 #include "Engine/Lib/Json/IJsonConverter.h"
 #include "Engine/Module/PostEffect/IPostEffect.h"
 
+namespace AOENGINE {
+
 namespace PostEffect {
 
 /// <summary>
@@ -115,3 +117,10 @@ private:
 	SaveSettings saveSettings_;
 };
 }
+
+}
+
+#ifndef AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+#define AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+namespace PostEffect = AOENGINE::PostEffect;
+#endif

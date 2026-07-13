@@ -3,6 +3,8 @@
 #include "Engine/Module/Components/Attribute/AttributeGui.h"
 #include "Engine/Lib/Json/IJsonConverter.h"
 
+namespace AOENGINE {
+
 namespace Math {
 
 /// <summary>
@@ -60,3 +62,10 @@ public:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_MATH_NAMESPACE_ALIAS
+#define AOENGINE_MATH_NAMESPACE_ALIAS
+namespace Math = AOENGINE::Math;
+#endif

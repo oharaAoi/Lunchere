@@ -13,11 +13,17 @@ using ComPtr = Microsoft::WRL::ComPtr <T>;
 /// <summary>
 /// DescriptorのHandle
 /// </summary>
+namespace AOENGINE {
+
 struct DescriptorHandles {
 	D3D12_CPU_DESCRIPTOR_HANDLE handleCPU;
 	D3D12_GPU_DESCRIPTOR_HANDLE handleGPU;
 	int assignIndex_;
 };
+
+}
+
+using AOENGINE::DescriptorHandles;
 
 /// <summary>
 /// uavDescの作成

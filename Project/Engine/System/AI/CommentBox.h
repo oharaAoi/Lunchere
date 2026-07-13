@@ -6,6 +6,8 @@
 #include <json.hpp>
 #include <Engine/System/Manager/ImGuiManager.h>
 
+namespace AOENGINE {
+
 /// <summary>
 /// コメントボックスの表示
 /// </summary>
@@ -76,4 +78,8 @@ private: // private variable
 
 	ImVec2 prevPos_;
 };
+
+}
+
+using AOENGINE::CommentBox;
 

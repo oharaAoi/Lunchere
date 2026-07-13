@@ -15,6 +15,8 @@
 #include "Engine/Utilities/BehaviorTreeLogger.h"
 #include "Engine/System/Manager/ImGuiManager.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -139,6 +141,14 @@ private: // private variable
 
 };
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif
+
 
 template<typename ActionT, typename Target>
 std::unique_ptr<AI::BaseBehaviorNode> CreateTask(Target* target, const std::string& nodeName) {

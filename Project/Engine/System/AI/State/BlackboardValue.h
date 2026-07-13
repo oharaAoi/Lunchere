@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <nlohmann/json.hpp>
 
+namespace AOENGINE {
+
 namespace AI {
 
 template<typename T>
@@ -84,3 +86,10 @@ public: // public method
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

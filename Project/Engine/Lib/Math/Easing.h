@@ -125,6 +125,8 @@ const std::array<EasingFunc, 31> easingFuncs = {
 	Ease::None::Liner
 };
 
+namespace AOENGINE {
+
 namespace Math {
 
 /// <summary> 
@@ -138,3 +140,10 @@ float CallEasing(int index, float t);
 void SelectEasing(int& easeKind, const std::string& label);
 
 }
+
+}
+
+#ifndef AOENGINE_MATH_NAMESPACE_ALIAS
+#define AOENGINE_MATH_NAMESPACE_ALIAS
+namespace Math = AOENGINE::Math;
+#endif

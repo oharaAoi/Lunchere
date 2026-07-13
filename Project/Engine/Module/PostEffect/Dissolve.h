@@ -4,6 +4,8 @@
 #include "Engine/Lib/Math/MathStructures.h"
 #include "Engine/Lib/Color.h"
 
+namespace AOENGINE {
+
 namespace PostEffect {
 
 /// <summary>
@@ -124,3 +126,10 @@ private:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+#define AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+namespace PostEffect = AOENGINE::PostEffect;
+#endif

@@ -3,6 +3,8 @@
 #include "Engine/Lib/Math/Curve.h"
 #include "Engine/Lib/Json/IJsonConverter.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -64,3 +66,10 @@ struct UtilityEvaluator : AOENGINE::IJsonConverter {
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

@@ -7,6 +7,8 @@
 #include "Engine/System/AI/Node/BaseBehaviorNode.h"
 #include "Engine/System/AI/GoalOriented/IOrientedGoal.h"
 
+namespace AOENGINE {
+
 namespace AI{
 
 /// <summary>
@@ -80,3 +82,10 @@ namespace BehaviorTreeNodeFactory {
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

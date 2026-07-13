@@ -3,6 +3,8 @@
 #include "Engine/Lib/Math/Vector3.h"
 #include "Engine/Module/Components/Rigging/Skeleton.h"
 
+namespace AOENGINE {
+
 /// <summary>
 /// IKなどで使用する
 /// </summary>
@@ -46,4 +48,8 @@ private:
 	Math::Vector3 targetPos_;
 
 };
+
+}
+
+using AOENGINE::EndEffector;
 

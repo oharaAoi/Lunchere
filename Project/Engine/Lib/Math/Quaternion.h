@@ -4,6 +4,8 @@
 #include "Engine/Lib/Math/Matrix3x3.h"
 #include "Engine/Lib/Math/Matrix4x4.h"
 
+namespace AOENGINE {
+
 namespace Math {
 
 /// <summary>
@@ -175,3 +177,10 @@ public:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_MATH_NAMESPACE_ALIAS
+#define AOENGINE_MATH_NAMESPACE_ALIAS
+namespace Math = AOENGINE::Math;
+#endif

@@ -3,6 +3,8 @@
 #include "Engine/Lib/Math/Vector3.h"
 #include "Engine/Lib/Math/Vector4.h"
 
+namespace AOENGINE {
+
 /// <summary>
 /// 頂点データ構造体
 /// </summary>
@@ -54,4 +56,10 @@ struct RectangleVertices {
 	}
 };
 
+}
+
+using AOENGINE::VertexData;
+using AOENGINE::ParticleVertexData;
+using AOENGINE::TriangleVertices;
+using AOENGINE::RectangleVertices;
 

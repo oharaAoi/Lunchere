@@ -1,6 +1,8 @@
 #pragma once
 #include "Engine/System/AI/Node/BaseBehaviorNode.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -42,3 +44,10 @@ public: // public method
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

@@ -5,6 +5,8 @@
 #include "Engine/Lib/Math/Vector2.h"
 #include "Engine/Lib/Math/Vector3.h"
 
+namespace AOENGINE {
+
 enum class PinType {
 	Flow,
 	Bool,
@@ -106,3 +108,19 @@ struct NodeUVTransform {
 	Math::Vector2 translate = CMath::Vector2::ZERO;
 	float rotate = 0;
 };
+
+}
+
+using AOENGINE::PinType;
+using AOENGINE::PinKind;
+using AOENGINE::Pin;
+using AOENGINE::Node;
+using AOENGINE::Link;
+using AOENGINE::NodeItems;
+using AOENGINE::NodeUVTransform;
+
+
+#ifndef AOENGINE_CUSTOM_NAMESPACE_ALIAS
+#define AOENGINE_CUSTOM_NAMESPACE_ALIAS
+namespace Custom = AOENGINE::Custom;
+#endif

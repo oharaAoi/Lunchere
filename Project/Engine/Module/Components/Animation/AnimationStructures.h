@@ -5,6 +5,8 @@
 #include "Engine/Lib/Math/Vector3.h"
 #include "Engine/Lib/Math/Quaternion.h"
 
+namespace AOENGINE {
+
 /// <summary>
 /// キーフレーム
 /// </summary>
@@ -51,3 +53,12 @@ struct Animation {
 	std::map<std::string, NodeAnimation> nodeAnimations;
 	std::string animationName;
 };
+
+}
+
+using AOENGINE::Keyframe;
+using AOENGINE::KeyframeVector3;
+using AOENGINE::KeyframeQuaternion;
+using AOENGINE::AnimationCurve;
+using AOENGINE::NodeAnimation;
+using AOENGINE::Animation;

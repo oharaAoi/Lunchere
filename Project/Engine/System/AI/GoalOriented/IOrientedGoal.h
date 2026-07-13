@@ -3,6 +3,8 @@
 #include "Engine/System/AI/State/Blackboard.h"
 #include "Engine/Module/Components/Attribute/AttributeGui.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -54,3 +56,10 @@ protected: // protected variable
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

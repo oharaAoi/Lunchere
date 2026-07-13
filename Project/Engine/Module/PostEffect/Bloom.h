@@ -5,6 +5,8 @@
 #include "Engine/Module/PostEffect/PingPongBuffer.h"
 #include "Engine/Lib/Json/IJsonConverter.h"
 
+namespace AOENGINE {
+
 namespace PostEffect {
 
 /// <summary>
@@ -144,3 +146,10 @@ private:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+#define AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+namespace PostEffect = AOENGINE::PostEffect;
+#endif

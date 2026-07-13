@@ -9,6 +9,8 @@
 #include "Engine/Module/Components/Rigging/Skinning.h"
 #include "Engine/Module/PostEffect/PostProcess.h"
 
+namespace AOENGINE {
+
 /// <summary>
 /// GameEngine
 /// </summary>
@@ -139,3 +141,7 @@ public:
 
 	static AOENGINE::PostProcess* GetPostProcess();
 };
+
+}
+
+using AOENGINE::Engine;

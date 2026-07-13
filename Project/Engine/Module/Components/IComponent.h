@@ -1,5 +1,7 @@
 #pragma once
 
+namespace AOENGINE {
+
 /// <summary>
 /// 各コンポーネントをポリモーフィズムで管理するためのベースクラス
 /// </summary>
@@ -14,4 +16,8 @@ public: // public method
 
 
 };
+
+}
+
+using AOENGINE::IComponent;
 

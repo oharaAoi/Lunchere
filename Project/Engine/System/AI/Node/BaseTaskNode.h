@@ -8,6 +8,8 @@
 #include "Engine/Lib/GameTimer.h"
 #include "Engine/Utilities/Timer.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -275,3 +277,10 @@ inline void BaseTaskNode<OwnerType>::WeightTableItem() {
 	ImGui::DragFloat(name.c_str(), &aggressionAffinity_, 0.1f, 0.01f, 1.0f);
 }
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

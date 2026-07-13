@@ -1,6 +1,8 @@
 #pragma once
 #include "DirectXMath.h"
 
+namespace AOENGINE {
+
 namespace Math {
 
 class Vector3;
@@ -198,3 +200,10 @@ public:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_MATH_NAMESPACE_ALIAS
+#define AOENGINE_MATH_NAMESPACE_ALIAS
+namespace Math = AOENGINE::Math;
+#endif

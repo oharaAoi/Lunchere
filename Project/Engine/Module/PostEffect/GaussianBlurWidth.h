@@ -3,6 +3,8 @@
 #include "Engine/Lib/Json/IJsonConverter.h"
 #include "Engine/Lib/Math/Vector2.h"
 
+namespace AOENGINE {
+
 namespace PostEffect {
 
 /// <summary>
@@ -97,3 +99,10 @@ private:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+#define AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+namespace PostEffect = AOENGINE::PostEffect;
+#endif

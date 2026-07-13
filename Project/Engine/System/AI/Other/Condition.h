@@ -4,6 +4,8 @@
 #include "Engine/System/AI/State/BlackboardValue.h"
 #include "Engine/System/AI/State/Blackboard.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -63,3 +65,10 @@ private: // private variable
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

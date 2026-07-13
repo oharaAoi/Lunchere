@@ -8,6 +8,8 @@
 // engine
 #include "Engine/System/AI/State/BlackboardValue.h"
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -97,3 +99,10 @@ protected: // protected variable
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

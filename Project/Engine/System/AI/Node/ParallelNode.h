@@ -2,6 +2,8 @@
 #include "Engine/System/AI/Node/BaseBehaviorNode.h"
 #include <cstdint>
 
+namespace AOENGINE {
+
 namespace AI {
 
 /// <summary>
@@ -48,3 +50,10 @@ private: // private variable
 };
 
 }
+
+}
+
+#ifndef AOENGINE_AI_NAMESPACE_ALIAS
+#define AOENGINE_AI_NAMESPACE_ALIAS
+namespace AI = AOENGINE::AI;
+#endif

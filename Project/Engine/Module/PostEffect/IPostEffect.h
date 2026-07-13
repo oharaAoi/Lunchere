@@ -6,6 +6,8 @@ namespace AOENGINE {
 	class PostProcess;
 }
 
+namespace AOENGINE {
+
 namespace PostEffect {
 
 /// <summary>
@@ -45,3 +47,10 @@ protected:
 };
 
 }
+
+}
+
+#ifndef AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+#define AOENGINE_POSTEFFECT_NAMESPACE_ALIAS
+namespace PostEffect = AOENGINE::PostEffect;
+#endif
