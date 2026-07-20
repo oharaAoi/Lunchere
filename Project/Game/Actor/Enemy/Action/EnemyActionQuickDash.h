@@ -12,6 +12,9 @@ class EnemyActionQuickDash :
 	public AI::BaseTaskNode<BaseEnemy> {
 public:
 
+	/// <summary>
+	/// クイックダッシュ行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;
 		float moveTime;

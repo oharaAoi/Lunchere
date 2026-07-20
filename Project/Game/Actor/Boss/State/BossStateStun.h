@@ -13,6 +13,9 @@ class BossStateStun :
 	public ICharacterState<Boss> {
 public:	// メンバ構造体
 
+	/// <summary>
+	/// ボスのスタン状態パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float stanTime = 5.0f;
 		float stanSlowTime = 0.4f;

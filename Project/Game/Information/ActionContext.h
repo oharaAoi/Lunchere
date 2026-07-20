@@ -3,6 +3,9 @@
 #include <unordered_map>
 #include <string>
 
+/// <summary>
+/// ActionContextに格納する値
+/// </summary>
 template<typename T>
 struct ActionValue {
 	T value;

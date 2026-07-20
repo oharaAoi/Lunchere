@@ -18,6 +18,9 @@ class PlayerActionShotLeft :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// 左手射撃行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float animationTime = 0.2f;
 		float cameraShakeTime = 0.2f;

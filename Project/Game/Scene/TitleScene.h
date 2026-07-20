@@ -14,6 +14,9 @@
 // クラスの前方宣言
 class ITitleBahavior;
 
+/// <summary>
+/// タイトルシーン
+/// </summary>
 class TitleScene : 
 	public BaseScene {
 	friend class TitlePushSpaceBehavior;

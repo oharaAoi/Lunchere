@@ -12,6 +12,9 @@ class BossActionShotLauncher :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ランチャー発射攻撃の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float bulletSpeed = 80.0f;
 		float stiffenTime = 1.0f;

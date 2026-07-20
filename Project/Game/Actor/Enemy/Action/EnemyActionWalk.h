@@ -12,6 +12,9 @@ class EnemyActionWalk :
 	public AI::BaseTaskNode<BaseEnemy> {
 public: // データ
 
+	/// <summary>
+	/// 歩行行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;
 		float changeDirectionTime;

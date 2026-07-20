@@ -13,6 +13,9 @@ class PlayerActionMove :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// 移動行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;				// 歩く速度
 		float boostSpeed;			// ブーストの速度

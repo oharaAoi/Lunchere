@@ -12,6 +12,9 @@ class BossActionAdjustHeight :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ボスの高度調整行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;				// 速度
 		float appropriateDistance;	// 適正距離

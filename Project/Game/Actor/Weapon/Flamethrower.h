@@ -19,6 +19,9 @@ class Flamethrower :
 	public BaseWeapon {
 public: // データ構造体
 
+	/// <summary>
+	/// 火炎放射器の調整パラメータ
+	/// </summary>
 	struct FlamethrowerParam : AOENGINE::IJsonConverter {
 		Math::Vector3 colliderPos;
 		Math::Vector3 colliderSize;

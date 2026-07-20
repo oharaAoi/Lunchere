@@ -9,6 +9,9 @@ class SafeDistanceOriented :
 	public AI::IOrientedGoal {
 public: // データ構造体
 
+	/// <summary>
+	/// 安全距離維持の指向性評価パラメータ
+	/// </summary>
 	struct Consideration : public AOENGINE::IJsonConverter {
 		float priority = 1.0f;		// 優先度
 		float optimal = 30.0f;		// 適正距離

@@ -12,6 +12,9 @@ class BossActionShotBullet :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// 通常弾発射攻撃の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float shotInterval = 0.1f;
 		float bulletSpeed = 80.0f;

@@ -11,6 +11,9 @@ class EnemyActionApproach :
 	public AI::BaseTaskNode<BaseEnemy> {
 public:
 
+	/// <summary>
+	/// 接近行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;
 		float limitDistance;

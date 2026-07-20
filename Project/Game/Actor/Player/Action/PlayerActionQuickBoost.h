@@ -18,6 +18,9 @@ class PlayerActionQuickBoost :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// クイックブースト行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float boostForce = 10.0f;		// boostの強さ
 		

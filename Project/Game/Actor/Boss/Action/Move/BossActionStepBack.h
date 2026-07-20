@@ -5,10 +5,16 @@
 
 class Boss;
 
+/// <summary>
+/// ボスの後退行動
+/// </summary>
 class BossActionStepBack :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ボスの後退行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed = 0;
 		float moveTime = 0;

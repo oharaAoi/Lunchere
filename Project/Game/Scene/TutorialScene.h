@@ -21,6 +21,9 @@
 
 class ITutorialBehavior;
 
+/// <summary>
+/// チュートリアルシーン
+/// </summary>
 class TutorialScene :
 	public BaseScene {
 	friend class TutorialMoveBehavior;

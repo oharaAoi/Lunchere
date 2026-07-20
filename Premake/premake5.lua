@@ -176,7 +176,7 @@ workspace "AOENGINE" -- ソリューションの名前
 
     filter "system:windows" -- windowsのときに起動する
         systemversion "latest" -- 最新のwindowsSDKを使用してビルドする
-        buildoptions { "/utf-8" } -- ソースコードの文字コード
+        buildoptions { "/utf-8", "/WX" } -- ソースコードの文字コード / 警告をエラーとして扱う
 
     filter { "system:windows", "action:vs2026" }
         toolset "v145" -- Visual Studio 2026 Platform Toolset

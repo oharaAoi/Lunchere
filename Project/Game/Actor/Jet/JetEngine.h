@@ -14,6 +14,9 @@ class JetEngine :
 	public AOENGINE::BaseEntity {
 public: // データ構造体
 
+	/// <summary>
+	/// ジェットエンジンの調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float engineIncline = 10.0f;
 		Math::Vector3 burnMoveScale = Math::Vector3(0.4f, 1.0 , 0.4f);

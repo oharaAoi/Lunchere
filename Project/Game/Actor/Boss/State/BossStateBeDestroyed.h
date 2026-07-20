@@ -12,6 +12,9 @@ class BossStateBeDestroyed :
 	public ICharacterState<Boss> {
 public:
 
+	/// <summary>
+	/// ボス撃破状態の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float slowTime = 1.0f;
 		float breakTime = 3.0f;

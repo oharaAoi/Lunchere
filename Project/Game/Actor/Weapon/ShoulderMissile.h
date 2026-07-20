@@ -10,6 +10,9 @@ class ShoulderMissile :
 	public BaseWeapon {
 public:
 
+	/// <summary>
+	/// 肩ミサイルの調整パラメータ
+	/// </summary>
 	struct ShoulderMissileParam : AOENGINE::IJsonConverter {
 		Math::Vector3 pos;
 		float trackingLength;	// 追従する長さ

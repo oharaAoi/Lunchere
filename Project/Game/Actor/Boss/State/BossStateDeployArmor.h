@@ -13,6 +13,9 @@ class BossStateDeployArmor :
 	public ICharacterState<Boss> {
 public:
 
+	/// <summary>
+	/// ボスのアーマー展開状態パラメータ
+	/// </summary>
 	struct ArmorParameter : public AOENGINE::IJsonConverter {
 		float durability = 100.0f;
 		Math::Vector3 scale = CVector3::UNIT;

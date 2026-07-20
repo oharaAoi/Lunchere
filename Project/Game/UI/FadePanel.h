@@ -3,6 +3,9 @@
 #include "Engine/Module/Components/2d/Sprite.h"
 #include "Engine/Module/Components/Attribute/AttributeGui.h"
 
+/// <summary>
+/// 画面フェード用のパネルUI
+/// </summary>
 class FadePanel :
 	public AOENGINE::AttributeGui {
 public:

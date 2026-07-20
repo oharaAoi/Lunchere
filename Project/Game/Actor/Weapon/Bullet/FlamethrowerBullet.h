@@ -4,6 +4,9 @@
 // game
 #include "Game/Actor/Base/BaseBullet.h"
 
+/// <summary>
+/// 火炎放射器から発射される弾
+/// </summary>
 class FlamethrowerBullet :
 	public BaseBullet {
 public:

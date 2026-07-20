@@ -12,6 +12,9 @@ class PlayerActionIdle :
 	public BaseAction<Player>{
 public:
 
+	/// <summary>
+	/// 待機行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float animationBlendTime = 0.2f;
 		

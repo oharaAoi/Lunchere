@@ -10,6 +10,9 @@ class LauncherBullet :
 	public BaseBullet {
 public: // データ構造体
 
+	/// <summary>
+	/// ランチャー弾の調整パラメータ
+	/// </summary>
 	struct BulletParam : AOENGINE::IJsonConverter {
 		float hitSeVolume = 0.3f;
 

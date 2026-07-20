@@ -12,6 +12,9 @@ class BossActionShotgun :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ショットガン攻撃の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float bulletSpeed = 80.0f;
 		float bulletSpread = 20.0f;

@@ -10,6 +10,9 @@ class RocketBullet :
 	public BaseBullet {
 public: // データ構造体
 
+	/// <summary>
+	/// ロケット弾の調整パラメータ
+	/// </summary>
 	struct BulletParam : AOENGINE::IJsonConverter {
 		float hitSeVolume = 0.3f; // hit時のSEの音量
 

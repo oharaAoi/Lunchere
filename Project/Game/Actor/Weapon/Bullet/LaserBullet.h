@@ -16,6 +16,9 @@ class LaserBullet :
 	public BaseBullet {
 public: // データ構造体
 
+	/// <summary>
+	/// レーザー弾の調整パラメータ
+	/// </summary>
 	struct LaserParameter : public AOENGINE::IJsonConverter {
 		float maxLength = 1000.0f;  // 最大距離
 		float lifeTime = 3.0f;

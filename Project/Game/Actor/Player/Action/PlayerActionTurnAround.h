@@ -6,10 +6,16 @@
 // 前方宣言
 class Player;
 
+/// <summary>
+/// プレイヤーの振り向きアクション
+/// </summary>
 class PlayerActionTurnAround :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// 振り向き行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;
 		float rotateTime;

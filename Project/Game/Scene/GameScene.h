@@ -19,6 +19,9 @@
 
 class IGameSceneBehavior;
 
+/// <summary>
+/// ゲーム本編シーン
+/// </summary>
 class GameScene 
 	: public BaseScene {
 	friend class GamePlayBehavior;

@@ -14,6 +14,9 @@ class BossActionDualStageMissile :
 	public AI::BaseTaskNode<Boss> {
 public: // データ構造体
 
+	/// <summary>
+	/// 二段ミサイル攻撃の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float bulletSpeed = 90.0f;	// 弾速
 		float takeDamage = 30.0f;	// 与えるダメージ

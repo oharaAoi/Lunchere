@@ -5,10 +5,16 @@
 
 class BaseEnemy;
 
+/// <summary>
+/// 敵が後退する行動
+/// </summary>
 class EnemyActionStepBack :
 	public AI::BaseTaskNode<BaseEnemy> {
 public:
 
+	/// <summary>
+	/// 後退行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float speed;
 		float moveTime;

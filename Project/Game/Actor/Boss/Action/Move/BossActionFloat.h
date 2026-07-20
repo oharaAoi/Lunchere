@@ -6,11 +6,17 @@
 class Boss;
 
 
+/// <summary>
+/// ボスの浮遊行動
+/// </summary>
 class BossActionFloat :
 	public AI::BaseTaskNode<Boss>{
 
 public:
 
+	/// <summary>
+	/// ボスの浮遊行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float moveTime = 0.5f;		// 移動時間
 		float moveSpeed = 10.0f;	// 移動速度

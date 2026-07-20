@@ -9,6 +9,9 @@ class LaserRifle :
 	public BaseWeapon {
 public: // データ構造体
 
+	/// <summary>
+	/// レーザーライフルの調整パラメータ
+	/// </summary>
 	struct LaserRifleParam : AOENGINE::IJsonConverter {
 		Math::Vector3 pos;
 

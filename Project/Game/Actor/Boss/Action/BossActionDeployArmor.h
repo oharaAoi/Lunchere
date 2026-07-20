@@ -11,6 +11,9 @@ class BossActionDeployArmor :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ボスのアーマー展開行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float deployTime = 3.0f;
 		float randShakeValue = 2.0f;

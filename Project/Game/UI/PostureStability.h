@@ -17,6 +17,9 @@ class PostureStability :
 	public BaseGaugeUI {
 public:
 
+	/// <summary>
+	/// 姿勢安定ゲージの表示色パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		AOENGINE::Color normalColor;
 		AOENGINE::Color pinchColor;

@@ -9,6 +9,9 @@
 class BaseCamera {
 public:
 
+	/// <summary>
+	/// 基本カメラの初期パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		Math::Quaternion rotate = Math::Quaternion::AngleAxis(25.0f * kToRadian, CVector3::RIGHT);
 		Math::Vector3 translate = Math::Vector3(0.0f,4.0f,-8.0f);

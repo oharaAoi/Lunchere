@@ -17,6 +17,9 @@ class BossActionTransitionPhase :
 	public AI::BaseTaskNode<Boss> {
 public: // データ構造体
 
+	/// <summary>
+	/// ボスのフェーズ移行行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float chargeTime = 3.0f; // 溜める時間
 		float slowTime = 1.0f;

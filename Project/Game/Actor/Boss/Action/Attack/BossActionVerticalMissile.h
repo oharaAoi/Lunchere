@@ -11,6 +11,9 @@ class BossActionVerticalMissile :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// 垂直ミサイル攻撃の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float bulletSpeed = 80.0f;
 		float fireRadius = 4.0f;

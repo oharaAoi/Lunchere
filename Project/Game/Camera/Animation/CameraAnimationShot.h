@@ -11,6 +11,9 @@ class CameraAnimationShot :
 	public ICameraAnimation {
 public:	// 構造体
 
+	/// <summary>
+	/// 射撃時カメラ演出のパラメータ
+	/// </summary>
 	struct ShotAnimationParam : public AOENGINE::IJsonConverter {
 		bool isExecute = false;
 		bool isApproach = false;

@@ -5,6 +5,9 @@
 #include "Game/Actor/Enemy/BaseEnemy.h"
 #include "Game/UI/BaseGaugeUI.h"
 
+/// <summary>
+/// ターゲット中の敵情報を表示するUI
+/// </summary>
 class TargetUI {
 public: // コンストラクタ
 

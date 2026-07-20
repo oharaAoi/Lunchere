@@ -3,6 +3,9 @@
 
 class Player;
 
+/// <summary>
+/// プレイヤーの待機状態
+/// </summary>
 class PlayerIdleState :
 	public ICharacterState<Player>{
 public:

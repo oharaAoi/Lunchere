@@ -4,6 +4,9 @@
 #include "Engine/Module/Components/GameObject/BaseEntity.h"
 #include "Game/Manager/BaseBulletManager.h"
 
+/// <summary>
+/// 攻撃時に渡す方向とターゲット情報
+/// </summary>
 struct AttackContext {
 	Math::Vector3 direction;
 	Math::Vector3 target;
@@ -16,6 +19,9 @@ class BaseWeapon :
 	public AOENGINE::BaseEntity {
 public:
 
+	/// <summary>
+	/// 武器攻撃の共通パラメータ
+	/// </summary>
 	struct AttackParam : public AOENGINE::IJsonConverter {
 		float bulletSpeed = 100;	// 弾の速さ
 		int maxBulletsNum = 400;	// 最大弾数

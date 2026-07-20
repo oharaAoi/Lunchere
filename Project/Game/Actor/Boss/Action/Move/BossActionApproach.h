@@ -12,6 +12,9 @@ class BossActionApproach :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ボスの接近行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float moveSpeed = 20.f;			// 移動速度
 		float moveTime = 2.0f;			// 移動時間

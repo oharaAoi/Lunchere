@@ -18,6 +18,9 @@ class FollowCamera :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// 追従カメラの設定パラメータ
+	/// </summary>
 	struct CameraParameter : public AOENGINE::IJsonConverter {
 		float distance = 20.0f;	// カメラの距離
 		float rotateDelta = 0.04f;
@@ -68,6 +71,9 @@ public:
 		void Debug_Gui() override;
 	};
 
+	/// <summary>
+	/// カメラ演出の設定パラメータ
+	/// </summary>
 	struct AnimationParameter : public AOENGINE::IJsonConverter {
 		Math::Vector3 firstOffset;
 		Math::Vector3 targetOffset;

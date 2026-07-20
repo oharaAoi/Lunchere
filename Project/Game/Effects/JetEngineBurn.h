@@ -12,6 +12,9 @@ class JetEngineBurn :
 	public AOENGINE::BaseEntity {
 public:
 
+	/// <summary>
+	/// ジェット噴射エフェクトのパラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		AOENGINE::Color color;
 		Math::Vector3 scale;

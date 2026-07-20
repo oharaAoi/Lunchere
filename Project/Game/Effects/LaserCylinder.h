@@ -12,6 +12,9 @@ class LaserCylinder :
 	public AOENGINE::BaseEntity {
 public:
 
+	/// <summary>
+	/// レーザー円柱エフェクトの表示パラメータ
+	/// </summary>
 	struct LaserParameter : public AOENGINE::IJsonConverter {
 		Math::Vector3 scale;
 		

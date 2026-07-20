@@ -14,6 +14,9 @@ class PlayerActionDeployArmor :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// アーマー展開行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float chargeTime = 2.0f;
 		Math::Vector3 effectOffset = {0, 2, 0};

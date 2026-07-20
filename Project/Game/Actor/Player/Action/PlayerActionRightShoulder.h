@@ -5,6 +5,9 @@
 
 class Player;
 
+/// <summary>
+/// プレイヤーの右肩武器アクション
+/// </summary>
 class PlayerActionRightShoulder :
 	public BaseAction<Player> {
 public:

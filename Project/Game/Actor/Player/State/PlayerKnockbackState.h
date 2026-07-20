@@ -5,10 +5,16 @@
 
 class Player;
 
+/// <summary>
+/// プレイヤーのノックバック状態
+/// </summary>
 class PlayerKnockbackState :
 	public ICharacterState<Player> {
 public:
 
+	/// <summary>
+	/// ノックバック状態の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float knockbackTime = 0.2f;			// ノックバックの時間
 		float knockStrength = 1.0f;			// ノックバックの強さ

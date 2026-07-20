@@ -5,10 +5,16 @@
 
 class Player;
 
+/// <summary>
+/// プレイヤーの死亡状態
+/// </summary>
 class PlayerDeadState :
 	public ICharacterState<Player> {
 public: // データ構造体
 
+	/// <summary>
+	/// 死亡状態の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float knockbackTime = 0.2f;			// ノックバックの時間
 		float knockStrength = 10.0f;			// ノックバックの強さ

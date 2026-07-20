@@ -12,6 +12,9 @@ class ClearNotificationUI :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// クリア通知UIの移動演出パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		Math::Vector2 startPos;
 		Math::Vector2 endPos;

@@ -10,10 +10,16 @@ enum class GameMenuSelectItem {
 	kMax
 };
 
+/// <summary>
+/// ゲーム中メニューUI
+/// </summary>
 class GameMenuUI :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// ゲーム中メニューUIの設定パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float inputCoolTime = 0.2f;
 		AOENGINE::Color noSelectColor;

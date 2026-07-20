@@ -20,6 +20,9 @@ class PlayerActionBoost :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// ブースト行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float chargeTime;			// 溜める時間
 	

@@ -15,10 +15,16 @@ enum class BossFlamethrowersType {
 	Right
 };
 
+/// <summary>
+/// ボスの火炎放射器を管理するクラス
+/// </summary>
 class BossFlamethrowers :
 	public AOENGINE::AttributeGui {
 public:
 
+	/// <summary>
+	/// 火炎放射器配置の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		Math::QuaternionSRT flamethrowerSRT;
 		float radius;
@@ -49,6 +55,9 @@ public:
 		void Debug_Gui() override;
 	};
 
+	/// <summary>
+	/// 火炎放射器展開の調整パラメータ
+	/// </summary>
 	struct DeployFlamethrowerParameter : public AOENGINE::IJsonConverter {
 		float deployTime = 1.f;	// 展開時間
 

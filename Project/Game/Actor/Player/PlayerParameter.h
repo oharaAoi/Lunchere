@@ -3,6 +3,9 @@
 #include "Engine/Lib/Math/Vector3.h"
 #include "Engine/Lib/Color.h"
 
+/// <summary>
+/// プレイヤーの調整パラメータ
+/// </summary>
 struct PlayerParameter : public AOENGINE::IJsonConverter {
 	float health;				// hp
 	float postureStability;		// 姿勢安定

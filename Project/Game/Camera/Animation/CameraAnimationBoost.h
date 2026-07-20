@@ -11,6 +11,9 @@ class CameraAnimationBoost :
 	public ICameraAnimation {
 public: // データ構造体
 
+	/// <summary>
+	/// ブースト時カメラ演出のパラメータ
+	/// </summary>
 	struct BoostAnimationParam : public AOENGINE::IJsonConverter {
 		bool isExecute = false;
 		bool isApproach = false;

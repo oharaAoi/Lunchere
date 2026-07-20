@@ -16,6 +16,9 @@ class PlayerActionJump :
 	public BaseAction<Player> {
 public:
 
+	/// <summary>
+	/// ジャンプ行動の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float finishChargeTime = 1.0f;
 		float jumpForce = 6.0f;

@@ -4,6 +4,9 @@
 
 class Boss;
 
+/// <summary>
+/// ボスの待機行動
+/// </summary>
 class BossActionWait :
 	public AI::BaseTaskNode<Boss> {
 public:

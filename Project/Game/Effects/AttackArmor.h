@@ -14,6 +14,9 @@ class AttackArmor :
 	public AOENGINE::BaseEntity {
 public:
 
+	/// <summary>
+	/// アタックアーマーの設定パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		std::string shaderGraphPath = "";			// shaderGraphのパス
 		Math::Vector3 uvScale = CVector3::UNIT;		// uvのスケール

@@ -12,6 +12,9 @@ class BossIdleState :
 	public ICharacterState<Boss> {
 public:
 
+	/// <summary>
+	/// ボスの待機状態パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float start = -0.5f;
 		float end = 0.5f;

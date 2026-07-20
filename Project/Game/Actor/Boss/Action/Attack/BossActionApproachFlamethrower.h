@@ -13,6 +13,9 @@ class BossActionApproachFlamethrower :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// 接近火炎放射攻撃の移動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float closeLength;		// 閉じ始める距離の長さ
 		float stopLength;		// 減速を開始する距離
@@ -43,6 +46,9 @@ public:
 		void Debug_Gui() override;
 	};
 
+	/// <summary>
+	/// 接近火炎放射攻撃の射撃パラメータ
+	/// </summary>
 	struct AttackFlamethrower : public AOENGINE::IJsonConverter {
 		float closeTime = 1.0f;
 		float startAngle = 90;

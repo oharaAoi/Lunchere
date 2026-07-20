@@ -11,6 +11,9 @@ class BossActionKeepDistance :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ボスの距離維持行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float moveSpeed = 60.f;
 		float moveTime = 2.0f;

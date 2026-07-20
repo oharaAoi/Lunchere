@@ -14,6 +14,9 @@ class BossActionBackSweep :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// 背面薙ぎ払い攻撃の調整パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float threshold = 0.5f;		// 背面にいるかの閾値
 		float rotateTime = 1.0f;	// 回転する時間

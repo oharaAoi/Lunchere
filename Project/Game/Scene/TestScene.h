@@ -7,6 +7,9 @@
 #include "Game/Camera/Camera3d.h"
 #include "Game/Actor/Weapon/Flamethrower.h"
 
+/// <summary>
+/// テスト用シーン
+/// </summary>
 class TestScene 
 : public BaseScene {
 public:

@@ -12,6 +12,9 @@ class BossActionStrafe :
 	public AI::BaseTaskNode<Boss> {
 public:
 
+	/// <summary>
+	/// ボスの横移動行動パラメータ
+	/// </summary>
 	struct Parameter : public AOENGINE::IJsonConverter {
 		float moveSpeed = 60.f;
 		float moveTime = 0.5f;
